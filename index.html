@@ -647,6 +647,69 @@
       margin-top: 0.7rem;
       font-weight: 300;
     }
+    .form-card-title {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+    }
+    .form-card-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin: 0 0 1rem;
+    }
+    .range-fieldset {
+      border: 1px solid rgba(14, 14, 14, 0.08);
+      border-radius: 16px;
+      padding: 0.9rem 1rem 1rem;
+      background: rgba(247, 239, 230, 0.45);
+    }
+    .range-fieldset legend {
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0 0.35rem;
+    }
+    .range-hint {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin: 0 0 0.65rem;
+    }
+    .range-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .range-options label {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.84rem;
+      font-weight: 500;
+      padding: 0.65rem 0.75rem;
+      background: var(--white);
+      border: 1px solid rgba(14, 14, 14, 0.08);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .range-options label:has(input:checked) {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+      font-weight: 600;
+    }
+    .range-options input {
+      accent-color: var(--gold-deep);
+      width: auto;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+    }
+    @media (max-width: 520px) {
+      .range-options { grid-template-columns: 1fr; }
+    }
     .contact-aside h2 {
       font-family: var(--display);
       font-size: clamp(2.1rem, 4vw, 3rem);
@@ -765,9 +828,9 @@
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#contato">Cadastro</a></li>
       </ul>
-      <a class="nav-cta" href="#contato">Falar agora</a>
+      <a class="nav-cta" href="#contato">Ficha cadastral</a>
     </div>
   </header>
 
@@ -1015,9 +1078,9 @@
     <section class="contact" id="contato">
       <div class="wrap contact-grid">
         <div class="contact-aside reveal">
-          <div class="label" style="color: var(--gold-deep); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;">Contato</div>
+          <div class="label" style="color: var(--gold-deep); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;">Ficha cadastral</div>
           <h2>Vamos alinhar o próximo elo.</h2>
-          <p>Conte em poucas linhas o que você precisa. Retornamos com próximo passo — ou com um “não” honesto.</p>
+          <p>Preencha o perfil e a média de volume. Assim priorizamos o match certo — ou um “não” honesto.</p>
           <div class="contact-channels">
             <div class="channel">
               <img src="assets/logo-mark.png" width="40" height="40" alt="" style="border-radius:10px;" />
@@ -1036,6 +1099,8 @@
           </div>
         </div>
         <div class="contact-card reveal">
+          <p class="form-card-title">Ficha cadastral</p>
+          <p class="form-card-sub">Dados essenciais para conectar comprador e fornecedor com lastro.</p>
           <form class="form-grid" id="contactForm">
             <div class="form-grid two">
               <label>Nome
@@ -1058,14 +1123,35 @@
                 <option value="">Selecione</option>
                 <option>Comprador (joalheria, fundição, indústria…)</option>
                 <option>Fornecedor (DTVM, refinaria, distribuidor…)</option>
+                <option>Ambos / compro e vendo</option>
                 <option>Outro / quero entender melhor</option>
               </select>
             </label>
+            <fieldset class="range-fieldset">
+              <legend>Média de compra (mensal)</legend>
+              <span class="range-hint">Volume aproximado que sua empresa compra</span>
+              <div class="range-options">
+                <label><input type="radio" name="media_compra" value="R$ 5–10 mil" required /> R$ 5–10 mil</label>
+                <label><input type="radio" name="media_compra" value="R$ 10–30 mil" /> R$ 10–30 mil</label>
+                <label><input type="radio" name="media_compra" value="R$ 30–50 mil" /> R$ 30–50 mil</label>
+                <label><input type="radio" name="media_compra" value="Acima de R$ 50 mil" /> + R$ 50 mil</label>
+              </div>
+            </fieldset>
+            <fieldset class="range-fieldset">
+              <legend>Média de venda (mensal)</legend>
+              <span class="range-hint">Volume aproximado que sua empresa vende / oferta</span>
+              <div class="range-options">
+                <label><input type="radio" name="media_venda" value="R$ 5–10 mil" required /> R$ 5–10 mil</label>
+                <label><input type="radio" name="media_venda" value="R$ 10–30 mil" /> R$ 10–30 mil</label>
+                <label><input type="radio" name="media_venda" value="R$ 30–50 mil" /> R$ 30–50 mil</label>
+                <label><input type="radio" name="media_venda" value="Acima de R$ 50 mil" /> + R$ 50 mil</label>
+              </div>
+            </fieldset>
             <label>Como podemos ajudar?
-              <textarea name="mensagem" required placeholder="Volume aproximado, prazo, especificação…"></textarea>
+              <textarea name="mensagem" required placeholder="Especificação do metal, prazo, cidade, recorrência…"></textarea>
             </label>
-            <button class="btn btn-black" type="submit">Enviar mensagem</button>
-            <p class="form-note">Ao enviar, você concorda com o contato comercial da Lastro Ouro. Política de privacidade definitiva deve ser revisada por advogado antes do go-live.</p>
+            <button class="btn btn-black" type="submit">Enviar ficha</button>
+            <p class="form-note">Ao enviar, você concorda com o contato comercial da Lastro Ouro. Valores são faixas aproximadas para priorização — não vínculo contratual.</p>
           </form>
         </div>
       </div>
@@ -1083,7 +1169,7 @@
           <a href="#servicos">Serviços</a>
           <a href="#sobre">Sobre</a>
           <a href="#faq">FAQ</a>
-          <a href="#contato">Contato</a>
+          <a href="#contato">Cadastro</a>
         </div>
       </div>
       <p class="footer-disclaimer">
@@ -1134,8 +1220,22 @@
     document.getElementById("contactForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const data = new FormData(e.target);
+      const empresa = data.get("empresa") || "—";
+      const email = data.get("email") || "—";
       const texto = encodeURIComponent(
-        `Olá, sou ${data.get("nome")} (${data.get("perfil")}).\n\n${data.get("mensagem")}\n\n— via site Lastro Ouro`
+        [
+          "*Ficha cadastral — Lastro Ouro*",
+          "",
+          `Nome: ${data.get("nome")}`,
+          `Empresa: ${empresa}`,
+          `WhatsApp: ${data.get("whatsapp")}`,
+          `E-mail: ${email}`,
+          `Perfil: ${data.get("perfil")}`,
+          `Média compra (mês): ${data.get("media_compra")}`,
+          `Média venda (mês): ${data.get("media_venda")}`,
+          "",
+          `Mensagem: ${data.get("mensagem")}`,
+        ].join("\n")
       );
       const SEU_NUMERO = "5511999999999";
       window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
