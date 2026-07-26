@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" fill="none" role="img" aria-label="Lastro Ouro">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE9A8"/>
+      <stop offset="40%" stop-color="#E4C45C"/>
+      <stop offset="75%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#7A6218"/>
+    </linearGradient>
+    <linearGradient id="goldBright" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF3C4"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A8892D"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0.3" y1="0" x2="0.75" y2="1">
+      <stop offset="0%" stop-color="#F5D5BB"/>
+      <stop offset="100%" stop-color="#C99570"/>
+    </linearGradient>
+    <linearGradient id="lens" x1="0.2" y1="0.1" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#2C3842"/>
+      <stop offset="100%" stop-color="#0A0E12"/>
+    </linearGradient>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#D4AF37" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="360" rx="20" fill="#0A0A0A"/>
+
+  <!-- LASTR -->
+  <text x="36" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" letter-spacing="0.02em" fill="url(#gold)" filter="url(#glow)">LASTR</text>
+
+  <!-- BLOCO CENTRAL: personagem + binóculos (= O O) -->
+  <g transform="translate(378, 20)">
+    <!-- cartola -->
+    <rect x="78" y="8" width="68" height="58" rx="5" fill="#111"/>
+    <ellipse cx="112" cy="10" rx="34" ry="9" fill="#1C1C1C"/>
+    <rect x="78" y="58" width="68" height="12" fill="url(#goldBright)"/>
+    <ellipse cx="112" cy="72" rx="58" ry="11" fill="#0E0E0E"/>
+    <ellipse cx="112" cy="70" rx="52" ry="6" fill="url(#gold)" opacity="0.9"/>
+
+    <!-- smoking / ombros -->
+    <path d="M20 250 C40 200, 70 185, 112 185 C154 185, 184 200, 204 250 L204 300 L20 300 Z" fill="#101010"/>
+    <path d="M85 195 L112 245 L139 195" fill="#080808"/>
+    <path d="M96 198 L112 230 L128 198" fill="#F4EEE4"/>
+
+    <!-- laço ouro -->
+    <path d="M92 212 L112 200 L132 212 L112 224 Z" fill="url(#goldBright)"/>
+    <circle cx="112" cy="212" r="5" fill="#C9A227"/>
+
+    <!-- rosto -->
+    <ellipse cx="112" cy="145" rx="48" ry="52" fill="url(#skin)"/>
+    <ellipse cx="60" cy="148" rx="9" ry="13" fill="url(#skin)"/>
+    <ellipse cx="164" cy="148" rx="9" ry="13" fill="url(#skin)"/>
+
+    <!-- mãos -->
+    <g>
+      <ellipse cx="28" cy="158" rx="20" ry="14" fill="url(#skin)" transform="rotate(-25 28 158)"/>
+      <ellipse cx="196" cy="158" rx="20" ry="14" fill="url(#skin)" transform="rotate(25 196 158)"/>
+      <!-- dedos -->
+      <ellipse cx="18" cy="150" rx="5" ry="9" fill="url(#skin)" transform="rotate(-30 18 150)"/>
+      <ellipse cx="206" cy="150" rx="5" ry="9" fill="url(#skin)" transform="rotate(30 206 150)"/>
+    </g>
+
+    <!-- BINÓCULO ESQUERDO = O de LASTRO -->
+    <circle cx="78" cy="145" r="36" fill="#0E0E0E" stroke="url(#goldBright)" stroke-width="8"/>
+    <circle cx="78" cy="145" r="24" fill="url(#lens)" stroke="#F0D78C" stroke-width="2.5"/>
+    <circle cx="70" cy="136" r="8" fill="#FFF3C4" opacity="0.22"/>
+    <circle cx="82" cy="148" r="7" fill="#D4AF37" opacity="0.45"/>
+
+    <!-- ponte -->
+    <rect x="104" y="134" width="16" height="20" rx="4" fill="url(#goldBright)"/>
+    <rect x="107" y="139" width="10" height="10" rx="2" fill="#1A1A1A"/>
+
+    <!-- BINÓCULO DIREITO = O de OURO -->
+    <circle cx="146" cy="145" r="36" fill="#0E0E0E" stroke="url(#goldBright)" stroke-width="8"/>
+    <circle cx="146" cy="145" r="24" fill="url(#lens)" stroke="#F0D78C" stroke-width="2.5"/>
+    <circle cx="138" cy="136" r="8" fill="#FFF3C4" opacity="0.22"/>
+    <circle cx="150" cy="148" r="7" fill="#D4AF37" opacity="0.45"/>
+
+    <!-- bigode handlebar -->
+    <path d="M68 178
+             C82 160, 96 164, 112 170
+             C128 164, 142 160, 156 178
+             C142 192, 128 200, 112 194
+             C96 200, 82 192, 68 178 Z"
+          fill="#2A1C14"/>
+    <path d="M82 178 Q112 186 142 178" stroke="url(#gold)" stroke-width="1.4" opacity="0.5"/>
+
+    <!-- sorriso -->
+    <path d="M95 205 Q112 218 129 205" stroke="#6B4530" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- URO -->
+  <text x="640" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" letter-spacing="0.06em" fill="url(#gold)" filter="url(#glow)">URO</text>
+
+  <!-- tagline -->
+  <line x1="160" y1="300" x2="250" y2="300" stroke="url(#goldBright)" stroke-width="1.5"/>
+  <text x="500" y="306" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" letter-spacing="0.2em" fill="url(#goldBright)">CONEXÃO QUE GERA VALOR. OURO QUE GERA CONFIANÇA.</text>
+  <line x1="750" y1="300" x2="840" y2="300" stroke="url(#goldBright)" stroke-width="1.5"/>
+</svg>
