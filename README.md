@@ -1,8 +1,10 @@
 # Lastro Ouro
 
-Site one-page institucional — intermediação de ouro B2B (Brasil).
+Site one-page — plataforma B2B de **Supply Chain & Sourcing** para ouro e joalheria.
 
 **GitHub Pages:** https://marcelofigueiredo23.github.io/lastro-ouro/
+
+**Posicionamento:** conexão e sourcing na cadeia (não “corretor de ouro”). Entradas: Preciso comprar / Tenho oferta.
 
 ## Arquivos
 

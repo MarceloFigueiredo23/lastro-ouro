@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lastro Ouro — Intermediação de ouro com origem e confiança</title>
-  <meta name="description" content="Lastro Ouro conecta fornecedores autorizados a joalherias, fundições e indústria. Intermediação B2B sem estoque, com nota fiscal e origem documentada." />
+  <title>Lastro Ouro — Supply Chain & Sourcing para Ouro e Joalheria</title>
+  <meta name="description" content="Plataforma B2B de conexão e sourcing para a cadeia do ouro e da joalheria. Matchmaking, cotação e documentação — sem estoque próprio." />
   <meta name="theme-color" content="#0A0A0A" />
   <link rel="icon" href="assets/logo-mark.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -772,6 +772,97 @@
       color: rgba(212, 175, 55, 0.55);
     }
 
+
+    /* Supply chain strip */
+    .chain-section { background: var(--black); color: var(--pastel); padding: 4.2rem 0; }
+    .chain-section .section-head .label { color: var(--gold); }
+    .chain-section .section-head h2 { color: var(--white); }
+    .chain-section .section-head p { color: rgba(247,239,230,0.72); max-width: 52ch; }
+    .chain-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-top: 0.5rem;
+    }
+    .chain-node {
+      flex: 1 1 140px;
+      max-width: 180px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(212,175,55,0.28);
+      border-radius: 16px;
+      padding: 1rem 0.85rem;
+      text-align: center;
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+    .chain-node.hub {
+      background: linear-gradient(160deg, rgba(212,175,55,0.22), rgba(212,175,55,0.06));
+      border-color: var(--gold);
+      max-width: 220px;
+      flex: 1.3 1 180px;
+    }
+    .chain-node strong {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold-soft);
+      line-height: 1.2;
+    }
+    .chain-node span { font-size: 0.78rem; color: rgba(247,239,230,0.65); font-weight: 300; line-height: 1.35; }
+    .chain-arrow {
+      align-self: center;
+      color: var(--gold);
+      font-size: 1.2rem;
+      opacity: 0.7;
+      flex: 0 0 auto;
+    }
+    @media (max-width: 700px) {
+      .chain-arrow { display: none; }
+      .chain-node, .chain-node.hub { max-width: none; flex: 1 1 46%; }
+    }
+
+    /* Steps 6 */
+    .steps-row.six { grid-template-columns: repeat(3, 1fr); }
+    .steps-row.six .step { min-height: 190px; }
+
+    /* Entry tabs */
+    .entry-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1.1rem;
+      background: var(--pastel);
+      padding: 0.35rem;
+      border-radius: 14px;
+    }
+    .entry-tab {
+      border: 0;
+      background: transparent;
+      padding: 0.85rem 0.75rem;
+      border-radius: 11px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background 0.2s, color 0.2s;
+    }
+    .entry-tab.active {
+      background: var(--black);
+      color: var(--gold-soft);
+    }
+    .form-panel { display: none; }
+    .form-panel.active { display: grid; gap: 0.85rem; }
+    .problem-band {
+      background: var(--pastel-deep);
+      padding: 3.5rem 0;
+    }
+    .problem-band .section-head { margin-bottom: 0; max-width: 720px; }
+
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .nav-links.open {
@@ -792,18 +883,22 @@
       .brand img.logo { height: 56px; max-width: 68vw; }
       .trust-grid,
       .steps-row,
+      .steps-row.six,
       .human-grid,
       .services-grid,
       .contact-grid,
       .form-grid.two,
-      .jewel-strip {
+      .jewel-strip,
+      .entry-tabs {
         grid-template-columns: 1fr 1fr;
       }
       .trust-grid,
       .steps-row,
+      .steps-row.six,
       .human-grid,
       .services-grid,
       .contact-grid { grid-template-columns: 1fr; }
+      .entry-tabs { grid-template-columns: 1fr; }
       .photo-stack { min-height: 400px; }
       .photo-stack .main { height: 310px; width: 90%; }
       .photo-stack .float { height: 170px; }
@@ -824,35 +919,34 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#cadeia">Cadeia</a></li>
         <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Sourcing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contato">Cadastro</a></li>
       </ul>
-      <a class="nav-cta" href="#contato">Ficha cadastral</a>
+      <a class="nav-cta" href="#contato">Solicitar sourcing</a>
     </div>
   </header>
 
   <main id="topo">
     <section class="hero">
       <div class="hero-media" aria-hidden="true">
-        <!-- Mulher com colar/joias douradas -->
         <img
           src="https://images.unsplash.com/photo-1585960622850-ed33c41d6418?auto=format&fit=crop&w=2000&q=80"
           alt=""
         />
       </div>
       <div class="wrap hero-content">
-        <div class="eyebrow">Intermediação B2B · Joias com origem</div>
-        <h1>Lastro <em>Ouro</em>.<br />A ponte entre quem fornece e quem cria.</h1>
+        <div class="eyebrow">Supply Chain &amp; Sourcing · Ouro e Joalheria</div>
+        <h1>Lastro <em>Ouro</em>.<br />A infraestrutura comercial da cadeia.</h1>
         <p class="hero-lead">
-          Conectamos fornecedores autorizados a joalherias, fundições e indústria —
-          com o mesmo cuidado que uma corrente bem feita: elo a elo, documentado.
+          Plataforma de conexão e sourcing B2B: encontramos a contraparte certa,
+          reduzimos fricção e organizamos documentação — sem estoque próprio.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-gold" href="#contato">Quero conversar</a>
-          <a class="btn btn-ghost" href="#como-funciona">Ver como funciona</a>
+          <a class="btn btn-gold" href="#contato" data-entry="comprar">Preciso comprar</a>
+          <a class="btn btn-ghost" href="#contato" data-entry="ofertar">Tenho oferta</a>
         </div>
         <div class="hero-jewels">
           <div class="shots" aria-hidden="true">
@@ -860,7 +954,7 @@
             <img src="https://images.unsplash.com/photo-1740416649851-e16cff7d4f9a?auto=format&fit=crop&w=160&h=160&q=80" alt="" />
             <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=160&h=160&q=80" alt="" />
           </div>
-          <p>Pessoas reais, joias reais, origem documentada — sem atalho irregular.</p>
+          <p>Rede + processo + confiança — quem organiza a transação, não quem possui o metal.</p>
         </div>
       </div>
     </section>
@@ -870,23 +964,73 @@
         <div class="trust-item reveal">
           <div class="trust-gem"></div>
           <div>
-            <strong>Sem estoque próprio</strong>
-            <span>Não compramos nem custodiamos ouro. Operação entre as partes.</span>
+            <strong>Asset-light</strong>
+            <span>Não compramos, estocamos nem custodiamos ouro. Operação entre as partes.</span>
           </div>
         </div>
         <div class="trust-item reveal">
           <div class="trust-gem"></div>
           <div>
-            <strong>Origem e nota fiscal</strong>
-            <span>Só avançamos com documentação — compliance é o padrão.</span>
+            <strong>Sourcing com lastro</strong>
+            <span>Qualificação, match, cotação e documentação em um fluxo único.</span>
           </div>
         </div>
         <div class="trust-item reveal">
           <div class="trust-gem"></div>
           <div>
-            <strong>Feito para a cadeia joalheira</strong>
-            <span>Joalherias, fundições, galvânicas e fornecedores autorizados.</span>
+            <strong>Recorrência</strong>
+            <span>De operação pontual a procurement contínuo da sua demanda.</span>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="chain-section" id="cadeia">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">Supply chain</div>
+          <h2>Onde a Lastro Ouro se encaixa.</h2>
+          <p>Somos a camada entre oferta e demanda — sourcing, matchmaking, negociação e documentação.</p>
+        </div>
+        <div class="chain-flow reveal" aria-label="Cadeia de suprimentos do ouro">
+          <div class="chain-node">
+            <strong>Oferta</strong>
+            <span>Refinarias, distribuidores, atacadistas e fornecedores autorizados</span>
+          </div>
+          <div class="chain-arrow" aria-hidden="true">→</div>
+          <div class="chain-node hub">
+            <strong>Lastro Ouro</strong>
+            <span>Sourcing · Match · Cotação · Docs · Acompanhamento</span>
+          </div>
+          <div class="chain-arrow" aria-hidden="true">→</div>
+          <div class="chain-node">
+            <strong>Demanda</strong>
+            <span>Fundições, joalherias, distribuidores e indústria</span>
+          </div>
+          <div class="chain-arrow" aria-hidden="true">→</div>
+          <div class="chain-node">
+            <strong>Transformação</strong>
+            <span>Banho, liga, componente, peça</span>
+          </div>
+          <div class="chain-arrow" aria-hidden="true">→</div>
+          <div class="chain-node">
+            <strong>Produto final</strong>
+            <span>Joia e derivados → consumidor</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="problem-band">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">A dor</div>
+          <h2>Comprar ouro B2B não deveria ser uma caçada.</h2>
+          <p>
+            Encontrar fornecedor confiável, comparar condições, validar documentação, negociar preço,
+            entender disponibilidade e conduzir a operação com segurança — isso é fricção de supply chain.
+            A Lastro Ouro existe para reduzir essa fricção.
+          </p>
         </div>
       </div>
     </div>
@@ -906,17 +1050,16 @@
           />
           <div class="chip">
             <strong>Elos</strong>
-            Cada conexão com lastro — como uma pulseira bem fechada.
+            Quem organiza a transação — com lastro.
           </div>
         </div>
         <div class="reveal">
           <div class="section-head" style="margin-bottom: 1.25rem;">
             <div class="label">Sobre a Lastro Ouro</div>
-            <h2>O olhar que une as duas pontas.</h2>
+            <h2>Não somos corretora de ouro. Somos a camada de sourcing.</h2>
             <p>
-              Cartola, bigode e smoking — e binóculos que <strong>são</strong> o O de Lastro
-              e o O de Ouro. Um personagem carismático que enxerga fornecedor e comprador
-              antes de conectar.
+              Começamos conectando oferta e demanda. Evoluímos para qualificação, cotação,
+              negociação, acompanhamento e recompra — uma infraestrutura comercial da cadeia joalheira.
             </p>
           </div>
           <div class="logo-mid" style="background:#0A0A0A;border:1px solid rgba(212,175,55,0.35);border-radius:16px;padding:0.65rem;margin:0 auto 1.4rem;max-width:300px;">
@@ -933,15 +1076,15 @@
             <div class="value">
               <div class="value-icon">02</div>
               <div>
-                <h3>Estética da joia</h3>
-                <p>Pastel, preto e ouro — sofisticação leve, nunca agressiva.</p>
+                <h3>Rede + processo + dados</h3>
+                <p>Cada operação alimenta matches melhores e mais previsíveis.</p>
               </div>
             </div>
             <div class="value">
               <div class="value-icon">03</div>
               <div>
                 <h3>Proximidade real</h3>
-                <p>Você fala com quem entende a cadeia — não com um bot.</p>
+                <p>MVP humano: você fala com quem entende a cadeia — não com um bot.</p>
               </div>
             </div>
           </div>
@@ -952,26 +1095,34 @@
     <section class="steps" id="como-funciona">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="label">Como funciona</div>
-          <h2>Quatro elos. Sem mistério.</h2>
-          <p>Do primeiro contato ao acompanhamento — cada etapa com o mesmo rigor de uma corrente bem feita.</p>
+          <div class="label">Lastro Sourcing</div>
+          <h2>Do pedido ao recompra — um workflow.</h2>
+          <p>Diagnóstico → match → documentação → fechamento. Com recorrência no fim do ciclo.</p>
         </div>
-        <div class="steps-row">
+        <div class="steps-row six">
           <article class="step reveal">
-            <h3>Diagnóstico</h3>
-            <p>Volume, prazo, especificação e o que realmente dói na sua operação.</p>
+            <h3>Demanda</h3>
+            <p>Você informa quantidade, pureza, formato, prazo, região e frequência.</p>
           </article>
           <article class="step reveal">
-            <h3>Match</h3>
-            <p>Apresentamos a ponta certa: fornecedor autorizado ou comprador B2B com fit.</p>
+            <h3>Qualificação</h3>
+            <p>Validamos empresa, necessidade, capacidade e especificação — dos dois lados.</p>
           </article>
           <article class="step reveal">
-            <h3>Documentação</h3>
-            <p>KYC mínimo e condições claras antes de qualquer avanço.</p>
+            <h3>Sourcing</h3>
+            <p>Buscamos fornecedores compatíveis na rede e filtramos por fit real.</p>
+          </article>
+          <article class="step reveal">
+            <h3>Cotação</h3>
+            <p>Solicitamos propostas e comparamos preço, prazo, logística e condições.</p>
           </article>
           <article class="step reveal">
             <h3>Fechamento</h3>
-            <p>A operação acontece entre as partes. Nós estruturamos e acompanhamos.</p>
+            <p>As partes fecham a operação. Organizamos documentação e acompanhamento.</p>
+          </article>
+          <article class="step reveal">
+            <h3>Recompra</h3>
+            <p>Registramos o ciclo e voltamos antes da próxima necessidade.</p>
           </article>
         </div>
       </div>
@@ -980,35 +1131,37 @@
     <section id="servicos">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="label">Serviços</div>
-          <h2>Dois lados do balcão. Um mesmo brilho.</h2>
-          <p>Intermediação comercial — sem parecer DTVM, sem estoque, sem atalho irregular.</p>
+          <div class="label">Entradas</div>
+          <h2>Dois lados. Uma mesma infraestrutura.</h2>
+          <p>Lastro Sourcing para quem compra. Rede de fornecedores para quem oferta.</p>
         </div>
         <div class="services-grid">
           <article class="service reveal">
             <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=80" alt="Pessoa usando anéis e joias douradas" />
             <div class="service-body">
-              <div class="tag">Para quem compra</div>
-              <h3>Joalherias, fundições e indústria</h3>
+              <div class="tag">Preciso comprar</div>
+              <h3>Solicitar fornecimento</h3>
               <ul>
-                <li>Fornecimento com previsibilidade e NF-e</li>
-                <li>Acesso a DTVMs, refinarias e distribuidores</li>
-                <li>Menos fricção na busca e na negociação</li>
+                <li>Sourcing de fornecedores qualificados</li>
+                <li>Comparação de propostas e condições</li>
+                <li>Documentação e acompanhamento</li>
+                <li>Recorrência de procurement</li>
               </ul>
-              <a class="btn btn-gold" href="#contato">Sou comprador</a>
+              <a class="btn btn-gold" href="#contato" data-entry="comprar">Solicitar sourcing</a>
             </div>
           </article>
           <article class="service reveal">
             <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=1400&q=80" alt="Correntes e pulseiras douradas em close" />
             <div class="service-body">
-              <div class="tag">Para quem fornece</div>
-              <h3>DTVMs, refinarias e distribuidores</h3>
+              <div class="tag">Tenho oferta</div>
+              <h3>Cadastrar fornecedor</h3>
               <ul>
-                <li>Demanda qualificada no polo e além</li>
-                <li>Apresentações com contexto e seriedade</li>
-                <li>Relação pensada para recorrência</li>
+                <li>Demanda B2B qualificada</li>
+                <li>Match com compradores do polo e além</li>
+                <li>Apresentações com contexto comercial</li>
+                <li>Relação pensada para recompra</li>
               </ul>
-              <a class="btn btn-gold" href="#contato">Sou fornecedor</a>
+              <a class="btn btn-gold" href="#contato" data-entry="ofertar">Cadastrar oferta</a>
             </div>
           </article>
         </div>
@@ -1037,8 +1190,8 @@
     <div class="quote-band">
       <div class="wrap">
         <blockquote class="reveal">
-          <p>“Ouro não é commodity. É confiança em estado sólido.”</p>
-          <cite>Manifesto Lastro Ouro</cite>
+          <p>“O ativo não é o metal. É a rede, o processo e a confiança.”</p>
+          <cite>Visão Lastro Ouro</cite>
         </blockquote>
       </div>
     </div>
@@ -1053,7 +1206,11 @@
         <div class="faq-list">
           <details class="reveal" open>
             <summary>Vocês compram ou estocam ouro?</summary>
-            <p>Não. Somos intermediadores: conectamos as partes. A compra, a entrega e a nota fiscal ocorrem entre fornecedor autorizado e comprador.</p>
+            <p>Não. Somos uma camada de sourcing e conexão: a compra, a entrega e a NF-e ocorrem entre fornecedor autorizado e comprador.</p>
+          </details>
+          <details class="reveal">
+            <summary>O que é Lastro Sourcing?</summary>
+            <p>O produto principal: você informa a necessidade (volume, pureza, formato, prazo, frequência) e nós buscamos fornecedores compatíveis, comparamos condições e organizamos o processo até o fechamento.</p>
           </details>
           <details class="reveal">
             <summary>Como garantem a origem?</summary>
@@ -1061,15 +1218,15 @@
           </details>
           <details class="reveal">
             <summary>Vocês são uma DTVM?</summary>
-            <p>Não. A Lastro Ouro realiza intermediação comercial. Não somos DTVM, corretora nem entidade autorizada pelo Banco Central.</p>
+            <p>Não. A Lastro Ouro organiza sourcing e matchmaking comercial B2B. Não somos DTVM, corretora nem entidade autorizada pelo Banco Central.</p>
           </details>
           <details class="reveal">
             <summary>Como funciona a remuneração?</summary>
-            <p>Comissão ou fee sobre operação efetivamente estruturada/fechada — alinhado por escrito antes.</p>
+            <p>Fee de sourcing/procurement e/ou comissão sobre operação estruturada — alinhado por escrito antes. Modelos de assinatura (Lastro Pro) vêm depois da validação do MVP.</p>
           </details>
           <details class="reveal">
             <summary>Atendem o polo de Limeira?</summary>
-            <p>Sim. Joalherias, fundições, galvânicas e indústrias da região estão no centro da nossa prospecção.</p>
+            <p>Sim. Joalherias, fundições, galvânicas e indústrias da região estão no centro da nossa rede de demanda.</p>
           </details>
         </div>
       </div>
@@ -1078,9 +1235,9 @@
     <section class="contact" id="contato">
       <div class="wrap contact-grid">
         <div class="contact-aside reveal">
-          <div class="label" style="color: var(--gold-deep); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;">Ficha cadastral</div>
-          <h2>Vamos alinhar o próximo elo.</h2>
-          <p>Preencha o perfil e a média de volume. Assim priorizamos o match certo — ou um “não” honesto.</p>
+          <div class="label" style="color: var(--gold-deep); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;">Cadastro B2B</div>
+          <h2>Diga se você compra ou oferta.</h2>
+          <p>Duas entradas. Um CRM. Match manual no MVP — com a mesma disciplina de uma plataforma.</p>
           <div class="contact-channels">
             <div class="channel">
               <img src="assets/logo-mark.png" width="40" height="40" alt="" style="border-radius:10px;" />
@@ -1099,32 +1256,61 @@
           </div>
         </div>
         <div class="contact-card reveal">
-          <p class="form-card-title">Ficha cadastral</p>
-          <p class="form-card-sub">Dados essenciais para conectar comprador e fornecedor com lastro.</p>
-          <form class="form-grid" id="contactForm">
+          <div class="entry-tabs" role="tablist">
+            <button type="button" class="entry-tab active" id="tabComprar" role="tab" aria-selected="true" data-panel="panelComprar">Preciso comprar</button>
+            <button type="button" class="entry-tab" id="tabOfertar" role="tab" aria-selected="false" data-panel="panelOfertar">Tenho oferta</button>
+          </div>
+
+          <form class="form-panel active form-grid" id="panelComprar" data-tipo="comprar">
+            <p class="form-card-title">Solicitar fornecimento</p>
+            <p class="form-card-sub">Lastro Sourcing — informe a necessidade. Nós buscamos a contraparte.</p>
             <div class="form-grid two">
               <label>Nome
                 <input name="nome" required placeholder="Seu nome" autocomplete="name" />
               </label>
               <label>Empresa
-                <input name="empresa" placeholder="Razão social ou marca" />
+                <input name="empresa" required placeholder="Razão social ou marca" />
               </label>
             </div>
             <div class="form-grid two">
+              <label>CNPJ
+                <input name="cnpj" placeholder="00.000.000/0000-00" />
+              </label>
               <label>WhatsApp
                 <input name="whatsapp" required placeholder="(11) 90000-0000" autocomplete="tel" />
               </label>
+            </div>
+            <div class="form-grid two">
               <label>E-mail
                 <input type="email" name="email" placeholder="voce@empresa.com" autocomplete="email" />
               </label>
+              <label>Região / cidade
+                <input name="regiao" placeholder="Ex.: Limeira / SP" />
+              </label>
             </div>
-            <label>Você é
-              <select name="perfil" required>
+            <div class="form-grid two">
+              <label>Produto / formato
+                <input name="produto" required placeholder="Barra, liga, banho, sucata legal…" />
+              </label>
+              <label>Pureza desejada
+                <input name="pureza" placeholder="Ex.: 999,9 / 18k / banho" />
+              </label>
+            </div>
+            <div class="form-grid two">
+              <label>Quantidade
+                <input name="quantidade" required placeholder="Ex.: 2 kg / 500 g" />
+              </label>
+              <label>Prazo
+                <input name="prazo" placeholder="Ex.: 15 dias / recorrente" />
+              </label>
+            </div>
+            <label>Frequência
+              <select name="frequencia" required>
                 <option value="">Selecione</option>
-                <option>Comprador (joalheria, fundição, indústria…)</option>
-                <option>Fornecedor (DTVM, refinaria, distribuidor…)</option>
-                <option>Ambos / compro e vendo</option>
-                <option>Outro / quero entender melhor</option>
+                <option>Pontual (única)</option>
+                <option>Mensal</option>
+                <option>Quinzenal</option>
+                <option>Sob demanda / irregular</option>
               </select>
             </label>
             <fieldset class="range-fieldset">
@@ -1137,9 +1323,70 @@
                 <label><input type="radio" name="media_compra" value="Acima de R$ 50 mil" /> + R$ 50 mil</label>
               </div>
             </fieldset>
+            <label>Observações
+              <textarea name="mensagem" required placeholder="Condições desejadas, restrições, contexto da operação…"></textarea>
+            </label>
+            <button class="btn btn-black" type="submit">Solicitar sourcing</button>
+            <p class="form-note">Ao enviar, você concorda com o contato comercial da Lastro Ouro. Faixas de valor são aproximadas para priorização.</p>
+          </form>
+
+          <form class="form-panel form-grid" id="panelOfertar" data-tipo="ofertar" hidden>
+            <p class="form-card-title">Cadastrar fornecedor</p>
+            <p class="form-card-sub">Entre na rede. Receba demanda B2B qualificada.</p>
+            <div class="form-grid two">
+              <label>Nome
+                <input name="nome" required placeholder="Seu nome" autocomplete="name" />
+              </label>
+              <label>Empresa
+                <input name="empresa" required placeholder="Razão social" />
+              </label>
+            </div>
+            <div class="form-grid two">
+              <label>CNPJ
+                <input name="cnpj" placeholder="00.000.000/0000-00" />
+              </label>
+              <label>WhatsApp comercial
+                <input name="whatsapp" required placeholder="(11) 90000-0000" autocomplete="tel" />
+              </label>
+            </div>
+            <div class="form-grid two">
+              <label>E-mail
+                <input type="email" name="email" placeholder="comercial@empresa.com" autocomplete="email" />
+              </label>
+              <label>Região atendida
+                <input name="regiao" placeholder="Ex.: SP / Sudeste / Brasil" />
+              </label>
+            </div>
+            <label>Tipo de fornecedor
+              <select name="tipo_fornecedor" required>
+                <option value="">Selecione</option>
+                <option>Refinaria</option>
+                <option>Distribuidor / atacadista</option>
+                <option>DTVM (ativo financeiro)</option>
+                <option>Fabricante de banho / química</option>
+                <option>Outro fornecedor autorizado</option>
+              </select>
+            </label>
+            <div class="form-grid two">
+              <label>Produto ofertado
+                <input name="produto" required placeholder="Barra, liga, banho, etc." />
+              </label>
+              <label>Capacidade / quantidade
+                <input name="quantidade" required placeholder="Ex.: até 10 kg/mês" />
+              </label>
+            </div>
+            <label>Frequência de oferta
+              <select name="frequencia" required>
+                <option value="">Selecione</option>
+                <option>Contínua / estoque</option>
+                <option>Mensal</option>
+                <option>Sob demanda</option>
+                <option>Pontual</option>
+              </select>
+            </label>
             <fieldset class="range-fieldset">
               <legend>Média de venda (mensal)</legend>
-              <span class="range-hint">Volume aproximado que sua empresa vende / oferta</span>
+              <span class="range-hint">Volume aproximado que sua empresa oferta</span>
               <div class="range-options">
                 <label><input type="radio" name="media_venda" value="R$ 5–10 mil" required /> R$ 5–10 mil</label>
                 <label><input type="radio" name="media_venda" value="R$ 10–30 mil" /> R$ 10–30 mil</label>
@@ -1147,11 +1394,11 @@
                 <label><input type="radio" name="media_venda" value="Acima de R$ 50 mil" /> + R$ 50 mil</label>
               </div>
             </fieldset>
-            <label>Como podemos ajudar?
-              <textarea name="mensagem" required placeholder="Especificação do metal, prazo, cidade, recorrência…"></textarea>
+            <label>Documentação / observações
+              <textarea name="mensagem" required placeholder="NF-e, certificações, origem, condições comerciais…"></textarea>
             </label>
-            <button class="btn btn-black" type="submit">Enviar ficha</button>
-            <p class="form-note">Ao enviar, você concorda com o contato comercial da Lastro Ouro. Valores são faixas aproximadas para priorização — não vínculo contratual.</p>
+            <button class="btn btn-black" type="submit">Cadastrar oferta</button>
+            <p class="form-note">Cadastro sujeito a qualificação. Só avançamos com fornecedores regulares e documentação em ordem.</p>
           </form>
         </div>
       </div>
@@ -1165,19 +1412,19 @@
           <img src="assets/logo.png?v=5" alt="Lastro Ouro" style="height:56px;width:auto;max-width:min(280px,80vw);" />
         </div>
         <div class="footer-links">
+          <a href="#cadeia">Cadeia</a>
           <a href="#como-funciona">Como funciona</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#sobre">Sobre</a>
+          <a href="#servicos">Sourcing</a>
           <a href="#faq">FAQ</a>
           <a href="#contato">Cadastro</a>
         </div>
       </div>
       <p class="footer-disclaimer">
-        Intermediação comercial B2B. A Lastro Ouro não compra, estoca, transporta nem custodia ouro por conta própria;
+        Plataforma B2B de sourcing e conexão comercial. A Lastro Ouro não compra, estoca, transporta nem custodia ouro por conta própria;
         não é DTVM nem instituição financeira. Operações exigem nota fiscal e comprovação de origem, em conformidade
         com a legislação vigente. Este site não constitui aconselhamento jurídico, contábil ou de investimento.
       </p>
-      <p class="footer-copy">© <span id="year"></span> Lastro Ouro · lastroouro.com.br</p>
+      <p class="footer-copy">© <span id="year"></span> Lastro Ouro · Supply Chain &amp; Sourcing · lastroouro.com.br</p>
     </div>
   </footer>
 
@@ -1217,29 +1464,86 @@
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-    document.getElementById("contactForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = new FormData(e.target);
-      const empresa = data.get("empresa") || "—";
-      const email = data.get("email") || "—";
-      const texto = encodeURIComponent(
-        [
-          "*Ficha cadastral — Lastro Ouro*",
-          "",
-          `Nome: ${data.get("nome")}`,
-          `Empresa: ${empresa}`,
-          `WhatsApp: ${data.get("whatsapp")}`,
-          `E-mail: ${email}`,
-          `Perfil: ${data.get("perfil")}`,
-          `Média compra (mês): ${data.get("media_compra")}`,
-          `Média venda (mês): ${data.get("media_venda")}`,
-          "",
-          `Mensagem: ${data.get("mensagem")}`,
-        ].join("\n")
-      );
-      const SEU_NUMERO = "5511999999999";
-      window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
+    const tabComprar = document.getElementById("tabComprar");
+    const tabOfertar = document.getElementById("tabOfertar");
+    const panelComprar = document.getElementById("panelComprar");
+    const panelOfertar = document.getElementById("panelOfertar");
+    const SEU_NUMERO = "5511999999999";
+
+    function setEntry(tipo) {
+      const isBuy = tipo === "comprar";
+      tabComprar.classList.toggle("active", isBuy);
+      tabOfertar.classList.toggle("active", !isBuy);
+      tabComprar.setAttribute("aria-selected", isBuy ? "true" : "false");
+      tabOfertar.setAttribute("aria-selected", isBuy ? "false" : "true");
+      panelComprar.classList.toggle("active", isBuy);
+      panelOfertar.classList.toggle("active", !isBuy);
+      panelComprar.hidden = !isBuy;
+      panelOfertar.hidden = isBuy;
+      panelComprar.querySelectorAll("input, select, textarea, button").forEach((el) => {
+        el.disabled = !isBuy;
+      });
+      panelOfertar.querySelectorAll("input, select, textarea, button").forEach((el) => {
+        el.disabled = isBuy;
+      });
+    }
+
+    tabComprar.addEventListener("click", () => setEntry("comprar"));
+    tabOfertar.addEventListener("click", () => setEntry("ofertar"));
+    document.querySelectorAll("[data-entry]").forEach((el) => {
+      el.addEventListener("click", () => {
+        setEntry(el.getAttribute("data-entry"));
+      });
     });
+    setEntry("comprar");
+
+    function bindForm(form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const tipo = form.getAttribute("data-tipo");
+        const lines = tipo === "comprar"
+          ? [
+              "*Lastro Sourcing — Solicitar fornecimento*",
+              "",
+              `Nome: ${data.get("nome")}`,
+              `Empresa: ${data.get("empresa")}`,
+              `CNPJ: ${data.get("cnpj") || "—"}`,
+              `WhatsApp: ${data.get("whatsapp")}`,
+              `E-mail: ${data.get("email") || "—"}`,
+              `Região: ${data.get("regiao") || "—"}`,
+              `Produto: ${data.get("produto")}`,
+              `Pureza: ${data.get("pureza") || "—"}`,
+              `Quantidade: ${data.get("quantidade")}`,
+              `Prazo: ${data.get("prazo") || "—"}`,
+              `Frequência: ${data.get("frequencia")}`,
+              `Média compra (mês): ${data.get("media_compra")}`,
+              "",
+              `Observações: ${data.get("mensagem")}`,
+            ]
+          : [
+              "*Lastro Ouro — Cadastrar fornecedor*",
+              "",
+              `Nome: ${data.get("nome")}`,
+              `Empresa: ${data.get("empresa")}`,
+              `CNPJ: ${data.get("cnpj") || "—"}`,
+              `WhatsApp: ${data.get("whatsapp")}`,
+              `E-mail: ${data.get("email") || "—"}`,
+              `Região: ${data.get("regiao") || "—"}`,
+              `Tipo: ${data.get("tipo_fornecedor")}`,
+              `Produto: ${data.get("produto")}`,
+              `Capacidade: ${data.get("quantidade")}`,
+              `Frequência: ${data.get("frequencia")}`,
+              `Média venda (mês): ${data.get("media_venda")}`,
+              "",
+              `Documentação / obs.: ${data.get("mensagem")}`,
+            ];
+        const texto = encodeURIComponent(lines.join("\n"));
+        window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
+      });
+    }
+    bindForm(panelComprar);
+    bindForm(panelOfertar);
   </script>
 </body>
 </html>
