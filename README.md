@@ -4,7 +4,7 @@ Site one-page — plataforma B2B de **Supply Chain & Sourcing** para ouro e joal
 
 **GitHub Pages:** https://marcelofigueiredo23.github.io/lastro-ouro/
 
-**Posicionamento:** conexão e sourcing na cadeia (não “corretor de ouro”). Entradas: Preciso comprar / Tenho oferta.
+**Posicionamento:** conexão e sourcing na cadeia (não “corretor de ouro”). Entradas: Preciso comprar / Tenho oferta. Produtos: Match · Seguro · Hub · Pro · Rede (modelo tipo Carflix, sem estoque).
 
 ## Arquivos
 

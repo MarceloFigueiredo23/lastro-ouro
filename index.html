@@ -425,6 +425,92 @@
     }
     .step p { font-size: 0.93rem; color: var(--muted); font-weight: 300; }
 
+    /* Products (SKU ladder) */
+    .products { background: var(--ink); color: var(--pastel); }
+    .products .section-head h2 { color: var(--pastel); }
+    .products .section-head p { color: rgba(247,239,230,0.62); }
+    .products .label { color: var(--gold); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.85rem;
+    }
+    .product-card {
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      border-radius: 20px;
+      padding: 1.35rem 1.2rem 1.45rem;
+      background: linear-gradient(165deg, rgba(212,175,55,0.1), rgba(255,255,255,0.02));
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .product-card.core {
+      border-color: var(--gold);
+      background: linear-gradient(165deg, rgba(212,175,55,0.22), rgba(212,175,55,0.05));
+    }
+    .product-card .sku {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      font-weight: 600;
+    }
+    .product-card h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--pastel);
+      line-height: 1.15;
+    }
+    .product-card p {
+      font-size: 0.88rem;
+      color: rgba(247,239,230,0.62);
+      font-weight: 300;
+      line-height: 1.45;
+      flex: 1;
+    }
+    .product-card .for {
+      font-size: 0.72rem;
+      color: rgba(247,239,230,0.45);
+      border-top: 1px solid rgba(212,175,55,0.18);
+      padding-top: 0.65rem;
+      margin-top: auto;
+    }
+    .products-note {
+      margin-top: 1.4rem;
+      font-size: 0.88rem;
+      color: rgba(247,239,230,0.5);
+      font-weight: 300;
+      max-width: 52rem;
+    }
+    .distro-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+    .distro-card {
+      border-radius: 16px;
+      padding: 1.15rem 1.2rem;
+      border: 1px solid rgba(212,175,55,0.2);
+      background: rgba(255,255,255,0.03);
+    }
+    .distro-card strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 1.05rem;
+      color: var(--gold-soft);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .distro-card span {
+      font-size: 0.85rem;
+      color: rgba(247,239,230,0.58);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
     /* Services */
     .services-grid {
       display: grid;
@@ -830,6 +916,14 @@
     .steps-row.six { grid-template-columns: repeat(3, 1fr); }
     .steps-row.six .step { min-height: 190px; }
 
+    @media (max-width: 1100px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .distro-row { grid-template-columns: 1fr; }
+    }
+
     /* Entry tabs */
     .entry-tabs {
       display: grid;
@@ -885,6 +979,8 @@
       .steps-row,
       .steps-row.six,
       .human-grid,
+      .products-grid,
+      .distro-row,
       .services-grid,
       .contact-grid,
       .form-grid.two,
@@ -896,6 +992,8 @@
       .steps-row,
       .steps-row.six,
       .human-grid,
+      .products-grid,
+      .distro-row,
       .services-grid,
       .contact-grid { grid-template-columns: 1fr; }
       .entry-tabs { grid-template-columns: 1fr; }
@@ -912,7 +1010,7 @@
 
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#topo" aria-label="Lastro Ouro — início">
+      <a class="brand" href="#topo" aria-label="Lastro Ouro · início">
         <img class="logo" src="assets/logo.png?v=5" alt="Lastro Ouro" />
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
@@ -921,6 +1019,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#cadeia">Cadeia</a></li>
         <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#produtos">Produtos</a></li>
         <li><a href="#servicos">Sourcing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contato">Cadastro</a></li>
@@ -1096,20 +1195,20 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div class="label">Lastro Sourcing</div>
-          <h2>Do pedido ao recompra — um workflow.</h2>
-          <p>Diagnóstico → match → documentação → fechamento. Com recorrência no fim do ciclo.</p>
+          <h2>Do pedido à recompra: um workflow.</h2>
+          <p>Pedido → checklist → match → cotação → fechamento → recompra. Online no dia a dia. Hub físico só quando a segurança exige.</p>
         </div>
         <div class="steps-row six">
           <article class="step reveal">
-            <h3>Demanda</h3>
+            <h3>Pedido</h3>
             <p>Você informa quantidade, pureza, formato, prazo, região e frequência.</p>
           </article>
           <article class="step reveal">
-            <h3>Qualificação</h3>
-            <p>Validamos empresa, necessidade, capacidade e especificação — dos dois lados.</p>
+            <h3>Checklist</h3>
+            <p>Validamos empresa, necessidade e elegibilidade dos dois lados. Sem origem, não avança.</p>
           </article>
           <article class="step reveal">
-            <h3>Sourcing</h3>
+            <h3>Match</h3>
             <p>Buscamos fornecedores compatíveis na rede e filtramos por fit real.</p>
           </article>
           <article class="step reveal">
@@ -1125,6 +1224,63 @@
             <p>Registramos o ciclo e voltamos antes da próxima necessidade.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="products" id="produtos">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">Produtos</div>
+          <h2>Segurança empacotada. Sem estoque.</h2>
+          <p>Como uma intermediação com lastro: você compra ou oferta; nós organizamos o processo seguro entre as partes.</p>
+        </div>
+        <div class="products-grid">
+          <article class="product-card reveal">
+            <div class="sku">01 · Entrada</div>
+            <h3>Match</h3>
+            <p>Pedido estruturado e shortlist de fornecedores compatíveis, com comparação de condições.</p>
+            <div class="for">Para quem precisa comprar</div>
+          </article>
+          <article class="product-card core reveal">
+            <div class="sku">02 · Core</div>
+            <h3>Seguro</h3>
+            <p>Match + KYC + origem + documentação + acompanhamento até o fechamento entre as partes.</p>
+            <div class="for">Operação com lastro</div>
+          </article>
+          <article class="product-card reveal">
+            <div class="sku">03 · Selo</div>
+            <h3>Hub</h3>
+            <p>Kickoff presencial no polo quando ticket, amostra ou confiança exigem presença real.</p>
+            <div class="for">Quando o risco pede encontro</div>
+          </article>
+          <article class="product-card reveal">
+            <div class="sku">04 · Recorrência</div>
+            <h3>Pro</h3>
+            <p>Procurement contínuo da sua demanda: ritmo, prioridade e recompra sem recomeçar do zero.</p>
+            <div class="for">Comprador com frequência</div>
+          </article>
+          <article class="product-card reveal">
+            <div class="sku">05 · Oferta</div>
+            <h3>Rede</h3>
+            <p>Demanda B2B qualificada e apresentações com contexto para quem tem oferta autorizada.</p>
+            <div class="for">Para quem oferta</div>
+          </article>
+        </div>
+        <div class="distro-row">
+          <div class="distro-card reveal">
+            <strong>Online</strong>
+            <span>Pedido, match, cotação, status e recompra. O fluxo do dia a dia.</span>
+          </div>
+          <div class="distro-card reveal">
+            <strong>Hub físico</strong>
+            <span>Ponto de confiança: docs, especificação e protocolo. Não é estoque nem custódia.</span>
+          </div>
+          <div class="distro-card reveal">
+            <strong>Entrega</strong>
+            <span>Fornecedor autorizado → comprador. A Lastro organiza; não carrega o metal.</span>
+          </div>
+        </div>
+        <p class="products-note reveal">Remuneração: fee de sourcing e/ou comissão sobre operação estruturada, alinhados por escrito antes do fechamento. Sem estoque próprio.</p>
       </div>
     </section>
 
@@ -1210,11 +1366,15 @@
           </details>
           <details class="reveal">
             <summary>O que é Lastro Sourcing?</summary>
-            <p>O produto principal: você informa a necessidade (volume, pureza, formato, prazo, frequência) e nós buscamos fornecedores compatíveis, comparamos condições e organizamos o processo até o fechamento.</p>
+            <p>O fluxo principal: você informa a necessidade (volume, pureza, formato, prazo, frequência) e nós buscamos fornecedores compatíveis, comparamos condições e organizamos o processo até o fechamento. Os produtos são Match, Seguro, Hub, Pro e Rede.</p>
           </details>
           <details class="reveal">
             <summary>Como garantem a origem?</summary>
             <p>Só avançamos com contrapartes regulares e documentação. Operação sem nota ou sem origem comprovada é recusada.</p>
+          </details>
+          <details class="reveal">
+            <summary>Preciso ir presencial?</summary>
+            <p>Não em toda operação. O dia a dia roda online. O Hub presencial entra na primeira operação, ticket alto ou quando amostra e confiança pedem encontro. Não operamos estoque nem custódia.</p>
           </details>
           <details class="reveal">
             <summary>Vocês são uma DTVM?</summary>
@@ -1222,7 +1382,7 @@
           </details>
           <details class="reveal">
             <summary>Como funciona a remuneração?</summary>
-            <p>Fee de sourcing/procurement e/ou comissão sobre operação estruturada — alinhado por escrito antes. Modelos de assinatura (Lastro Pro) vêm depois da validação do MVP.</p>
+            <p>Fee de sourcing e/ou comissão sobre operação estruturada, alinhados por escrito antes do fechamento. Lastro Pro (assinatura de procurement) e Rede (lado oferta) entram conforme o ritmo da conta.</p>
           </details>
           <details class="reveal">
             <summary>Atendem o polo de Limeira?</summary>
