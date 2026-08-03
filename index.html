@@ -70,13 +70,15 @@
       gap: 1rem;
     }
     .brand-text {
-      font-family: var(--display);
-      font-size: 1.45rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
     }
-    .brand-text span { color: var(--orange); }
+    .brand-text img {
+      height: 44px;
+      width: auto;
+      max-width: min(260px, 62vw);
+      object-fit: contain;
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -155,10 +157,9 @@
     }
     .hero-visual {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 0.75rem;
-      min-height: 420px;
+      min-height: 380px;
     }
     .hero-visual figure {
       margin: 0;
@@ -167,15 +168,18 @@
       position: relative;
       box-shadow: var(--shadow);
       background: #ddd;
+      min-height: 180px;
     }
     .hero-visual figure:first-child {
-      grid-row: 1 / 3;
+      grid-row: 1 / 2;
     }
     .hero-visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      min-height: 380px;
     }
+    .hero-visual figure:last-child img { min-height: 380px; }
     .hero-visual figcaption {
       position: absolute;
       left: 0.85rem;
@@ -422,86 +426,75 @@
     }
     .photo-band .section-head {
       margin-bottom: 1.5rem;
+      text-align: center;
+      max-width: 36rem;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .photo-mosaic {
+    .photo-row {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      grid-template-rows: 200px 200px;
+      grid-template-columns: 1fr 1fr;
       gap: 0.85rem;
+      max-width: 720px;
+      margin: 0 auto;
     }
-    .photo-mosaic figure {
+    .photo-row figure {
       margin: 0;
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
+      aspect-ratio: 16 / 10;
+      background: #e8e4de;
     }
-    .photo-mosaic figure:first-child {
-      grid-row: 1 / 3;
-    }
-    .photo-mosaic img {
+    .photo-row img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .photo-mosaic figcaption {
+    .photo-row figcaption {
       position: absolute;
       inset: auto 0 0;
-      padding: 1.4rem 1rem 0.9rem;
-      background: linear-gradient(transparent, rgba(28,36,52,0.75));
+      padding: 1.2rem 0.85rem 0.75rem;
+      background: linear-gradient(transparent, rgba(28,36,52,0.72));
       color: #fff;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
     }
 
     .safe-band {
       background: var(--bg-soft);
-      padding: 3.5rem 0;
+      padding: 3rem 0;
     }
-    .safe-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      align-items: center;
+    .safe-band .safe-inner {
+      max-width: 40rem;
+      margin: 0 auto;
+      text-align: center;
     }
-    .safe-grid img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-    }
-    .safe-copy h2 {
+    .safe-band h2 {
       font-family: var(--display);
-      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
       margin: 0.4rem 0 0.75rem;
       font-weight: 700;
     }
-    .safe-copy p {
+    .safe-band p {
       color: var(--muted);
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
-    .safe-list {
-      list-style: none;
-      display: grid;
-      gap: 0.55rem;
+    .safe-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
       margin-bottom: 1.25rem;
     }
-    .safe-list li {
-      display: flex;
-      gap: 0.55rem;
-      align-items: flex-start;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-    .safe-list li::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      margin-top: 0.45rem;
-      border-radius: 50%;
-      background: var(--ok);
-      flex-shrink: 0;
+    .safe-pills span {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     .products-grid {
@@ -849,15 +842,7 @@
       .strip-grid,
       .safe-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr 1fr; }
-      .photo-mosaic {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 180px 180px 180px;
-      }
-      .photo-mosaic figure:first-child {
-        grid-row: auto;
-        grid-column: 1 / -1;
-        min-height: 220px;
-      }
+      .photo-row { grid-template-columns: 1fr 1fr; }
       .journey-path { display: none; }
       .journey-step { grid-template-columns: 1fr; }
       .journey-step .journey-spacer { display: none; }
@@ -889,15 +874,13 @@
       .distro-row,
       .strip-grid,
       .path-row,
-      .safe-grid,
-      .photo-mosaic,
+      .photo-row,
       .form-grid.two,
       .range-options { grid-template-columns: 1fr; }
-      .hero-visual { min-height: auto; grid-template-rows: 220px 160px 160px; }
-      .hero-visual figure:first-child { grid-row: auto; }
-      .photo-mosaic { grid-template-rows: none; }
-      .photo-mosaic figure { min-height: 180px; }
-      .safe-grid img { height: 240px; }
+      .hero-visual { min-height: auto; }
+      .hero-visual img,
+      .hero-visual figure:last-child img { min-height: 220px; }
+      .photo-row figure { aspect-ratio: 16 / 10; }
       .hero { padding-top: 6.5rem; }
       section { padding: 3.2rem 0; }
     }
@@ -906,7 +889,9 @@
 <body>
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
-      <a class="brand-text" href="#topo" aria-label="Lastro Ouro · início">Lastro <span>Ouro</span></a>
+      <a class="brand-text" href="#topo" aria-label="Lastro Ouro · início">
+        <img src="assets/logo-wordmark.png" alt="Lastro Ouro" />
+      </a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -941,18 +926,14 @@
             <span><strong>Fee</strong> só no fechamento</span>
           </div>
         </div>
-        <div class="hero-visual reveal" aria-label="Ambiente formal de negócios">
+        <div class="hero-visual reveal" aria-label="Negociação e ouro">
           <figure>
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80" alt="Equipe reunida em mesa de reunião" />
-            <figcaption>Reunião · B2B</figcaption>
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80" alt="Pessoas negociando sentadas em mesa" />
+            <figcaption>Negociação na mesa</figcaption>
           </figure>
           <figure>
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Profissionais conversando à mesa" />
-            <figcaption>Alinhamento</figcaption>
-          </figure>
-          <figure>
-            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Pessoas sentadas em mesa de trabalho" />
-            <figcaption>Ambiente formal</figcaption>
+            <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=900&q=80" alt="Barras e lingotes de ouro" />
+            <figcaption>Barras e lingotes</figcaption>
           </figure>
         </div>
       </div>
@@ -1062,48 +1043,35 @@
     <section class="photo-band" id="ambiente">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="label">Confiança visual</div>
-          <h2>Pessoas, mesa e processo com lastro.</h2>
-          <p>O ativo não fica conosco. A conexão acontece em ambiente profissional, com documentação e acompanhamento.</p>
+          <div class="label">Leve e claro</div>
+          <h2>Mesa, confiança e ouro com lastro.</h2>
+          <p>Quatro imagens no total: mesa, barras, correntes e fechamento. Leve como referência de intermediação com segurança.</p>
         </div>
-        <div class="photo-mosaic">
+        <div class="photo-row">
           <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80" alt="Time sentado em mesa de reunião" />
-            <figcaption>Call e alinhamento entre as partes</figcaption>
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80" alt="Correntes de ouro" />
+            <figcaption>Correntes</figcaption>
           </figure>
           <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=900&q=80" alt="Profissional em reunião formal" />
-            <figcaption>Conversa comercial</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80" alt="Executivos reunidos à mesa" />
-            <figcaption>Mesa de trabalho</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Aperto de mãos em acordo" />
-            <figcaption>Fechamento com confiança</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Documentos e notebook em mesa de escritório" />
-            <figcaption>Documentação</figcaption>
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Aperto de mãos após acordo" />
+            <figcaption>Fechamento</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
     <section class="safe-band">
-      <div class="wrap safe-grid">
-        <img class="reveal" src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&w=1200&q=80" alt="Profissionais revisando documentação" />
-        <div class="safe-copy reveal">
+      <div class="wrap">
+        <div class="safe-inner reveal">
           <div class="label">Ambiente seguro</div>
           <h2>Procedência verificada. Zero estoque nosso.</h2>
-          <p>Como na intermediação com segurança: você escolhe o caminho, nós cuidamos do processo. A compra e a entrega acontecem entre fornecedor autorizado e comprador.</p>
-          <ul class="safe-list">
-            <li>Contrapartes com CNPJ e documentação</li>
-            <li>NF-e e origem comprovada obrigatórias</li>
-            <li>Fee alinhado por escrito antes do fechamento</li>
-            <li>Sem custódia, transporte ou estoque pela Lastro</li>
-          </ul>
+          <p>Você escolhe comprar ou ofertar. Nós organizamos o processo. A compra e a entrega acontecem entre fornecedor autorizado e comprador.</p>
+          <div class="safe-pills">
+            <span>CNPJ e documentação</span>
+            <span>NF-e e origem</span>
+            <span>Fee só se fechar</span>
+            <span>Sem custódia</span>
+          </div>
           <a class="btn btn-primary" href="#contato">Quero operar com lastro</a>
         </div>
       </div>
@@ -1372,7 +1340,9 @@
   <footer>
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand-text" href="#topo">Lastro <span>Ouro</span></a>
+        <a class="brand-text" href="#topo">
+          <img src="assets/logo-wordmark.png" alt="Lastro Ouro" />
+        </a>
         <div class="footer-links">
           <a href="#como-funciona">Como funciona</a>
           <a href="#produtos">Produtos</a>
