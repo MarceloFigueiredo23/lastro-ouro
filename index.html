@@ -446,27 +446,44 @@
 
     .safe-band {
       background: var(--bg-soft);
-      padding: 3rem 0;
+      padding: 3.5rem 0;
     }
-    .safe-band .safe-inner {
-      max-width: 40rem;
-      margin: 0 auto;
-      text-align: center;
+    .safe-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.6rem;
+      align-items: center;
     }
-    .safe-band h2 {
+    .safe-grid figure {
+      margin: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 16 / 10;
+      background: #e8e4de;
+    }
+    .safe-grid figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .safe-inner h2,
+    .safe-copy h2 {
       font-family: var(--display);
       font-size: clamp(1.6rem, 3vw, 2.1rem);
       margin: 0.4rem 0 0.75rem;
       font-weight: 700;
     }
-    .safe-band p {
+    .safe-inner p,
+    .safe-copy p {
       color: var(--muted);
       margin-bottom: 1.1rem;
     }
     .safe-pills {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 0.5rem;
       margin-bottom: 1.25rem;
     }
@@ -911,7 +928,7 @@
         </div>
         <div class="hero-visual reveal" aria-label="Negociação comercial">
           <figure>
-            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80" alt="Profissionais reunidos em mesa de reunião" />
+            <img src="assets/photo-hero.png?v=1" alt="Duas pessoas em mesa de madeira conversando e apertando as mãos" />
           </figure>
         </div>
       </div>
@@ -1022,21 +1039,21 @@
       <div class="wrap">
         <div class="photo-row">
           <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=900&q=80" alt="Barras e lingotes de ouro" />
+            <img src="assets/photo-barras.png?v=1" alt="Barras e lingotes de ouro" />
           </figure>
           <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80" alt="Correntes de ouro" />
-          </figure>
-          <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Aperto de mãos em acordo comercial" />
+            <img src="assets/photo-correntes.png?v=1" alt="Correntes de ouro" />
           </figure>
         </div>
       </div>
     </section>
 
     <section class="safe-band">
-      <div class="wrap">
-        <div class="safe-inner reveal">
+      <div class="wrap safe-grid">
+        <figure class="reveal">
+          <img src="assets/photo-fechamento.png?v=1" alt="Fechamento de acordo com documentação e confiança" />
+        </figure>
+        <div class="safe-copy reveal">
           <div class="label">Ambiente seguro</div>
           <h2>Procedência verificada. Zero estoque nosso.</h2>
           <p>Você escolhe comprar ou ofertar. Nós organizamos o processo. A compra e a entrega acontecem entre fornecedor autorizado e comprador.</p>
