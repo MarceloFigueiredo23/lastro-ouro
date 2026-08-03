@@ -737,6 +737,13 @@
       background: var(--surface);
       border-radius: 14px;
       border: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    a.channel:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
     .channel .dot {
       width: 36px;
@@ -1270,20 +1277,20 @@
           <div class="label">Cadastro B2B</div>
           <h2>Diga se você compra ou oferta.</h2>
           <p>Um formulário só. Escolha comprador ou fornecedor na caixa de seleção.</p>
-          <div class="channel">
+          <a class="channel" href="https://wa.me/5516992197090" target="_blank" rel="noopener">
             <div class="dot">W</div>
             <div>
               <strong>WhatsApp</strong>
-              <span>Substitua o número no HTML</span>
+              <span>(16) 99219-7090</span>
             </div>
-          </div>
-          <div class="channel">
+          </a>
+          <a class="channel" href="mailto:Marcelogmfigueiredo@gmail.com">
             <div class="dot blue">@</div>
             <div>
               <strong>E-mail</strong>
-              <span>contato@lastroouro.com.br</span>
+              <span>Marcelogmfigueiredo@gmail.com</span>
             </div>
-          </div>
+          </a>
         </div>
         <div class="contact-card reveal">
           <form class="form-grid" id="formCadastro">
@@ -1450,7 +1457,7 @@
     const hintVolume = document.getElementById("hintVolume");
     const labelQtd = document.getElementById("labelQtd");
     const btnSubmit = document.getElementById("btnSubmit");
-    const SEU_NUMERO = "5511999999999";
+    const SEU_NUMERO = "5516992197090";
 
     function applyPerfil(perfil) {
       const isFornecedor = perfil === "fornecedor";
