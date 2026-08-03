@@ -1255,7 +1255,7 @@
         <div class="contact-aside reveal">
           <div class="label">Cadastro B2B</div>
           <h2>Diga se você compra ou oferta.</h2>
-          <p>Duas entradas. Um processo. Match com a mesma disciplina de uma plataforma.</p>
+          <p>Um formulário só. Escolha comprador ou fornecedor na caixa de seleção.</p>
           <div class="channel">
             <div class="dot">W</div>
             <div>
@@ -1272,14 +1272,18 @@
           </div>
         </div>
         <div class="contact-card reveal">
-          <div class="entry-tabs" role="tablist">
-            <button type="button" class="entry-tab active" id="tabComprar" role="tab" aria-selected="true" data-panel="panelComprar">Preciso comprar</button>
-            <button type="button" class="entry-tab" id="tabOfertar" role="tab" aria-selected="false" data-panel="panelOfertar">Tenho oferta</button>
-          </div>
+          <form class="form-grid" id="formCadastro">
+            <p class="form-card-title">Cadastro B2B</p>
+            <p class="form-card-sub">Um formulário. Escolha se você compra ou oferta.</p>
 
-          <form class="form-panel active form-grid" id="panelComprar" data-tipo="comprar">
-            <p class="form-card-title">Solicitar fornecimento</p>
-            <p class="form-card-sub">Informe a necessidade. Nós buscamos a contraparte.</p>
+            <label>Você é
+              <select name="perfil" id="perfilSelect" required>
+                <option value="">Selecione</option>
+                <option value="comprador">Comprador (preciso comprar)</option>
+                <option value="fornecedor">Fornecedor (tenho oferta)</option>
+              </select>
+            </label>
+
             <div class="form-grid two">
               <label>Nome
                 <input name="nome" required placeholder="Seu nome" autocomplete="name" />
@@ -1304,16 +1308,30 @@
                 <input name="regiao" placeholder="Ex.: Limeira / SP" />
               </label>
             </div>
+
+            <div class="form-extra" id="extraFornecedor" hidden>
+              <label>Tipo de fornecedor
+                <select name="tipo_fornecedor" id="tipoFornecedor">
+                  <option value="">Selecione</option>
+                  <option>Refinaria</option>
+                  <option>Distribuidor / atacadista</option>
+                  <option>DTVM (ativo financeiro)</option>
+                  <option>Fabricante de banho / química</option>
+                  <option>Outro fornecedor autorizado</option>
+                </select>
+              </label>
+            </div>
+
             <div class="form-grid two">
               <label>Produto / formato
                 <input name="produto" required placeholder="Barra, liga, banho, sucata legal…" />
               </label>
-              <label>Pureza desejada
-                <input name="pureza" placeholder="Ex.: 999,9 / 18k / banho" />
+              <label id="labelPureza">Pureza
+                <input name="pureza" id="inputPureza" placeholder="Ex.: 999,9 / 18k / banho" />
               </label>
             </div>
             <div class="form-grid two">
-              <label>Quantidade
+              <label id="labelQtd">Quantidade
                 <input name="quantidade" required placeholder="Ex.: 2 kg / 500 g" />
               </label>
               <label>Prazo
@@ -1327,94 +1345,24 @@
                 <option>Mensal</option>
                 <option>Quinzenal</option>
                 <option>Sob demanda / irregular</option>
+                <option>Contínua / estoque</option>
               </select>
             </label>
             <fieldset class="range-fieldset">
-              <legend>Média de compra (mensal)</legend>
-              <span class="range-hint">Volume aproximado que sua empresa compra</span>
+              <legend id="legendVolume">Volume médio (mensal)</legend>
+              <span class="range-hint" id="hintVolume">Volume aproximado da sua operação</span>
               <div class="range-options">
-                <label><input type="radio" name="media_compra" value="R$ 5–10 mil" required /> R$ 5–10 mil</label>
-                <label><input type="radio" name="media_compra" value="R$ 10–30 mil" /> R$ 10–30 mil</label>
-                <label><input type="radio" name="media_compra" value="R$ 30–50 mil" /> R$ 30–50 mil</label>
-                <label><input type="radio" name="media_compra" value="Acima de R$ 50 mil" /> + R$ 50 mil</label>
+                <label><input type="radio" name="media_volume" value="R$ 5–10 mil" required /> R$ 5–10 mil</label>
+                <label><input type="radio" name="media_volume" value="R$ 10–30 mil" /> R$ 10–30 mil</label>
+                <label><input type="radio" name="media_volume" value="R$ 30–50 mil" /> R$ 30–50 mil</label>
+                <label><input type="radio" name="media_volume" value="Acima de R$ 50 mil" /> + R$ 50 mil</label>
               </div>
             </fieldset>
             <label>Observações
-              <textarea name="mensagem" required placeholder="Condições desejadas, restrições, contexto…"></textarea>
+              <textarea name="mensagem" required placeholder="Condições, documentação, contexto da operação…"></textarea>
             </label>
-            <button class="btn btn-primary" type="submit">Solicitar sourcing</button>
-            <p class="form-note">Ao enviar, você concorda com o contato comercial da Lastro Ouro. Faixas de valor são aproximadas para priorização.</p>
-          </form>
-
-          <form class="form-panel form-grid" id="panelOfertar" data-tipo="ofertar" hidden>
-            <p class="form-card-title">Cadastrar fornecedor</p>
-            <p class="form-card-sub">Entre na rede. Receba demanda B2B qualificada.</p>
-            <div class="form-grid two">
-              <label>Nome
-                <input name="nome" required placeholder="Seu nome" autocomplete="name" />
-              </label>
-              <label>Empresa
-                <input name="empresa" required placeholder="Razão social" />
-              </label>
-            </div>
-            <div class="form-grid two">
-              <label>CNPJ
-                <input name="cnpj" placeholder="00.000.000/0000-00" />
-              </label>
-              <label>WhatsApp comercial
-                <input name="whatsapp" required placeholder="(11) 90000-0000" autocomplete="tel" />
-              </label>
-            </div>
-            <div class="form-grid two">
-              <label>E-mail
-                <input type="email" name="email" placeholder="comercial@empresa.com" autocomplete="email" />
-              </label>
-              <label>Região atendida
-                <input name="regiao" placeholder="Ex.: SP / Sudeste / Brasil" />
-              </label>
-            </div>
-            <label>Tipo de fornecedor
-              <select name="tipo_fornecedor" required>
-                <option value="">Selecione</option>
-                <option>Refinaria</option>
-                <option>Distribuidor / atacadista</option>
-                <option>DTVM (ativo financeiro)</option>
-                <option>Fabricante de banho / química</option>
-                <option>Outro fornecedor autorizado</option>
-              </select>
-            </label>
-            <div class="form-grid two">
-              <label>Produto ofertado
-                <input name="produto" required placeholder="Barra, liga, banho, etc." />
-              </label>
-              <label>Capacidade / quantidade
-                <input name="quantidade" required placeholder="Ex.: até 10 kg/mês" />
-              </label>
-            </div>
-            <label>Frequência de oferta
-              <select name="frequencia" required>
-                <option value="">Selecione</option>
-                <option>Contínua / estoque</option>
-                <option>Mensal</option>
-                <option>Sob demanda</option>
-                <option>Pontual</option>
-              </select>
-            </label>
-            <fieldset class="range-fieldset">
-              <legend>Média de venda (mensal)</legend>
-              <span class="range-hint">Volume aproximado que sua empresa oferta</span>
-              <div class="range-options">
-                <label><input type="radio" name="media_venda" value="R$ 5–10 mil" required /> R$ 5–10 mil</label>
-                <label><input type="radio" name="media_venda" value="R$ 10–30 mil" /> R$ 10–30 mil</label>
-                <label><input type="radio" name="media_venda" value="R$ 30–50 mil" /> R$ 30–50 mil</label>
-                <label><input type="radio" name="media_venda" value="Acima de R$ 50 mil" /> + R$ 50 mil</label>
-              </div>
-            </fieldset>
-            <label>Documentação / observações
-              <textarea name="mensagem" required placeholder="NF-e, certificações, origem, condições…"></textarea>
-            </label>
-            <button class="btn btn-blue" type="submit">Cadastrar oferta</button>
-            <p class="form-note">Cadastro sujeito a qualificação. Só avançamos com fornecedores regulares e documentação em ordem.</p>
+            <button class="btn btn-primary" type="submit" id="btnSubmit">Enviar cadastro</button>
+            <p class="form-note">Ao enviar, você concorda com o contato comercial da Lastro Ouro. Cadastro de fornecedor sujeito a qualificação (NF-e e origem).</p>
           </form>
         </div>
       </div>
@@ -1478,86 +1426,72 @@
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-    const tabComprar = document.getElementById("tabComprar");
-    const tabOfertar = document.getElementById("tabOfertar");
-    const panelComprar = document.getElementById("panelComprar");
-    const panelOfertar = document.getElementById("panelOfertar");
+    const form = document.getElementById("formCadastro");
+    const perfilSelect = document.getElementById("perfilSelect");
+    const extraFornecedor = document.getElementById("extraFornecedor");
+    const tipoFornecedor = document.getElementById("tipoFornecedor");
+    const legendVolume = document.getElementById("legendVolume");
+    const hintVolume = document.getElementById("hintVolume");
+    const labelQtd = document.getElementById("labelQtd");
+    const btnSubmit = document.getElementById("btnSubmit");
     const SEU_NUMERO = "5511999999999";
 
-    function setEntry(tipo) {
-      const isBuy = tipo === "comprar";
-      tabComprar.classList.toggle("active", isBuy);
-      tabOfertar.classList.toggle("active", !isBuy);
-      tabComprar.setAttribute("aria-selected", isBuy ? "true" : "false");
-      tabOfertar.setAttribute("aria-selected", isBuy ? "false" : "true");
-      panelComprar.classList.toggle("active", isBuy);
-      panelOfertar.classList.toggle("active", !isBuy);
-      panelComprar.hidden = !isBuy;
-      panelOfertar.hidden = isBuy;
-      panelComprar.querySelectorAll("input, select, textarea, button").forEach((el) => {
-        el.disabled = !isBuy;
-      });
-      panelOfertar.querySelectorAll("input, select, textarea, button").forEach((el) => {
-        el.disabled = isBuy;
-      });
+    function applyPerfil(perfil) {
+      const isFornecedor = perfil === "fornecedor";
+      extraFornecedor.hidden = !isFornecedor;
+      tipoFornecedor.required = isFornecedor;
+      if (!isFornecedor) tipoFornecedor.value = "";
+      legendVolume.textContent = isFornecedor ? "Média de venda (mensal)" : "Média de compra (mensal)";
+      hintVolume.textContent = isFornecedor
+        ? "Volume aproximado que sua empresa oferta"
+        : "Volume aproximado que sua empresa compra";
+      labelQtd.childNodes[0].textContent = isFornecedor ? "Capacidade / quantidade" : "Quantidade";
+      btnSubmit.textContent = isFornecedor ? "Cadastrar oferta" : "Solicitar sourcing";
+      btnSubmit.classList.toggle("btn-blue", isFornecedor);
+      btnSubmit.classList.toggle("btn-primary", !isFornecedor);
     }
 
-    tabComprar.addEventListener("click", () => setEntry("comprar"));
-    tabOfertar.addEventListener("click", () => setEntry("ofertar"));
+    perfilSelect.addEventListener("change", () => applyPerfil(perfilSelect.value));
+
     document.querySelectorAll("[data-entry]").forEach((el) => {
       el.addEventListener("click", () => {
-        setEntry(el.getAttribute("data-entry"));
+        const entry = el.getAttribute("data-entry");
+        const perfil = entry === "ofertar" ? "fornecedor" : "comprador";
+        perfilSelect.value = perfil;
+        applyPerfil(perfil);
       });
     });
-    setEntry("comprar");
 
-    function bindForm(form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        const tipo = form.getAttribute("data-tipo");
-        const lines = tipo === "comprar"
-          ? [
-              "*Lastro Sourcing — Solicitar fornecimento*",
-              "",
-              `Nome: ${data.get("nome")}`,
-              `Empresa: ${data.get("empresa")}`,
-              `CNPJ: ${data.get("cnpj") || "—"}`,
-              `WhatsApp: ${data.get("whatsapp")}`,
-              `E-mail: ${data.get("email") || "—"}`,
-              `Região: ${data.get("regiao") || "—"}`,
-              `Produto: ${data.get("produto")}`,
-              `Pureza: ${data.get("pureza") || "—"}`,
-              `Quantidade: ${data.get("quantidade")}`,
-              `Prazo: ${data.get("prazo") || "—"}`,
-              `Frequência: ${data.get("frequencia")}`,
-              `Média compra (mês): ${data.get("media_compra")}`,
-              "",
-              `Observações: ${data.get("mensagem")}`,
-            ]
-          : [
-              "*Lastro Ouro — Cadastrar fornecedor*",
-              "",
-              `Nome: ${data.get("nome")}`,
-              `Empresa: ${data.get("empresa")}`,
-              `CNPJ: ${data.get("cnpj") || "—"}`,
-              `WhatsApp: ${data.get("whatsapp")}`,
-              `E-mail: ${data.get("email") || "—"}`,
-              `Região: ${data.get("regiao") || "—"}`,
-              `Tipo: ${data.get("tipo_fornecedor")}`,
-              `Produto: ${data.get("produto")}`,
-              `Capacidade: ${data.get("quantidade")}`,
-              `Frequência: ${data.get("frequencia")}`,
-              `Média venda (mês): ${data.get("media_venda")}`,
-              "",
-              `Documentação / obs.: ${data.get("mensagem")}`,
-            ];
-        const texto = encodeURIComponent(lines.join("\n"));
-        window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
-      });
-    }
-    bindForm(panelComprar);
-    bindForm(panelOfertar);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const perfil = data.get("perfil");
+      const isFornecedor = perfil === "fornecedor";
+      const lines = [
+        isFornecedor ? "*Lastro Ouro — Cadastro fornecedor*" : "*Lastro Ouro — Cadastro comprador*",
+        "",
+        `Perfil: ${isFornecedor ? "Fornecedor" : "Comprador"}`,
+        `Nome: ${data.get("nome")}`,
+        `Empresa: ${data.get("empresa")}`,
+        `CNPJ: ${data.get("cnpj") || "—"}`,
+        `WhatsApp: ${data.get("whatsapp")}`,
+        `E-mail: ${data.get("email") || "—"}`,
+        `Região: ${data.get("regiao") || "—"}`,
+      ];
+      if (isFornecedor) lines.push(`Tipo fornecedor: ${data.get("tipo_fornecedor") || "—"}`);
+      lines.push(
+        `Produto: ${data.get("produto")}`,
+        `Pureza: ${data.get("pureza") || "—"}`,
+        `${isFornecedor ? "Capacidade" : "Quantidade"}: ${data.get("quantidade")}`,
+        `Prazo: ${data.get("prazo") || "—"}`,
+        `Frequência: ${data.get("frequencia")}`,
+        `Volume médio: ${data.get("media_volume")}`,
+        "",
+        `Observações: ${data.get("mensagem")}`
+      );
+      const texto = encodeURIComponent(lines.join("\n"));
+      window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
+    });
   </script>
 </body>
 </html>
