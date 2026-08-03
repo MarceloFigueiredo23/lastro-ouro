@@ -674,7 +674,28 @@
       opacity: 0.85;
     }
 
-    .faq-list { display: grid; gap: 0.65rem; max-width: 760px; }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(180px, 0.55fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .faq-main .section-head {
+      margin-bottom: 1.5rem;
+    }
+    .faq-list { display: grid; gap: 0.65rem; max-width: none; }
+    .faq-brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .faq-brand img {
+      width: min(100%, 280px);
+      height: auto;
+      object-fit: contain;
+      opacity: 0.92;
+    }
     details {
       background: var(--surface);
       border: 1px solid var(--line);
@@ -869,6 +890,7 @@
       .products-grid { grid-template-columns: 1fr 1fr; }
       .safe-grid,
       .photo-row { grid-template-columns: 1fr 1fr; }
+      .faq-layout { grid-template-columns: 1fr 0.45fr; }
       .journey-path { display: none; }
       .journey-step { grid-template-columns: 1fr; }
       .journey-step .journey-spacer { display: none; }
@@ -902,11 +924,14 @@
       .path-row,
       .safe-grid,
       .photo-row,
+      .faq-layout,
       .form-grid.two,
       .range-options { grid-template-columns: 1fr; }
+      .faq-brand { display: none; }
+      .nav-toggle { display: block; }
+      .nav .nav-cta { display: none; }
       .hero-visual { min-height: auto; }
       .hero-visual figure { max-height: none; aspect-ratio: 16 / 10; }
-      .photo-row { grid-template-columns: 1fr; }
       .photo-row figure { aspect-ratio: 16 / 10; }
       .brand-text img { height: 58px; }
       .hero { padding-top: 6.5rem; }
@@ -1199,38 +1224,43 @@
     </div>
 
     <section class="faq" id="faq">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div class="label">FAQ</div>
-          <h2>Perguntas que importam</h2>
-          <p>Transparência desde o primeiro contato, inclusive sobre o que não fazemos.</p>
+      <div class="wrap faq-layout">
+        <div class="faq-main">
+          <div class="section-head reveal">
+            <div class="label">FAQ</div>
+            <h2>Perguntas que importam</h2>
+            <p>Transparência desde o primeiro contato, inclusive sobre o que não fazemos.</p>
+          </div>
+          <div class="faq-list">
+            <details class="reveal" open>
+              <summary>Vocês compram ou estocam ouro?</summary>
+              <p>Não. Somos camada de sourcing e conexão: compra, entrega e NF-e ocorrem entre fornecedor autorizado e comprador.</p>
+            </details>
+            <details class="reveal">
+              <summary>Como funciona o pagamento da Lastro?</summary>
+              <p>Fee por operação estruturada (ou % com piso e teto), alinhado por escrito antes do fechamento. Você só paga se a operação concretizar. O valor do ouro vai direto entre as partes; a comissão é um trilho separado.</p>
+            </details>
+            <details class="reveal">
+              <summary>Preciso ir presencial?</summary>
+              <p>Não em toda operação. O dia a dia roda online. O Hub presencial entra na primeira operação, ticket alto ou quando amostra e confiança pedem encontro.</p>
+            </details>
+            <details class="reveal">
+              <summary>Como garantem a origem?</summary>
+              <p>Só avançamos com contrapartes regulares e documentação. Operação sem nota ou sem origem comprovada é recusada.</p>
+            </details>
+            <details class="reveal">
+              <summary>Vocês são uma DTVM?</summary>
+              <p>Não. A Lastro Ouro organiza sourcing e matchmaking comercial B2B. Não somos DTVM, corretora nem entidade autorizada pelo Banco Central.</p>
+            </details>
+            <details class="reveal">
+              <summary>Atendem o polo de Limeira?</summary>
+              <p>Sim. Joalherias, fundições, galvânicas e indústrias da região estão no centro da nossa rede de demanda.</p>
+            </details>
+          </div>
         </div>
-        <div class="faq-list">
-          <details class="reveal" open>
-            <summary>Vocês compram ou estocam ouro?</summary>
-            <p>Não. Somos camada de sourcing e conexão: compra, entrega e NF-e ocorrem entre fornecedor autorizado e comprador.</p>
-          </details>
-          <details class="reveal">
-            <summary>Como funciona o pagamento da Lastro?</summary>
-            <p>Fee por operação estruturada (ou % com piso e teto), alinhado por escrito antes do fechamento. Você só paga se a operação concretizar. O valor do ouro vai direto entre as partes; a comissão é um trilho separado.</p>
-          </details>
-          <details class="reveal">
-            <summary>Preciso ir presencial?</summary>
-            <p>Não em toda operação. O dia a dia roda online. O Hub presencial entra na primeira operação, ticket alto ou quando amostra e confiança pedem encontro.</p>
-          </details>
-          <details class="reveal">
-            <summary>Como garantem a origem?</summary>
-            <p>Só avançamos com contrapartes regulares e documentação. Operação sem nota ou sem origem comprovada é recusada.</p>
-          </details>
-          <details class="reveal">
-            <summary>Vocês são uma DTVM?</summary>
-            <p>Não. A Lastro Ouro organiza sourcing e matchmaking comercial B2B. Não somos DTVM, corretora nem entidade autorizada pelo Banco Central.</p>
-          </details>
-          <details class="reveal">
-            <summary>Atendem o polo de Limeira?</summary>
-            <p>Sim. Joalherias, fundições, galvânicas e indústrias da região estão no centro da nossa rede de demanda.</p>
-          </details>
-        </div>
+        <aside class="faq-brand reveal" aria-hidden="true">
+          <img src="assets/logo-wordmark.png?v=3" alt="" width="280" height="75" />
+        </aside>
       </div>
     </section>
 
