@@ -66,18 +66,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 96px;
       gap: 1rem;
     }
     .brand-text {
       display: inline-flex;
       align-items: center;
+      flex-shrink: 0;
     }
     .brand-text img {
-      height: 44px;
+      height: 72px;
       width: auto;
-      max-width: min(260px, 62vw);
+      max-width: min(420px, 72vw);
       object-fit: contain;
+      object-position: left center;
+      display: block;
+      background: transparent;
     }
     .nav-links {
       display: flex;
@@ -147,7 +151,7 @@
     .btn-blue:hover { background: #255ad4; }
 
     .hero {
-      padding: 7.5rem 0 2.5rem;
+      padding: 8.2rem 0 2.5rem;
     }
     .hero-grid {
       display: grid;
@@ -157,39 +161,26 @@
     }
     .hero-visual {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 0.75rem;
-      min-height: 380px;
+      grid-template-columns: 1fr;
+      gap: 0;
+      min-height: 0;
     }
     .hero-visual figure {
       margin: 0;
-      border-radius: 22px;
+      border-radius: 24px;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
-      background: #ddd;
-      min-height: 180px;
-    }
-    .hero-visual figure:first-child {
-      grid-row: 1 / 2;
+      background: #e8e4de;
+      aspect-ratio: 4 / 5;
+      max-height: 520px;
     }
     .hero-visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      min-height: 380px;
-    }
-    .hero-visual figure:last-child img { min-height: 380px; }
-    .hero-visual figcaption {
-      position: absolute;
-      left: 0.85rem;
-      bottom: 0.85rem;
-      background: rgba(255,255,255,0.92);
-      color: var(--ink);
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
+      object-position: center 30%;
+      display: block;
     }
     .eyebrow {
       display: inline-flex;
@@ -433,33 +424,24 @@
     }
     .photo-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-      max-width: 720px;
-      margin: 0 auto;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
     }
     .photo-row figure {
       margin: 0;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 1 / 1;
       background: #e8e4de;
     }
     .photo-row img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-    .photo-row figcaption {
-      position: absolute;
-      inset: auto 0 0;
-      padding: 1.2rem 0.85rem 0.75rem;
-      background: linear-gradient(transparent, rgba(28,36,52,0.72));
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 600;
+      object-position: center;
+      display: block;
     }
 
     .safe-band {
@@ -842,7 +824,7 @@
       .strip-grid,
       .safe-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr 1fr; }
-      .photo-row { grid-template-columns: 1fr 1fr; }
+      .photo-row { grid-template-columns: 1fr 1fr 1fr; }
       .journey-path { display: none; }
       .journey-step { grid-template-columns: 1fr; }
       .journey-step .journey-spacer { display: none; }
@@ -878,9 +860,10 @@
       .form-grid.two,
       .range-options { grid-template-columns: 1fr; }
       .hero-visual { min-height: auto; }
-      .hero-visual img,
-      .hero-visual figure:last-child img { min-height: 220px; }
+      .hero-visual figure { max-height: none; aspect-ratio: 16 / 10; }
+      .photo-row { grid-template-columns: 1fr; }
       .photo-row figure { aspect-ratio: 16 / 10; }
+      .brand-text img { height: 58px; }
       .hero { padding-top: 6.5rem; }
       section { padding: 3.2rem 0; }
     }
@@ -890,7 +873,7 @@
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <a class="brand-text" href="#topo" aria-label="Lastro Ouro · início">
-        <img src="assets/logo-wordmark.png" alt="Lastro Ouro" />
+        <img src="assets/logo-wordmark.png?v=3" alt="Lastro Ouro" width="420" height="113" />
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -926,14 +909,9 @@
             <span><strong>Fee</strong> só no fechamento</span>
           </div>
         </div>
-        <div class="hero-visual reveal" aria-label="Negociação e ouro">
+        <div class="hero-visual reveal" aria-label="Negociação comercial">
           <figure>
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80" alt="Pessoas negociando sentadas em mesa" />
-            <figcaption>Negociação na mesa</figcaption>
-          </figure>
-          <figure>
-            <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=900&q=80" alt="Barras e lingotes de ouro" />
-            <figcaption>Barras e lingotes</figcaption>
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80" alt="Profissionais reunidos em mesa de reunião" />
           </figure>
         </div>
       </div>
@@ -1043,18 +1021,18 @@
     <section class="photo-band" id="ambiente">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="label">Leve e claro</div>
-          <h2>Mesa, confiança e ouro com lastro.</h2>
-          <p>Quatro imagens no total: mesa, barras, correntes e fechamento. Leve como referência de intermediação com segurança.</p>
+          <div class="label">Cadeia com lastro</div>
+          <h2>Mesa, confiança e ouro.</h2>
         </div>
         <div class="photo-row">
           <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80" alt="Correntes de ouro" />
-            <figcaption>Correntes</figcaption>
+            <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=900&q=80" alt="Barras e lingotes de ouro" />
           </figure>
           <figure class="reveal">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Aperto de mãos após acordo" />
-            <figcaption>Fechamento</figcaption>
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80" alt="Correntes de ouro" />
+          </figure>
+          <figure class="reveal">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Aperto de mãos em acordo comercial" />
           </figure>
         </div>
       </div>
@@ -1341,7 +1319,7 @@
     <div class="wrap">
       <div class="footer-top">
         <a class="brand-text" href="#topo">
-          <img src="assets/logo-wordmark.png" alt="Lastro Ouro" />
+          <img src="assets/logo-wordmark.png?v=3" alt="Lastro Ouro" width="360" height="97" />
         </a>
         <div class="footer-links">
           <a href="#como-funciona">Como funciona</a>
