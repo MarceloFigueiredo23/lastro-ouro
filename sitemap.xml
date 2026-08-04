@@ -6,23 +6,8 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://lastroouro.com.br/#como-funciona</loc>
+    <loc>https://lastroouro.com.br/contrato-modelo.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://lastroouro.com.br/#ouro-com-nota</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lastroouro.com.br/#faq</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://lastroouro.com.br/#contato</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.4</priority>
   </url>
 </urlset>
