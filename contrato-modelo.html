@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lastro Ouro · Contrato-modelo (rascunho para revisão jurídica)</title>
+  <title>Lastro Ouro · Contrato-modelo (rascunho enxuto)</title>
   <meta name="robots" content="noindex,nofollow" />
-  <meta name="description" content="Rascunho de contrato de intermediação comercial Lastro Ouro para revisão por advogado. Não assinar sem parecer jurídico." />
   <style>
     :root {
       --ink: #1C2434;
@@ -20,400 +19,197 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-family: "Segoe UI", system-ui, sans-serif;
       color: var(--ink);
       background: var(--bg);
-      line-height: 1.55;
-      font-size: 15px;
+      line-height: 1.5;
+      font-size: 14.5px;
     }
-    .wrap { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 1.25rem 1.1rem 2.5rem; }
     .topbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.25rem;
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      justify-content: space-between; align-items: center;
+      margin-bottom: 1rem;
     }
-    .brand { font-weight: 700; color: var(--orange); letter-spacing: 0.02em; }
-    .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .brand { font-weight: 700; color: var(--orange); }
     .btn {
-      display: inline-block;
-      padding: 0.55rem 0.9rem;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
+      display: inline-block; padding: 0.45rem 0.8rem; border-radius: 9px;
+      border: 1px solid var(--line); background: var(--surface);
+      color: var(--ink); text-decoration: none; font-size: 0.85rem;
+      font-weight: 600; cursor: pointer;
     }
     .btn-primary { background: var(--orange); border-color: var(--orange); color: #fff; }
     .alert {
-      background: var(--warn-bg);
-      border: 1px solid #f0c4cc;
-      color: var(--warn);
-      padding: 0.9rem 1rem;
-      border-radius: 12px;
-      margin-bottom: 1.25rem;
-      font-size: 0.92rem;
+      background: var(--warn-bg); border: 1px solid #f0c4cc; color: var(--warn);
+      padding: 0.75rem 0.9rem; border-radius: 10px; margin-bottom: 1rem; font-size: 0.88rem;
     }
-    .alert strong { display: block; margin-bottom: 0.25rem; }
-    h1 {
-      font-size: 1.55rem;
-      line-height: 1.25;
-      margin: 0 0 0.35rem;
-    }
-    .subtitle { color: var(--muted); margin: 0 0 1.5rem; }
+    h1 { font-size: 1.35rem; margin: 0 0 0.25rem; line-height: 1.25; }
+    .sub { color: var(--muted); margin: 0 0 1.1rem; font-size: 0.92rem; }
     h2 {
-      font-size: 1.15rem;
-      margin: 2rem 0 0.75rem;
-      padding-bottom: 0.35rem;
-      border-bottom: 2px solid var(--orange);
+      font-size: 1.05rem; margin: 1.5rem 0 0.55rem;
+      padding-bottom: 0.25rem; border-bottom: 2px solid var(--orange);
     }
-    h3 { font-size: 1rem; margin: 1.35rem 0 0.5rem; }
-    p, li { color: var(--ink); }
-    .muted { color: var(--muted); }
+    h3 { font-size: 0.95rem; margin: 0 0 0.4rem; }
     .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 1.1rem 1.2rem;
-      margin: 0.85rem 0;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 12px; padding: 0.85rem 1rem; margin: 0.55rem 0;
     }
-    .contract-title {
-      text-align: center;
-      margin: 1.5rem 0 1rem;
-    }
-    .contract-title h2 {
-      border: none;
-      font-size: 1.2rem;
-      margin: 0;
-    }
-    .meta { text-align: center; color: var(--muted); font-size: 0.92rem; }
-    ul { padding-left: 1.2rem; }
-    li { margin: 0.25rem 0; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      margin: 0.75rem 0 1rem;
-      background: var(--surface);
-    }
-    th, td {
-      border: 1px solid var(--line);
-      padding: 0.55rem 0.65rem;
-      text-align: left;
-      vertical-align: top;
-    }
-    th { background: #FFF1E8; }
-    .clause { margin-bottom: 1.1rem; }
-    .clause p { margin: 0.4rem 0; }
-    .fill { background: #fff8e6; padding: 0 0.2rem; border-radius: 3px; }
-    .sign-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
+    ul, ol { margin: 0.35rem 0; padding-left: 1.15rem; }
+    li { margin: 0.2rem 0; }
+    p { margin: 0.35rem 0; }
+    .fill { background: #fff8e6; padding: 0 0.15rem; border-radius: 3px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; margin: 0.5rem 0; }
+    th, td { border: 1px solid var(--line); padding: 0.45rem 0.55rem; text-align: left; vertical-align: top; }
+    th { background: #FFF1E8; width: 38%; }
+    .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
     .sign-box {
-      border: 1px dashed var(--line);
-      border-radius: 12px;
-      padding: 1rem;
-      min-height: 140px;
-      background: var(--surface);
+      border: 1px dashed var(--line); border-radius: 10px; padding: 0.75rem;
+      min-height: 110px; background: var(--surface); font-size: 0.86rem;
     }
-    .sign-box p { margin: 0.35rem 0; font-size: 0.9rem; }
-    .line { border-bottom: 1px solid #bbb; height: 2rem; margin: 0.5rem 0 0.75rem; }
-    .check-list label {
-      display: block;
-      padding: 0.35rem 0;
-      border-bottom: 1px solid var(--line);
+    .line { border-bottom: 1px solid #bbb; height: 1.6rem; margin: 0.35rem 0 0.55rem; }
+    .check label { display: block; padding: 0.28rem 0; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+    .wa {
+      background: #f4f6f8; border-radius: 10px; padding: 0.85rem;
+      white-space: pre-wrap; font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.78rem; line-height: 1.4;
     }
-    .wa-box {
-      background: #f4f6f8;
-      border-radius: 12px;
-      padding: 1rem;
-      white-space: pre-wrap;
-      font-family: ui-monospace, Consolas, monospace;
-      font-size: 0.82rem;
-      line-height: 1.45;
-    }
-    footer.doc {
-      margin-top: 2.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
+    footer { margin-top: 1.75rem; padding-top: 0.75rem; border-top: 1px solid var(--line); font-size: 0.78rem; color: var(--muted); }
+    .meta { text-align: center; color: var(--muted); font-size: 0.88rem; margin: 0.75rem 0; }
     @media print {
-      body { background: #fff; font-size: 11.5pt; }
-      .actions, .no-print { display: none !important; }
-      .wrap { max-width: none; padding: 0; }
-      .card, .alert { break-inside: avoid; }
-      a { color: inherit; text-decoration: none; }
+      body { background: #fff; font-size: 10.5pt; }
+      .no-print { display: none !important; }
+      .wrap { padding: 0; max-width: none; }
+      .card { break-inside: avoid; }
     }
-    @media (max-width: 640px) {
-      .sign-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 640px) { .sign-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
       <div class="brand">lastro ouro</div>
-      <div class="actions no-print">
+      <div class="no-print" style="display:flex;gap:0.4rem;">
         <button class="btn" type="button" onclick="window.print()">Imprimir / PDF</button>
-        <a class="btn btn-primary" href="index.html">Voltar ao site</a>
+        <a class="btn btn-primary" href="index.html">Site</a>
       </div>
     </div>
 
     <div class="alert">
-      <strong>RASCUNHO · NÃO ASSINAR em operação real</strong>
-      Documento para revisão jurídica. Não é parecer jurídico. Envie aos advogados antes de qualquer uso vinculante.
+      <strong>RASCUNHO · NÃO ASSINAR</strong> sem revisão de advogado. Não é parecer jurídico.
     </div>
 
-    <h1>Contrato-modelo padrão · Intermediação comercial</h1>
-    <p class="subtitle">Visão do negócio + texto contratual + checklist para o advogado aprovar ou reescrever.</p>
+    <h1>Contrato-modelo enxuto · Intermediação</h1>
+    <p class="sub">Versão curta para amigos advogados: visão + cláusulas essenciais + checklist.</p>
 
-    <h2>A) Briefing para o advogado</h2>
-
+    <h2>1. Visão do negócio (1 minuto)</h2>
     <div class="card">
-      <h3>O que a Lastro Ouro faz</h3>
       <ul>
-        <li>Intermedia <strong>entre empresas</strong>: quem precisa <strong>comprar</strong> ouro/insumo e quem tem <strong>oferta com nota</strong>.</li>
-        <li>Organiza conversa, checagem documental mínima e acompanhamento até o fechamento.</li>
-        <li><strong>Não</strong> compra, vende, estoca, transporta nem custodia ouro.</li>
-        <li><strong>Não</strong> recebe nem repassa o valor do metal (PIX/TED do ouro fica entre as partes).</li>
-        <li>Remuneração: <strong>comissão de serviço</strong> (âncora típica R$ 2.000–5.000 por operação, ou % com piso/teto), só se a operação fechar.</li>
-        <li>Foco: Limeira/SP e região. Sem 1ª aquisição de garimpo/PLG na Fase 1.</li>
+        <li>Lastro junta <strong>quem compra</strong> e <strong>quem vende ouro com nota</strong>.</li>
+        <li><strong>Não</strong> compra, estoca, transporta nem guarda ouro.</li>
+        <li><strong>Não</strong> recebe nem repassa o dinheiro do metal.</li>
+        <li>Ganha <strong>comissão de serviço</strong> (R$ 2–5 mil ou % com piso/teto), só se fechar.</li>
+        <li>NF do ouro: entre as partes. Lastro emite só <strong>NFS-e da comissão</strong>.</li>
       </ul>
+      <p><strong>Validar com vocês:</strong> risco de eu virar responsável se uma ponta não cumprir · bilateral basta? · causa eficiente segura? · CNAE / ME vs MEI.</p>
+    </div>
+
+    <p class="meta">
+      <strong>CONTRATO DE INTERMEDIAÇÃO COMERCIAL</strong><br />
+      Nº <span class="fill">[AAAA-XXX]</span> · Data <span class="fill">[DD/MM/AAAA]</span>
+    </p>
+
+    <div class="card">
+      <h3>Partes</h3>
+      <p><strong>CONTRATANTE</strong> (quem paga a comissão): <span class="fill">[Razão / CNPJ / representante]</span></p>
+      <p><strong>CONTRATADA (Lastro Ouro):</strong> <span class="fill">[Razão / CNPJ / representante]</span></p>
     </div>
 
     <div class="card">
-      <h3>O que queremos validar</h3>
-      <ol>
-        <li>Este desenho (só intermediação + NFS-e de serviço) é adequado, ou há risco de reclassificação?</li>
-        <li>As cláusulas de não responsabilidade por adimplência / entrega / qualidade do metal seguram na prática?</li>
-        <li>Precisa contrato tripartite ou basta bilateral com quem paga a comissão?</li>
-        <li>Cláusula de causa eficiente é defensável? Em que redação?</li>
-        <li>Há obrigação relevante de PLD/KYC além do filtro comercial descrito?</li>
-        <li>MEI vs ME/SLU e CNAE (ex.: 7490-1/04) no volume inicial?</li>
-      </ol>
+      <h3>Cláusula 1 · Objeto e exclusões</h3>
+      <p>A CONTRATADA presta <strong>intermediação comercial</strong>: apresentar contraparte, organizar especificação e documentos mínimos, facilitar a conversa até fechar ou desistir.</p>
+      <p>A compra/venda do ouro, se houver, ocorre <strong>só entre CONTRATANTE e a contraparte</strong>.</p>
+      <p><strong>A CONTRATADA não:</strong> compra/vende/guarda/transporta ouro; recebe ou repassa o preço do metal; atua como DTVM/instituição financeira; garante preço, qualidade, entrega ou pagamento das partes.</p>
     </div>
 
-    <h3>Documentos da operação (visão)</h3>
+    <div class="card">
+      <h3>Cláusula 2 · Natureza</h3>
+      <p>Serviço autônomo de intermediação. A CONTRATADA <strong>não é parte</strong> do contrato do metal e <strong>não é fiadora</strong> das obrigações da operação principal.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cláusula 3 · Remuneração</h3>
+      <p><strong>Opção A:</strong> fee fixo R$ <span class="fill">[2.000–5.000]</span> por operação fechada.</p>
+      <p><strong>Opção B:</strong> <span class="fill">[X]%</span> sobre o valor da NF-e do metal, piso R$ <span class="fill">[ ]</span> / teto R$ <span class="fill">[ ]</span>.</p>
+      <p>Devida <strong>só se concretizar</strong> (NF-e do metal e/ou pagamento comprovado, conforme Anexo).</p>
+      <p><strong>Causa eficiente (validar):</strong> se em <span class="fill">[12] meses</span> o CONTRATANTE fechar com a mesma contraparte apresentada pela CONTRATADA, a comissão continua devida, salvo prova de relacionamento prévio documentado.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cláusula 4 · Pagamento e nota</h3>
+      <p>Pagamento em até <span class="fill">[5/10] dias úteis</span> após concretizar, via PIX/TED. CONTRATADA emite <strong>NFS-e de serviço</strong> (não NF do ouro).</p>
+    </div>
+
+    <div class="card">
+      <h3>Cláusula 5 · Obrigações e recusa</h3>
+      <p><strong>CONTRATADA:</strong> diligência razoável; pedir docs mínimos sem garantir autenticidade absoluta; sigilo; recusar operação sem nota, origem duvidosa ou pedido para custodiar metal/dinheiro do metal.</p>
+      <p><strong>CONTRATANTE:</strong> dados verdadeiros; não pedir conduta ilícita nem custódia; pagar a comissão; formalizar o metal direto com a contraparte.</p>
+      <p>A CONTRATADA pode encerrar a intermediação sem multa nesses casos de recusa, salvo dolo/culpa grave dela.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cláusula 6 · Limite de responsabilidade</h3>
+      <p>CONTRATADA não responde por inadimplemento entre as partes do metal, qualidade/procedência além dos docs delas, cotação do ouro, lucros cessantes (salvo dolo/culpa grave). Teto indenizável sugerido: <span class="fill">[1x/2x]</span> a comissão paga na operação (<em>validar</em>). Fechar ou não é decisão do CONTRATANTE.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cláusula 7 · Sigilo, vigência e foro</h3>
+      <p>Sigilo comercial por <span class="fill">[2] anos</span> · LGPD aplicável. Vigência: até fechar, desistir ou <span class="fill">[90] dias</span>. Rescisão com <span class="fill">[7] dias</span> de aviso. Sem exclusividade, salvo acordo. Foro: <span class="fill">[Limeira ou Ribeirão Preto/SP]</span>.</p>
+    </div>
+
+    <h2>Anexo · Operação</h2>
     <table>
-      <thead>
-        <tr><th>Documento</th><th>Quem assina</th><th>Função</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Este contrato (comissão)</td><td>Lastro + quem paga o fee</td><td>Escopo, fee, limites</td></tr>
-        <tr><td>Compra/venda do ouro</td><td>Comprador ↔ Vendedor</td><td>Preço, entrega, NF do metal</td></tr>
-        <tr><td>NFS-e</td><td>Lastro emite</td><td>Faturamento da comissão</td></tr>
-        <tr><td>NDA (opcional)</td><td>Conforme caso</td><td>Sigilo</td></tr>
-      </tbody>
+      <tr><th>Perfil</th><td>( ) Comprador ( ) Vendedor</td></tr>
+      <tr><th>Contraparte</th><td></td></tr>
+      <tr><th>Produto / qtd / prazo</th><td></td></tr>
+      <tr><th>Concretização</th><td>( ) NF-e ( ) Pagamento ( ) Ambos</td></tr>
+      <tr><th>Remuneração</th><td>( ) A R$ ___ ( ) B ___% piso/teto</td></tr>
+      <tr><th>Contatos</th><td></td></tr>
     </table>
-
-    <div class="contract-title">
-      <h2>B) Modelo padrão · texto contratual (rascunho)</h2>
-      <p class="meta">
-        <strong>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE INTERMEDIAÇÃO COMERCIAL</strong><br />
-        Nº: <span class="fill">[AAAA-XXX]</span> · Data: <span class="fill">[DD/MM/AAAA]</span>
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Qualificação das partes</h3>
-      <p><strong>CONTRATANTE</strong> (quem remunera a intermediação):<br />
-        <span class="fill">[Razão social]</span>, CNPJ <span class="fill">[ ]</span>, sede em <span class="fill">[ ]</span>,
-        representada por <span class="fill">[nome]</span>, CPF <span class="fill">[ ]</span>, doravante <strong>CONTRATANTE</strong>.</p>
-      <p><strong>CONTRATADA</strong> (intermediária):<br />
-        <span class="fill">[Razão social / Lastro Ouro]</span>, CNPJ <span class="fill">[ ]</span>, sede em <span class="fill">[ ]</span>,
-        representada por <span class="fill">[Marcelo …]</span>, CPF <span class="fill">[ ]</span>, doravante <strong>CONTRATADA</strong> ou <strong>LASTRO</strong>.</p>
-      <p>As partes celebram o presente contrato mediante as cláusulas seguintes.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 1 · Objeto</h3>
-      <p><strong>1.1.</strong> A CONTRATADA prestará serviços de <strong>intermediação comercial</strong>, consistindo em:</p>
-      <ul>
-        <li>a) identificar e apresentar contraparte compatível com a necessidade do CONTRATANTE;</li>
-        <li>b) apoiar a organização de especificações (produto, quantidade, pureza/formato, prazo, região);</li>
-        <li>c) solicitar e organizar documentação mínima para avaliação comercial e de regularidade aparente;</li>
-        <li>d) facilitar a comunicação entre as partes até o fechamento ou desistência formal da operação;</li>
-        <li>e) acompanhar o andamento documental até a confirmação de concretização da operação principal.</li>
-      </ul>
-      <p><strong>1.2.</strong> A operação principal de compra e venda de ouro (ou insumos metálicos correlatos) ocorrerá, se concretizada, <strong>exclusivamente entre o CONTRATANTE e a contraparte</strong> por ele aceita, sob responsabilidade e documentação próprias dessas partes.</p>
-      <p><strong>1.3. Fora do objeto.</strong> A CONTRATADA <strong>não</strong>:</p>
-      <ul>
-        <li>compra, vende, permuta ou revende ouro ou metal;</li>
-        <li>transporta, armazena, custodia ou manuseia o bem físico;</li>
-        <li>recebe, retém ou repassa valores referentes ao preço do metal;</li>
-        <li>atua como DTVM, instituição financeira, corretora de valores ou agente do Banco Central;</li>
-        <li>presta consultoria de investimento ou promete rentabilidade;</li>
-        <li>garante preço futuro do ouro, qualidade metalúrgica, prazo de entrega ou adimplência de qualquer das partes da operação principal.</li>
-      </ul>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 2 · Natureza da atuação</h3>
-      <p><strong>2.1.</strong> A CONTRATADA atua como prestadora de serviço de intermediação, de forma autônoma, sem vínculo empregatício, societário ou de representação legal das partes da operação principal, salvo se outro instrumento específico for celebrado por escrito.</p>
-      <p><strong>2.2.</strong> A CONTRATADA <strong>não é parte</strong> no contrato de compra e venda do metal e <strong>não se torna fiadora, avalista ou garantidora</strong> de obrigações da operação principal.</p>
-      <p><strong>2.3.</strong> Combinações sobre preço, entrega, pagamento e nota fiscal do metal serão formalizadas <strong>diretamente</strong> entre comprador e vendedor do metal.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 3 · Operação objeto (Anexo I)</h3>
-      <p><strong>3.1.</strong> A operação intermediada está descrita no <strong>Anexo I</strong>.</p>
-      <p><strong>3.2.</strong> Alterações relevantes do Anexo I dependerão de aceite escrito (e-mail ou mensagem com confirmação inequívoca admitidos, salvo se as partes exigirem aditivo formal).</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 4 · Remuneração (comissão)</h3>
-      <p><strong>4.1.</strong> O CONTRATANTE pagará à CONTRATADA (escolher uma opção):</p>
-      <p><strong>Opção A · Fee fixo</strong><br />
-        Valor de R$ <span class="fill">[2.000,00 a 5.000,00]</span> (<span class="fill">[extenso]</span>), devido por operação efetivamente concretizada.</p>
-      <p><strong>Opção B · Percentual com piso e teto</strong><br />
-        <span class="fill">[X]%</span> sobre o valor bruto da operação principal (base: NF-e do metal), com piso de R$ <span class="fill">[ ]</span> e teto de R$ <span class="fill">[ ]</span>.</p>
-      <p><strong>4.2.</strong> Remuneração devida <strong>somente</strong> se houver concretização: (i) documentação fiscal do metal entre as partes; e/ou (ii) pagamento do preço do metal comprovado; conforme Anexo I.</p>
-      <p><strong>4.3.</strong> Não há taxa de adesão nem retenção antecipada do preço do metal pela CONTRATADA.</p>
-      <p><strong>4.4. Causa eficiente (validar com advogado).</strong> Se, no prazo de <span class="fill">[12] meses</span> da apresentação formal da contraparte pela CONTRATADA, o CONTRATANTE concretizar operação com essa mesma contraparte (direta ou por terceiro) tendo a CONTRATADA sido a causadora eficiente da apresentação, a remuneração da Cláusula 4.1 será devida, ainda que este contrato tenha encerrado, salvo prova de relacionamento comercial prévio documentado anterior à atuação da CONTRATADA.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 5 · Pagamento e nota fiscal</h3>
-      <p><strong>5.1.</strong> Pagamento em até <span class="fill">[5 / 10] dias úteis</span> após a concretização, via PIX/TED para conta da CONTRATADA.</p>
-      <p><strong>5.2.</strong> A CONTRATADA emitirá <strong>NFS-e</strong> da intermediação/comissão, <strong>sem</strong> emitir NF de mercadoria do ouro.</p>
-      <p><strong>5.3.</strong> Tributos da remuneração da CONTRATADA por sua conta, salvo retenções legais obrigatórias pelo CONTRATANTE (com entrega de comprovantes).</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 6 · Obrigações da CONTRATADA</h3>
-      <p><strong>6.1.</strong> Diligência comercial razoável na organização da intermediação.</p>
-      <p><strong>6.2.</strong> Solicitar documentação mínima aparente, sem auditoria forense nem garantia de autenticidade absoluta de documentos de terceiros.</p>
-      <p><strong>6.3.</strong> Confidencialidade (Cláusula 9).</p>
-      <p><strong>6.4.</strong> Recusar avanço se houver indício de operação sem nota, origem duvidosa, ou pedido de custódia de metal/valores do metal.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 7 · Obrigações do CONTRATANTE</h3>
-      <p><strong>7.1.</strong> Informações e documentos verdadeiros.</p>
-      <p><strong>7.2.</strong> Não solicitar conduta ilícita, operação sem documentação adequada, custódia de metal ou circulação do preço do metal pela conta da CONTRATADA.</p>
-      <p><strong>7.3.</strong> Pagar a remuneração nos prazos.</p>
-      <p><strong>7.4.</strong> Informar fechamento, desistência ou alteração material.</p>
-      <p><strong>7.5.</strong> Formalizar diretamente com a contraparte a compra e venda do metal.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 8 · Compliance e direito de recusa</h3>
-      <p><strong>8.1.</strong> Ciência de obrigações fiscais, de origem e PLD aplicáveis a operações com ouro.</p>
-      <p><strong>8.2.</strong> A CONTRATADA pode suspender ou encerrar a intermediação, sem multa, se: (a) recusa de documentação mínima; (b) indício de irregularidade ou “fechar por fora”; (c) pedido para receber/repassar preço do metal ou custodiar o bem.</p>
-      <p><strong>8.3.</strong> Esse direito não gera dever de indenizar, ressalvado dolo ou culpa grave da CONTRATADA comprovados.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 9 · Confidencialidade e LGPD</h3>
-      <p><strong>9.1.</strong> Sigilo sobre volumes, preços, prazos, dados cadastrais e estratégias por <span class="fill">[2] anos</span> após o término, salvo informação pública ou exigência legal.</p>
-      <p><strong>9.2.</strong> Tratamento de dados pessoais conforme LGPD (Lei 13.709/2018).</p>
-      <p><strong>9.3.</strong> NDA específico, se houver, prevalece em conflito sobre sigilo.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 10 · Limitação de responsabilidade</h3>
-      <p><strong>10.1.</strong> A CONTRATADA não responde por inadimplemento entre as partes do metal; qualidade/pureza/procedência além dos documentos das próprias partes; variação de cotação; decisões comerciais das partes; danos indiretos/lucros cessantes, salvo dolo ou culpa grave.</p>
-      <p><strong>10.2.</strong> Se houver responsabilidade da CONTRATADA por ato próprio culposo, o teto indenizável fica limitado a <span class="fill">[1x / 2x]</span> a remuneração paga na operação (<em>validar com advogado</em>).</p>
-      <p><strong>10.3.</strong> A decisão de fechar ou não com a contraparte é exclusivamente do CONTRATANTE.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 11 · Não exclusividade</h3>
-      <p><strong>11.1.</strong> Salvo Anexo I em contrário, não há exclusividade, respeitada a Cláusula 4.4 quando aplicável.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 12 · Vigência e rescisão</h3>
-      <p><strong>12.1.</strong> Da assinatura até concretização, desistência formal ou <span class="fill">[90] dias</span>, o que ocorrer primeiro.</p>
-      <p><strong>12.2.</strong> Rescisão com aviso escrito de <span class="fill">[7] dias</span>, sem prejuízo de remuneração devida e da Cláusula 4.4.</p>
-      <p><strong>12.3.</strong> Subsistem após o término: 4.4, 9, 10 e 13.</p>
-    </div>
-
-    <div class="clause card">
-      <h3>Cláusula 13 · Disposições gerais</h3>
-      <p><strong>13.1.</strong> Acordo integral quanto à intermediação e remuneração.</p>
-      <p><strong>13.2–13.5.</strong> Nulidade parcial; tolerância não é renúncia; cessão com anuência; comunicação por e-mail/WhatsApp do Anexo I.</p>
-      <p><strong>13.6. Foro:</strong> comarca de <span class="fill">[Limeira/SP ou Ribeirão Preto/SP]</span>.</p>
-    </div>
-
-    <p>E por estarem justas e contratadas, as partes assinam o presente em <span class="fill">[2] vias</span> de igual teor (ou assinatura eletrônica válida).</p>
 
     <div class="sign-grid">
       <div class="sign-box">
         <strong>CONTRATANTE</strong>
-        <p>Nome:</p><div class="line"></div>
-        <p>CPF/CNPJ:</p><div class="line"></div>
-        <p>Assinatura:</p><div class="line"></div>
-        <p>Data:</p><div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <small>Nome · CPF/CNPJ · Assinatura · Data</small>
       </div>
       <div class="sign-box">
-        <strong>CONTRATADA (Lastro Ouro)</strong>
-        <p>Nome:</p><div class="line"></div>
-        <p>CPF/CNPJ:</p><div class="line"></div>
-        <p>Assinatura:</p><div class="line"></div>
-        <p>Data:</p><div class="line"></div>
+        <strong>CONTRATADA (Lastro)</strong>
+        <div class="line"></div>
+        <div class="line"></div>
+        <small>Nome · CPF/CNPJ · Assinatura · Data</small>
       </div>
     </div>
 
-    <h2>Anexo I · Dados da operação</h2>
-    <table>
-      <tbody>
-        <tr><th>Perfil do CONTRATANTE</th><td>( ) Comprador &nbsp; ( ) Vendedor/ofertante</td></tr>
-        <tr><th>Contraparte</th><td></td></tr>
-        <tr><th>Produto / formato</th><td></td></tr>
-        <tr><th>Quantidade estimada</th><td></td></tr>
-        <tr><th>Pureza / especificação</th><td></td></tr>
-        <tr><th>Prazo desejado</th><td></td></tr>
-        <tr><th>Região</th><td></td></tr>
-        <tr><th>Critério de concretização</th><td>( ) NF-e do metal &nbsp; ( ) pagamento comprovado &nbsp; ( ) ambos</td></tr>
-        <tr><th>Remuneração</th><td>( ) Opção A R$ ___ &nbsp; ( ) Opção B ___% piso/teto</td></tr>
-        <tr><th>Contatos</th><td>CONTRATANTE: ___ · CONTRATADA: ___</td></tr>
-        <tr><th>Observações</th><td></td></tr>
-      </tbody>
-    </table>
-
-    <h2>C) Checklist do advogado</h2>
-    <div class="card check-list">
-      <label><input type="checkbox" /> Aprovo o desenho geral (intermediação sem tocar metal/dinheiro do metal)</label>
-      <label><input type="checkbox" /> Reescrever Cláusula 1 (objeto) — comentário: ________</label>
-      <label><input type="checkbox" /> Reescrever Cláusula 4.4 (causa eficiente) — comentário: ________</label>
-      <label><input type="checkbox" /> Reescrever Cláusula 10 (limitação de responsabilidade) — comentário: ________</label>
-      <label><input type="checkbox" /> Precisa contrato tripartite? ( ) Sim ( ) Não</label>
-      <label><input type="checkbox" /> Risco regulatório neste CNAE/modelo: ( ) Baixo ( ) Médio ( ) Alto</label>
-      <label><input type="checkbox" /> Posso usar com ajustes mínimos? ( ) Sim ( ) Só após redação nova do escritório</label>
-      <label><input type="checkbox" /> Próximo passo sugerido: ________</label>
-      <p style="margin-top:1rem">Advogado: _____________ · OAB: _____________ · Data: _____________</p>
+    <h2>Checklist do advogado</h2>
+    <div class="card check">
+      <label><input type="checkbox" /> Aprovo o desenho geral</label>
+      <label><input type="checkbox" /> Ajustar causa eficiente (cláusula 3)</label>
+      <label><input type="checkbox" /> Ajustar limite de responsabilidade (cláusula 6)</label>
+      <label><input type="checkbox" /> Precisa tripartite? ( ) Sim ( ) Não</label>
+      <label><input type="checkbox" /> Risco regulatório: ( ) Baixo ( ) Médio ( ) Alto</label>
+      <label><input type="checkbox" /> Pode usar com ajustes? ( ) Sim ( ) Redação nova</label>
+      <p style="margin-top:0.75rem">Advogado / OAB / Data: _______________</p>
     </div>
 
-    <h2 class="no-print">D) Mensagem pronta (WhatsApp)</h2>
-    <div class="wa-box no-print">Fala! Estou montando a Lastro Ouro: intermediação entre empresas de ouro (só comissão, sem estoque, sem tocar no metal nem no dinheiro da operação).
-
-Preparei um CONTRATO-MODELO (rascunho) com a visão do negócio e cláusulas de proteção:
+    <h2 class="no-print">Zap pronto</h2>
+    <div class="wa no-print">Fala! Contrato-modelo enxuto da Lastro Ouro (rascunho) pra você olhar:
 https://lastroouro.com.br/contrato-modelo.html
 
-Pode olhar com cara de “aprovava / não aprovava” e marcar o checklist do final?
+Intermediação só comissão, sem tocar metal/dinheiro da operação.
+Pode marcar o checklist no final? Valeu!</div>
 
-Quero saber principalmente:
-1) risco de eu virar responsável se uma ponta não cumprir
-2) se basta contrato com quem me paga + NF de serviço
-3) se a cláusula de causa eficiente segura
-4) CNAE / ME vs MEI na sua visão
-
-Valeu demais.</div>
-
-    <footer class="doc">
-      Lastro Ouro · lastroouro.com.br · Documento interno para revisão jurídica · Não constitui aconselhamento jurídico.
-    </footer>
+    <footer>Lastro Ouro · lastroouro.com.br · Rascunho para revisão jurídica</footer>
   </div>
 </body>
 </html>
