@@ -596,6 +596,14 @@
       aspect-ratio: 16 / 10;
       overflow: hidden;
       background: #e8e4de;
+      position: relative;
+    }
+    .service-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 248, 243, 0.12), rgba(28, 36, 52, 0.08));
+      pointer-events: none;
     }
     .service-photo img {
       width: 100%;
@@ -603,6 +611,7 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      filter: saturate(0.72) contrast(0.92) brightness(1.04);
     }
     .service-body {
       padding: 1.5rem 1.5rem 1.6rem;
@@ -1202,7 +1211,7 @@
         <div class="services-grid">
           <article class="service buy reveal">
             <figure class="service-photo">
-              <img src="assets/photo-barras.png?v=1" alt="Barras e lingotes de ouro" />
+              <img src="assets/photo-comprar-clean.png?v=1" alt="Mesa de trabalho limpa para compras empresariais" />
             </figure>
             <div class="service-body">
               <div class="tag">Comprar</div>
@@ -1219,7 +1228,7 @@
           </article>
           <article class="service sell reveal">
             <figure class="service-photo">
-              <img src="assets/photo-correntes.png?v=1" alt="Correntes de ouro" />
+              <img src="assets/photo-vender-clean.png?v=1" alt="Reunião comercial discreta entre empresas" />
             </figure>
             <div class="service-body">
               <div class="tag">Vender</div>
