@@ -156,31 +156,33 @@
       position: fixed;
       inset: 0 0 auto;
       z-index: 50;
-      background: rgba(255, 248, 243, 0.88);
-      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid transparent;
-      transition: border-color 0.25s, background 0.25s;
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
     }
     .nav.scrolled {
-      background: rgba(255, 248, 243, 0.96);
+      background: rgba(255, 255, 255, 0.97);
       border-bottom-color: var(--line);
+      box-shadow: 0 1px 0 rgba(26, 20, 16, 0.04);
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 96px;
-      gap: 1rem;
+      height: 64px;
+      gap: 1.25rem;
     }
     .brand-text {
       display: inline-flex;
       align-items: center;
       flex-shrink: 0;
+      line-height: 0;
     }
     .brand-text img {
-      height: 72px;
+      height: 36px;
       width: auto;
-      max-width: min(420px, 72vw);
+      max-width: 200px;
       object-fit: contain;
       object-position: left center;
       display: block;
@@ -189,20 +191,32 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.4rem;
+      gap: 1.75rem;
       list-style: none;
-      font-size: 0.92rem;
+      font-size: 0.875rem;
       font-weight: 500;
       color: var(--muted);
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      display: inline-block;
+      line-height: 1.2;
+      padding: 0.25rem 0;
     }
     .nav-links a:hover { color: var(--ink); }
     .nav-cta {
+      flex-shrink: 0;
       background: var(--orange);
       color: #fff;
-      padding: 0.65rem 1.1rem;
+      padding: 0.55rem 1.05rem;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
+      line-height: 1.2;
+      white-space: nowrap;
       transition: background 0.2s, transform 0.2s;
     }
     .nav-cta:hover { background: var(--orange-deep); transform: translateY(-1px); }
@@ -210,15 +224,18 @@
       display: none;
       border: 0;
       background: transparent;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
     }
     .nav-toggle span {
       display: block;
       height: 2px;
       background: var(--ink);
-      margin: 6px 0;
+      margin: 5px 8px;
+      border-radius: 1px;
     }
 
     .btn {
@@ -254,7 +271,7 @@
     .btn-blue:hover { background: #255ad4; }
 
     .hero {
-      padding: 8.2rem 0 2.5rem;
+      padding: 6.5rem 0 2.5rem;
     }
     .hero-grid {
       display: grid;
@@ -1034,23 +1051,36 @@
       .journey-step:nth-child(even) .journey-card,
       .journey-step:nth-child(odd) .journey-card { grid-column: 1; }
     }
-    @media (max-width: 720px) {
+    @media (max-width: 960px) {
       .nav-links { display: none; }
       .nav-links.open {
         display: flex;
         flex-direction: column;
+        flex-wrap: nowrap;
+        white-space: normal;
         position: absolute;
-        top: 72px;
+        top: 64px;
         left: 0;
         right: 0;
-        background: var(--bg);
-        padding: 1rem 1.25rem 1.25rem;
+        background: #fff;
+        padding: 1rem 1.25rem 1.15rem;
         border-bottom: 1px solid var(--line);
         align-items: flex-start;
-        gap: 0.85rem;
+        gap: 0;
+        box-shadow: 0 12px 28px rgba(26, 20, 16, 0.08);
       }
+      .nav-links.open a {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.95rem;
+      }
+      .nav-links.open li:last-child a { border-bottom: 0; }
       .nav-toggle { display: block; }
       .nav .nav-cta { display: none; }
+    }
+    @media (max-width: 720px) {
       .service-row { grid-template-columns: 0.75fr 1.25fr; gap: 0.5rem; }
       .service-illust img { width: min(100%, 120px); }
       .service-pill { font-size: 0.72rem; padding: 0.4rem 0.75rem; white-space: normal; text-align: center; }
@@ -1068,13 +1098,11 @@
       .form-grid.two,
       .range-options { grid-template-columns: 1fr; }
       .faq-brand { display: none; }
-      .nav-toggle { display: block; }
-      .nav .nav-cta { display: none; }
       .hero-visual { min-height: auto; }
       .hero-visual figure { max-height: none; aspect-ratio: 16 / 10; }
       .photo-row figure { aspect-ratio: 16 / 10; }
-      .brand-text img { height: 58px; }
-      .hero { padding-top: 6.5rem; }
+      .brand-text img { height: 32px; }
+      .hero { padding-top: 5.25rem; }
       section { padding: 3.2rem 0; }
     }
   </style>
@@ -1091,12 +1119,10 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#como-funciona">Como funciona</a></li>
         <li><a href="#ouro-com-nota">Ouro com nota</a></li>
-        <li><a href="#produtos">O que fazemos</a></li>
         <li><a href="#servicos">Comprar ou vender</a></li>
         <li><a href="#faq">Dúvidas</a></li>
-        <li><a href="#contato">Fale conosco</a></li>
       </ul>
-      <a class="nav-cta" href="#contato">Quero conversar</a>
+      <a class="nav-cta" href="#contato">Fale conosco</a>
     </div>
   </header>
 
