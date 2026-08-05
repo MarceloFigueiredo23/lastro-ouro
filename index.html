@@ -41,7 +41,8 @@
         "email": "lastroouro@gmail.com",
         "telephone": "+55-16-99219-7090",
         "sameAs": [
-          "https://www.instagram.com/lastro.ouro/"
+          "https://www.instagram.com/lastro.ouro/",
+          "https://www.linkedin.com/company/lastro-ouro"
         ],
         "description": "Intermediação comercial de ouro entre empresas, com nota fiscal e origem documentada. Sem estoque próprio."
       },
@@ -954,27 +955,32 @@
     a.channel.wa:hover { border-color: #25D366; }
     a.channel.mail:hover { border-color: #EA4335; }
     a.channel.ig:hover { border-color: #E1306C; }
+    a.channel.li:hover { border-color: #0A66C2; }
     .channel .brand-icon {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       display: grid;
       place-items: center;
       flex-shrink: 0;
+      box-shadow: inset 0 0 0 1px rgba(28, 36, 52, 0.04);
     }
     .channel .brand-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       display: block;
     }
     .channel .brand-icon.wa {
-      background: #E8F8EE;
+      background: #E7F8EF;
     }
     .channel .brand-icon.mail {
-      background: #FCE8E6;
+      background: #F3F6FC;
     }
     .channel .brand-icon.ig {
-      background: linear-gradient(135deg, #f9e0ff 0%, #ffe8f0 50%, #fff0e0 100%);
+      background: linear-gradient(145deg, #fff0e8 0%, #fce4f0 45%, #f0e6ff 100%);
+    }
+    .channel .brand-icon.li {
+      background: #E8F1FB;
     }
     .channel strong { display: block; font-size: 0.95rem; color: var(--ink); }
     .channel span { font-size: 0.86rem; color: var(--muted); }
@@ -1549,8 +1555,9 @@
           <p>Um formulário só. Escolha na caixa se você precisa comprar ou quer vender.</p>
           <a class="channel wa" href="https://wa.me/5516992197090" target="_blank" rel="noopener">
             <div class="brand-icon wa" aria-hidden="true">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
-                <path fill="#25D366" d="M12.04 2C6.58 2 2.15 6.4 2.15 11.84c0 1.99.52 3.93 1.52 5.64L2 22l4.68-1.52a10.05 10.05 0 0 0 5.36 1.54h.01c5.46 0 9.89-4.4 9.89-9.84C21.94 6.4 17.5 2 12.04 2zm0 17.94h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.07.99.99-2.99-.2-.31a8.16 8.16 0 0 1-1.25-4.36c0-4.52 3.71-8.2 8.26-8.2 2.21 0 4.28.85 5.84 2.4a8.12 8.12 0 0 1 2.41 5.81c0 4.52-3.71 8.19-8.25 8.19zm4.53-6.14c-.25-.12-1.47-.72-1.7-.8-.23-.09-.39-.12-.56.12-.16.25-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74 1.49.64 1.92.7 2.61.59.42-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="#25D366" d="M17.47 14.38c-.28-.14-1.64-.81-1.9-.9-.25-.1-.44-.14-.62.14-.18.27-.71.9-.87 1.08-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.2-1.35-.81-.72-1.36-1.62-1.52-1.9-.16-.27-.02-.42.12-.55.13-.13.28-.32.42-.49.14-.16.18-.27.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.65 1.12 2.83c.14.18 1.93 2.95 4.67 4.13.65.28 1.16.45 1.56.57.65.2 1.25.18 1.72.11.52-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.25-.18-.53-.32z"/>
+                <path fill="#25D366" d="M12.04 2a9.9 9.9 0 0 0-8.54 14.9L2 22l5.24-1.37A9.94 9.94 0 0 0 12.04 22c5.48 0 9.93-4.45 9.93-9.93S17.52 2 12.04 2zm0 18.13c-1.66 0-3.28-.44-4.7-1.28l-.34-.2-3.12 1 .99-3.04-.22-.35a8.15 8.15 0 1 1 7.39 3.87z"/>
               </svg>
             </div>
             <div>
@@ -1560,35 +1567,47 @@
           </a>
           <a class="channel mail" href="mailto:lastroouro@gmail.com">
             <div class="brand-icon mail" aria-hidden="true">
-              <svg viewBox="52 42 88 66" xmlns="http://www.w3.org/2000/svg" role="img">
-                <path fill="#4285F4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/>
-                <path fill="#34A853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/>
-                <path fill="#FBBC04" d="M120 48v26l20-15v-8c0-7.45-8.51-11.78-14.4-7.35"/>
-                <path fill="#EA4335" d="M72 74V48l24 18 24-18v26L96 92"/>
-                <path fill="#C5221F" d="M52 51v8l20 15V48l-5.6-4.22C60.51 39.22 52 43.55 52 51"/>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="#4285F4" d="M4 6.5v11c0 .83.67 1.5 1.5 1.5H7V9.25L4 7.1v-.6z"/>
+                <path fill="#34A853" d="M20 6.5v.6L17 9.25V19h1.5c.83 0 1.5-.67 1.5-1.5v-11z"/>
+                <path fill="#FBBC05" d="M20 6.5v1.1L12 13.4 4 7.6V6.5C4 5.67 4.67 5 5.5 5h13c.83 0 1.5.67 1.5 1.5z"/>
+                <path fill="#EA4335" d="M7 9.25V19h10V9.25L12 13.4 7 9.25z"/>
               </svg>
             </div>
             <div>
-              <strong>Gmail</strong>
+              <strong>E-mail</strong>
               <span>lastroouro@gmail.com</span>
             </div>
           </a>
           <a class="channel ig" href="https://www.instagram.com/lastro.ouro/" target="_blank" rel="noopener">
             <div class="brand-icon ig" aria-hidden="true">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
                   <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#F58529"/>
+                    <stop offset="30%" stop-color="#FEDA77"/>
                     <stop offset="50%" stop-color="#DD2A7B"/>
-                    <stop offset="100%" stop-color="#8134AF"/>
+                    <stop offset="70%" stop-color="#8134AF"/>
+                    <stop offset="100%" stop-color="#515BD4"/>
                   </linearGradient>
                 </defs>
-                <path fill="url(#igGrad)" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.4 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.1.4-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.8.1-1.1 0-1.7.2-2.1.4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c0 1.1.2 1.7.4 2.1.2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c1.1 0 1.7-.2 2.1-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c0-1.1-.2-1.7-.4-2.1-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.3-.1-1.6-.1-4.8-.1zm0 3.1a5.1 5.1 0 1 1 0 10.2 5.1 5.1 0 0 1 0-10.2zm0 1.8a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6zm6.5-2.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
+                <path fill="url(#igGrad)" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.41.61.23 1.05.52 1.5.97.46.46.74.9.97 1.5.17.46.36 1.26.41 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.43-.23.61-.52 1.05-.97 1.5-.46.46-.9.74-1.5.97-.46.17-1.26.36-2.43.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.41a4.13 4.13 0 0 1-1.5-.97 4.13 4.13 0 0 1-.97-1.5c-.17-.46-.36-1.26-.41-2.43C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.43.23-.61.52-1.05.97-1.5.46-.46.9-.74 1.5-.97.46-.17 1.26-.36 2.43-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.8c-3.15 0-3.52.01-4.76.07-.98.04-1.52.21-1.87.34-.47.18-.81.4-1.16.75-.35.35-.57.69-.75 1.16-.14.35-.3.89-.34 1.87-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.98.21 1.52.34 1.87.18.47.4.81.75 1.16.35.35.69.57 1.16.75.35.14.89.3 1.87.34 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.98-.04 1.52-.21 1.87-.34.47-.18.81-.4 1.16-.75.35-.35.57-.69.75-1.16.14-.35.3-.89.34-1.87.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.98-.21-1.52-.34-1.87a3.12 3.12 0 0 0-.75-1.16 3.12 3.12 0 0 0-1.16-.75c-.35-.14-.89-.3-1.87-.34-1.24-.06-1.61-.07-4.76-.07zm0 3.06a5.0 5.0 0 1 1 0 10 5.0 5.0 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm6.4-2.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
               </svg>
             </div>
             <div>
               <strong>Instagram</strong>
               <span>@lastro.ouro</span>
+            </div>
+          </a>
+          <a class="channel li" href="https://www.linkedin.com/company/lastro-ouro" target="_blank" rel="noopener">
+            <div class="brand-icon li" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="#0A66C2" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.25h4.52V24H.24V8.25zM8.23 8.25h4.33v2.15h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V24h-4.52v-6.93c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V24H8.23V8.25z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>LinkedIn</strong>
+              <span>Lastro Ouro</span>
             </div>
           </a>
         </div>
@@ -1704,6 +1723,7 @@
           <a href="#faq">Dúvidas</a>
           <a href="#contato">Fale conosco</a>
           <a href="https://www.instagram.com/lastro.ouro/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/company/lastro-ouro" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
       <p class="footer-disclaimer">
