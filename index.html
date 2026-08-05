@@ -37,7 +37,7 @@
         "@id": "https://lastroouro.com.br/#organization",
         "name": "Lastro Ouro",
         "url": "https://lastroouro.com.br/",
-        "logo": "https://lastroouro.com.br/assets/logo-wordmark.png",
+        "logo": "https://lastroouro.com.br/assets/logo-mark.png",
         "email": "lastroouro@gmail.com",
         "telephone": "+55-16-99219-7090",
         "sameAs": [
@@ -178,21 +178,48 @@
       height: 64px;
       gap: 1.25rem;
     }
-    .brand-text {
+    .brand {
       display: inline-flex;
       align-items: center;
+      gap: 0.55rem;
       flex-shrink: 0;
-      line-height: 0;
+      line-height: 1;
+      text-decoration: none;
+      color: inherit;
     }
-    .brand-text img {
-      height: 40px;
-      width: auto;
-      max-width: 240px;
-      object-fit: contain;
-      object-position: left center;
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      flex-shrink: 0;
       display: block;
-      background: transparent;
+      object-fit: cover;
     }
+    .brand-name {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.28em;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .brand-name .lastro { color: var(--ink); }
+    .brand-name .ouro { color: var(--orange); }
+    .brand.brand-lg .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    .brand.brand-lg .brand-name { font-size: 1.55rem; }
+    .brand.brand-footer .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    .brand.brand-footer .brand-name { font-size: 1.3rem; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -870,14 +897,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1rem;
+      padding: 1.25rem 1rem;
+      min-height: 120px;
     }
-    .faq-brand img {
-      width: min(100%, 280px);
-      height: auto;
-      object-fit: contain;
-      opacity: 0.92;
-    }
+    .faq-brand .brand { opacity: 0.96; }
     details {
       background: var(--surface);
       border: 1px solid var(--line);
@@ -1147,11 +1170,11 @@
       .faq-layout,
       .form-grid.two,
       .range-options { grid-template-columns: 1fr; }
-      .faq-brand { display: none; }
       .hero-visual { min-height: auto; }
       .hero-visual figure { max-height: none; aspect-ratio: 16 / 10; }
       .photo-row figure { aspect-ratio: 16 / 10; }
-      .brand-text img { height: 36px; }
+      .brand-mark { width: 32px; height: 32px; border-radius: 8px; }
+      .brand-name { font-size: 1.05rem; }
       .hero { padding-top: 5.25rem; }
       section { padding: 3.2rem 0; }
     }
@@ -1160,8 +1183,9 @@
 <body>
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
-      <a class="brand-text" href="#topo" aria-label="Lastro Ouro · início">
-        <img src="assets/logo-nav.png?v=2" alt="Lastro Ouro" width="420" height="83" />
+      <a class="brand" href="#topo" aria-label="Lastro Ouro · início">
+        <img class="brand-mark" src="assets/logo-mark.png?v=3" alt="" width="36" height="36" />
+        <span class="brand-name"><span class="lastro">lastro</span><span class="ouro">ouro</span></span>
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1509,7 +1533,10 @@
           </div>
         </div>
         <aside class="faq-brand reveal" aria-hidden="true">
-          <img src="assets/logo-wordmark.png?v=8" alt="" width="280" height="72" />
+          <div class="brand brand-lg">
+            <img class="brand-mark" src="assets/logo-mark.png?v=3" alt="" width="48" height="48" />
+            <span class="brand-name"><span class="lastro">lastro</span><span class="ouro">ouro</span></span>
+          </div>
         </aside>
       </div>
     </section>
@@ -1666,8 +1693,9 @@
   <footer>
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand-text" href="#topo">
-          <img src="assets/logo-wordmark.png?v=8" alt="Lastro Ouro" width="360" height="92" />
+        <a class="brand brand-footer" href="#topo" aria-label="Lastro Ouro · início">
+          <img class="brand-mark" src="assets/logo-mark.png?v=3" alt="" width="40" height="40" />
+          <span class="brand-name"><span class="lastro">lastro</span><span class="ouro">ouro</span></span>
         </a>
         <div class="footer-links">
           <a href="#como-funciona">Como funciona</a>
