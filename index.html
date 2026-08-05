@@ -121,8 +121,8 @@
       --ink: #1C2434;
       --muted: #5C6578;
       --line: #E8DFD6;
-      --orange: #FF6B35;
-      --orange-deep: #E85A28;
+      --orange: #ED4E00;
+      --orange-deep: #D44500;
       --orange-soft: #FFE0D4;
       --blue: #2F6FED;
       --blue-soft: #E8F0FF;
@@ -140,10 +140,15 @@
     body {
       font-family: var(--body);
       color: var(--ink);
-      background:
-        radial-gradient(ellipse 80% 50% at 100% -10%, rgba(47, 111, 237, 0.08), transparent 50%),
-        radial-gradient(ellipse 70% 45% at 0% 0%, rgba(255, 107, 53, 0.12), transparent 45%),
-        var(--bg);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 100% -10%, rgba(47, 111, 237, 0.06), transparent 50%),
+        radial-gradient(ellipse 70% 45% at 0% 0%, rgba(237, 78, 0, 0.10), transparent 45%),
+        linear-gradient(180deg, rgba(255, 248, 243, 0.72), rgba(255, 248, 243, 0.88)),
+        url("assets/texture-seda.png");
+      background-size: auto, auto, auto, 920px;
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+      background-attachment: scroll;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
     }
@@ -272,6 +277,21 @@
 
     .hero {
       padding: 6.5rem 0 2.5rem;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: min(92vh, 820px);
+      pointer-events: none;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(255, 248, 243, 0.35) 0%, rgba(255, 248, 243, 0.92) 88%),
+        url("assets/texture-seda.png");
+      background-size: auto, cover;
+      background-position: center top;
+      opacity: 0.85;
     }
     .hero-grid {
       display: grid;
@@ -718,7 +738,7 @@
     .service.buy {
       background:
         radial-gradient(ellipse 80% 70% at 50% 35%, rgba(255,255,255,0.22), transparent 55%),
-        linear-gradient(145deg, #FF7A45 0%, #FF6B35 45%, #E85A28 100%);
+        linear-gradient(145deg, #FF6A2B 0%, #ED4E00 45%, #D44500 100%);
       color: #fff;
     }
     .service.sell {
@@ -1141,7 +1161,7 @@
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <a class="brand-text" href="#topo" aria-label="Lastro Ouro · início">
-        <img src="assets/logo-wordmark.png?v=4" alt="Lastro Ouro" width="420" height="113" />
+        <img src="assets/logo-wordmark.png?v=5" alt="Lastro Ouro" width="420" height="113" />
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1489,7 +1509,7 @@
           </div>
         </div>
         <aside class="faq-brand reveal" aria-hidden="true">
-          <img src="assets/logo-wordmark.png?v=4" alt="" width="280" height="75" />
+          <img src="assets/logo-wordmark.png?v=5" alt="" width="280" height="75" />
         </aside>
       </div>
     </section>
@@ -1647,7 +1667,7 @@
     <div class="wrap">
       <div class="footer-top">
         <a class="brand-text" href="#topo">
-          <img src="assets/logo-wordmark.png?v=4" alt="Lastro Ouro" width="360" height="97" />
+          <img src="assets/logo-wordmark.png?v=5" alt="Lastro Ouro" width="360" height="97" />
         </a>
         <div class="footer-links">
           <a href="#como-funciona">Como funciona</a>
