@@ -1181,7 +1181,7 @@
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow">Ouro e joalheria</div>
-          <h1>Compre e venda ouro com <em>nota</em> — mais segurança para a empresa</h1>
+          <h1>Compre e venda ouro com <em>nota</em>: mais segurança para a empresa</h1>
           <p class="hero-lead">
             A Lastro Ouro junta quem precisa comprar ouro e quem tem oferta com nota fiscal.
             Organizamos a conversa e a papelada. A compra e a entrega ficam entre as duas empresas.
@@ -1434,7 +1434,7 @@
             <p>
               Comprar ouro para empresa não é o mesmo que comprar joia no varejo. O que importa é
               <strong>nota fiscal</strong>, origem aparentada em ordem e uma contraparte que realmente entregue
-              no prazo. Muitos negócios em Limeira e região ainda resolvem isso por indicação e WhatsApp —
+              no prazo. Muitos negócios em Limeira e região ainda resolvem isso por indicação e WhatsApp.
               e aí faltam processo, comparação de opções e registro do que ficou combinado.
             </p>
             <p>
@@ -1458,7 +1458,7 @@
             </p>
             <p>
               Se a sua empresa precisa de um <strong>fornecedor de ouro para joalheria</strong>, fundição ou
-              galvânica — ou se você tem oferta para vender com nota — fale conosco. Atendemos
+              galvânica. Ou, se você tem oferta para vender com nota, fale conosco. Atendemos
               <strong>Limeira/SP e região</strong>, com processo pensado para quem opera no formal.
             </p>
             <div class="seo-cta">
@@ -1646,9 +1646,9 @@
               <legend id="legendVolume">Volume médio (mensal)</legend>
               <span class="range-hint" id="hintVolume">Volume aproximado da sua operação</span>
               <div class="range-options">
-                <label><input type="radio" name="media_volume" value="R$ 20–40 mil" required /> R$ 20–40 mil</label>
-                <label><input type="radio" name="media_volume" value="R$ 40–70 mil" /> R$ 40–70 mil</label>
-                <label><input type="radio" name="media_volume" value="R$ 70–100 mil" /> R$ 70–100 mil</label>
+                <label><input type="radio" name="media_volume" value="R$ 20 a 40 mil" required /> R$ 20 a 40 mil</label>
+                <label><input type="radio" name="media_volume" value="R$ 40 a 70 mil" /> R$ 40 a 70 mil</label>
+                <label><input type="radio" name="media_volume" value="R$ 70 a 100 mil" /> R$ 70 a 100 mil</label>
                 <label><input type="radio" name="media_volume" value="R$ 100 mil +" /> R$ 100 mil +</label>
               </div>
             </fieldset>
@@ -1765,22 +1765,22 @@
       const perfil = data.get("perfil");
       const isFornecedor = perfil === "fornecedor";
       const lines = [
-        isFornecedor ? "*Lastro Ouro — Quero vender*" : "*Lastro Ouro — Quero comprar*",
+        isFornecedor ? "*Lastro Ouro · Quero vender*" : "*Lastro Ouro · Quero comprar*",
         "",
         `Perfil: ${isFornecedor ? "Vender" : "Comprar"}`,
         `Nome: ${data.get("nome")}`,
         `Empresa: ${data.get("empresa")}`,
-        `CNPJ: ${data.get("cnpj") || "—"}`,
+        `CNPJ: ${data.get("cnpj") || "-"}`,
         `WhatsApp: ${data.get("whatsapp")}`,
-        `E-mail: ${data.get("email") || "—"}`,
-        `Região: ${data.get("regiao") || "—"}`,
+        `E-mail: ${data.get("email") || "-"}`,
+        `Região: ${data.get("regiao") || "-"}`,
       ];
-      if (isFornecedor) lines.push(`Tipo: ${data.get("tipo_fornecedor") || "—"}`);
+      if (isFornecedor) lines.push(`Tipo: ${data.get("tipo_fornecedor") || "-"}`);
       lines.push(
         `Produto: ${data.get("produto")}`,
-        `Pureza: ${data.get("pureza") || "—"}`,
+        `Pureza: ${data.get("pureza") || "-"}`,
         `${isFornecedor ? "Capacidade" : "Quantidade"}: ${data.get("quantidade")}`,
-        `Prazo: ${data.get("prazo") || "—"}`,
+        `Prazo: ${data.get("prazo") || "-"}`,
         `Frequência: ${data.get("frequencia")}`,
         `Volume médio: ${data.get("media_volume")}`,
         "",
