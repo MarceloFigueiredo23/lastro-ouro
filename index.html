@@ -44,7 +44,18 @@
           "https://www.instagram.com/lastro.ouro/",
           "https://www.linkedin.com/in/lastro-ouro-22563b427/"
         ],
-        "description": "Intermediação comercial de ouro entre empresas, com nota fiscal e origem documentada. Sem estoque próprio."
+        "description": "Intermediação comercial de ouro entre empresas, com nota fiscal e origem documentada. Sem estoque próprio.",
+        "founder": { "@id": "https://lastroouro.com.br/#fundador" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://lastroouro.com.br/#fundador",
+        "name": "Marcelo Figueiredo",
+        "jobTitle": "Fundador",
+        "worksFor": { "@id": "https://lastroouro.com.br/#organization" },
+        "image": "https://lastroouro.com.br/assets/photo-fundador.png",
+        "url": "https://lastroouro.com.br/#quem-conduz",
+        "description": "Fundador da Lastro Ouro. Experiência em marketing, vendas e processos gerenciais. Ajuda empresas a comprar e vender ouro com nota e processo documentado."
       },
       {
         "@type": "WebSite",
@@ -884,6 +895,83 @@
     }
     .seo-visual figcaption strong { color: var(--orange-deep); }
 
+    .founder {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .founder-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.92fr) minmax(0, 1.2fr);
+      gap: 2.75rem;
+      align-items: center;
+    }
+    .founder-photo {
+      margin: 0;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 40px rgba(26, 20, 16, 0.08);
+      aspect-ratio: 1;
+      background: #ED4E00;
+    }
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .founder-copy .label { margin-bottom: 0.65rem; }
+    .founder-copy h2 {
+      font-family: var(--display);
+      font-size: clamp(1.85rem, 3.2vw, 2.45rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.35rem;
+    }
+    .founder-role {
+      color: var(--orange-deep);
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin: 0 0 1rem;
+    }
+    .founder-copy > p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 36rem;
+      margin: 0 0 1.15rem;
+    }
+    .founder-points {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      margin: 0 0 1.45rem;
+      padding: 0;
+    }
+    .founder-points li {
+      position: relative;
+      padding-left: 1.15rem;
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .founder-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .founder-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
     .faq-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(180px, 0.55fr);
@@ -1114,6 +1202,7 @@
     @media (max-width: 980px) {
       .hero-grid,
       .contact-grid,
+      .founder-grid,
       .services-grid,
       .products-grid,
       .distro-row,
@@ -1173,6 +1262,7 @@
       .safe-grid,
       .photo-row,
       .seo-guide-grid,
+      .founder-grid,
       .faq-layout,
       .form-grid.two,
       .range-options { grid-template-columns: 1fr; }
@@ -1200,6 +1290,7 @@
         <li><a href="#como-funciona">Como funciona</a></li>
         <li><a href="#ouro-com-nota">Ouro com nota</a></li>
         <li><a href="#servicos">Comprar ou vender</a></li>
+        <li><a href="#quem-conduz">Quem conduz</a></li>
         <li><a href="#faq">Dúvidas</a></li>
       </ul>
       <a class="nav-cta" href="#contato">Fale conosco</a>
@@ -1544,6 +1635,39 @@
             <span class="brand-name"><span class="lastro">lastro</span><span class="ouro">ouro</span></span>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="founder" id="quem-conduz" aria-labelledby="founder-title">
+      <div class="wrap founder-grid">
+        <figure class="founder-photo reveal">
+          <img
+            src="assets/photo-fundador.png?v=1"
+            alt="Marcelo Figueiredo, fundador da Lastro Ouro"
+            width="900"
+            height="900"
+            loading="lazy"
+          />
+        </figure>
+        <div class="founder-copy reveal">
+          <div class="label">Quem conduz</div>
+          <h2 id="founder-title">Marcelo Figueiredo</h2>
+          <p class="founder-role">Fundador da Lastro Ouro</p>
+          <p>
+            Ajudo empresas a comprar e vender ouro com nota e processo claro:
+            reunião a três, checagem de documentação e alinhamento registrado,
+            para reduzir risco de problema fiscal e de contraparte frágil.
+          </p>
+          <ul class="founder-points">
+            <li>Mais de 6 anos em marketing, vendas e processos gerenciais</li>
+            <li>Foco em operação B2B documentada (nota e origem)</li>
+            <li>Sem estoque, sem custódia: a compra fica entre as duas empresas</li>
+          </ul>
+          <div class="founder-actions">
+            <a class="btn btn-primary" href="https://wa.me/5516992197090" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="btn btn-secondary" href="#contato">Ir ao formulário</a>
+          </div>
+        </div>
       </div>
     </section>
 
