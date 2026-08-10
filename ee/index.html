@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lastro Ouro · Estruturação Estratégica · Ago/2026</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #161616;
+      --orange: #ED4E00;
+      --orange-dim: rgba(237, 78, 0, 0.18);
+      --orange-glow: rgba(237, 78, 0, 0.35);
+      --white: #f5f5f5;
+      --muted: #9a9a9a;
+      --line: rgba(255, 255, 255, 0.08);
+      --ok: #2ecc71;
+      --parcial: #f0b429;
+      --falta: #e74c3c;
+      --hip: #7aa2ff;
+      --font: "Plus Jakarta Sans", system-ui, sans-serif;
+      --display: "Fraunces", Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .deck { height: 100vh; width: 100vw; position: relative; overflow: hidden; }
+    .slide {
+      position: absolute; inset: 0; display: none; flex-direction: column;
+      padding: clamp(1.35rem, 3vw, 2.8rem) clamp(1.25rem, 3.5vw, 3.5rem) 3rem;
+      background:
+        radial-gradient(ellipse 55% 40% at 0% 100%, var(--orange-glow), transparent 55%),
+        radial-gradient(ellipse 50% 35% at 100% 100%, rgba(237, 78, 0, 0.22), transparent 50%),
+        var(--bg);
+      overflow-y: auto;
+    }
+    .slide.active { display: flex; }
+    .slide-inner {
+      flex: 1; display: flex; flex-direction: column;
+      max-width: 1180px; width: 100%; margin: 0 auto;
+      justify-content: center; gap: clamp(0.65rem, 1.3vh, 1.15rem);
+    }
+    .eyebrow {
+      font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--orange);
+    }
+    h1 {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(2.1rem, 5vw, 3.9rem); line-height: 1.08; letter-spacing: -0.02em;
+    }
+    h2 {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(1.5rem, 3.1vw, 2.45rem); line-height: 1.15; letter-spacing: -0.02em;
+    }
+    h3 { font-size: clamp(0.95rem, 1.4vw, 1.12rem); font-weight: 700; }
+    .lead {
+      font-size: clamp(0.95rem, 1.45vw, 1.15rem); color: var(--muted);
+      max-width: 44rem; line-height: 1.5;
+    }
+    .wordmark { font-size: clamp(1.3rem, 2.3vw, 1.75rem); font-weight: 800; letter-spacing: -0.03em; }
+    .wordmark .ouro { color: var(--orange); }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.32rem 0.7rem; border-radius: 999px;
+      border: 1px solid var(--line); background: rgba(255,255,255,0.03);
+      font-size: 0.74rem; color: var(--muted); font-weight: 500;
+    }
+    .chip.accent {
+      border-color: rgba(237, 78, 0, 0.45); color: var(--orange); background: var(--orange-dim);
+    }
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 0.16rem 0.45rem; border-radius: 4px;
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.05em;
+      text-transform: uppercase; white-space: nowrap; vertical-align: middle;
+    }
+    .badge.ok { background: rgba(46, 204, 113, 0.18); color: var(--ok); }
+    .badge.parcial { background: rgba(240, 180, 41, 0.18); color: var(--parcial); }
+    .badge.falta { background: rgba(231, 76, 60, 0.2); color: #ff7b6e; }
+    .badge.hip { background: rgba(122, 162, 255, 0.18); color: var(--hip); }
+    .badge.pendente { background: rgba(240, 180, 41, 0.22); color: var(--parcial); }
+    .badge.na { background: rgba(154, 154, 154, 0.15); color: var(--muted); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: 12px; padding: 0.95rem 1rem;
+    }
+    .card h3 { margin-bottom: 0.4rem; }
+    .card p, .card li { font-size: 0.84rem; color: var(--muted); line-height: 1.42; }
+    .card ul { list-style: none; display: flex; flex-direction: column; gap: 0.32rem; }
+    .card li::before {
+      content: ""; display: inline-block; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--orange); margin-right: 0.5rem; vertical-align: 0.15em;
+    }
+    .card .head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 0.45rem; margin-bottom: 0.4rem;
+    }
+    .table-wrap {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: 12px; overflow: hidden;
+    }
+    table.data { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    table.data th, table.data td {
+      text-align: left; padding: 0.48rem 0.6rem;
+      border-bottom: 1px solid var(--line); vertical-align: top;
+    }
+    table.data th {
+      color: var(--muted); font-weight: 600; font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    table.data td { color: var(--white); }
+    table.data td.muted { color: var(--muted); }
+    table.data tr:last-child td { border-bottom: none; }
+    .timeline {
+      position: relative; display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem; margin-top: 0.35rem;
+    }
+    .timeline::before {
+      content: ""; position: absolute; left: 4%; right: 4%; top: 20px;
+      height: 3px; background: linear-gradient(90deg, rgba(154,154,154,0.35), var(--orange));
+      border-radius: 2px; z-index: 0;
+    }
+    .tl-item {
+      position: relative; z-index: 1; display: flex; flex-direction: column;
+      gap: 0.5rem; padding-top: 0.1rem;
+    }
+    .tl-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--orange); color: #fff; font-weight: 800; font-size: 0.92rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 5px rgba(237, 78, 0, 0.15);
+    }
+    .tl-num.dim {
+      background: #333; color: var(--muted);
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.04);
+    }
+    .tl-item h3 { font-size: 0.9rem; }
+    .tl-item p { font-size: 0.76rem; color: var(--muted); line-height: 1.35; }
+    .score-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.65rem; }
+    .score {
+      border-radius: 12px; padding: 0.85rem; border: 1px solid var(--line); background: var(--bg-card);
+    }
+    .score .letter {
+      font-family: var(--display); font-size: 1.85rem; font-weight: 700;
+      color: var(--orange); line-height: 1; margin-bottom: 0.3rem;
+    }
+    .score p { font-size: 0.78rem; color: var(--muted); line-height: 1.35; }
+    .persona {
+      display: grid; grid-template-columns: 72px 1fr; gap: 0.85rem; align-items: start;
+    }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: linear-gradient(145deg, var(--orange), #9a3200);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.2rem; color: #fff;
+    }
+    .check-list { display: flex; flex-direction: column; gap: 0.38rem; }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 0.55rem;
+      padding: 0.48rem 0.65rem; background: var(--bg-card);
+      border: 1px solid var(--line); border-radius: 9px; font-size: 0.84rem;
+    }
+    .prio {
+      counter-reset: prio; list-style: none;
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .prio li {
+      counter-increment: prio;
+      display: grid; grid-template-columns: 32px 1fr auto; gap: 0.65rem; align-items: center;
+      padding: 0.55rem 0.75rem; background: var(--bg-card);
+      border: 1px solid var(--line); border-radius: 9px; font-size: 0.86rem;
+    }
+    .prio li::before {
+      content: counter(prio); width: 26px; height: 26px; border-radius: 50%;
+      background: var(--orange); display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.75rem;
+    }
+    .q-list { display: flex; flex-direction: column; gap: 0.45rem; }
+    .q-item {
+      display: grid; grid-template-columns: 36px 1fr; gap: 0.65rem;
+      padding: 0.75rem 0.9rem; background: var(--bg-card);
+      border: 1px solid var(--line); border-radius: 11px;
+    }
+    .q-item .qn {
+      width: 30px; height: 30px; border-radius: 8px; background: var(--orange-dim);
+      color: var(--orange); display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.82rem;
+    }
+    .q-item p { font-size: 0.88rem; line-height: 1.4; color: var(--white); }
+    .note {
+      font-size: 0.74rem; color: var(--muted);
+      border-left: 3px solid var(--orange); padding-left: 0.65rem; line-height: 1.4;
+    }
+    .big-num {
+      font-family: var(--display); font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      font-weight: 700; color: var(--orange); line-height: 1.1;
+    }
+    .footer-slide {
+      position: absolute; left: clamp(1.25rem, 3.5vw, 3.5rem); bottom: 1.05rem;
+      font-size: 0.66rem; color: rgba(154, 154, 154, 0.75); z-index: 2; pointer-events: none;
+    }
+    .progress {
+      position: fixed; top: 0; left: 0; height: 3px; background: var(--orange);
+      width: 0%; z-index: 50; transition: width 0.25s ease;
+    }
+    .nav-dots {
+      position: fixed; right: 0.85rem; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 5px; z-index: 40;
+      max-height: 72vh; overflow-y: auto; padding: 0.35rem; scrollbar-width: none;
+    }
+    .nav-dots::-webkit-scrollbar { display: none; }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%; border: none;
+      background: rgba(255,255,255,0.22); cursor: pointer; padding: 0;
+      transition: transform 0.15s, background 0.15s;
+    }
+    .dot:hover { background: rgba(237, 78, 0, 0.6); }
+    .dot.active { background: var(--orange); transform: scale(1.35); }
+    .nav-hint {
+      position: fixed; bottom: 1.05rem; right: clamp(1.25rem, 3.5vw, 3.5rem);
+      font-size: 0.66rem; color: rgba(154, 154, 154, 0.7); z-index: 30;
+    }
+    .slide-counter {
+      position: fixed; top: 0.9rem; right: 1.1rem;
+      font-size: 0.7rem; color: var(--muted); z-index: 30; font-weight: 600;
+    }
+    .sku-row {
+      display: grid; grid-template-columns: 100px 1fr 1fr; gap: 0.65rem;
+      padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--line);
+      font-size: 0.8rem; align-items: start;
+    }
+    .sku-row:last-child { border-bottom: none; }
+    .sku-name { font-weight: 700; color: var(--orange); }
+    .day-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.55rem;
+    }
+    .day-item {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: 10px; padding: 0.7rem 0.8rem;
+    }
+    .day-item strong { display: block; color: var(--orange); font-size: 0.72rem;
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .day-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.35; }
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4, .timeline, .score-grid, .day-grid { grid-template-columns: 1fr; }
+      .timeline::before { display: none; }
+      .nav-dots { display: none; }
+      .sku-row { grid-template-columns: 1fr; }
+      .prio li { grid-template-columns: 26px 1fr; }
+      .prio li .badge { grid-column: 2; justify-self: start; }
+      .persona { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="slide-counter" id="counter">1 / 31</div>
+  <nav class="nav-dots" id="dots" aria-label="Navegação de slides"></nav>
+  <div class="nav-hint">← → · clique nos dots</div>
+
+  <div class="deck" id="deck">
+
+    <!-- s01 -->
+    <section class="slide active" id="s01">
+      <div class="slide-inner">
+        <p class="wordmark">lastro <span class="ouro">ouro</span></p>
+        <p class="eyebrow">Estruturação Estratégica · Ago/2026</p>
+        <h1>EE interna · construção</h1>
+        <p class="lead">Deck só para Marcelo Figueiredo. Metodologia do PDF EE adaptada à Lastro: S1 dispensada, S2 em canais/ICP, S3-S4 com conteúdo real do Cap 22.</p>
+        <div class="meta-row">
+          <span class="chip accent">Interno</span>
+          <span class="chip">lastroouro.com.br</span>
+          <span class="chip">B2B · NF-e · ≥1 kg/mês</span>
+          <span class="chip">GMB pendente · Ads depois</span>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s02 Premissas -->
+    <section class="slide" id="s02">
+      <div class="slide-inner">
+        <p class="eyebrow">Decisões do fundador · 10/08</p>
+        <h2>Premissas desta versão</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="head"><h3>Kick Off</h3><span class="badge na">DISPENSADO</span></div>
+            <p>Semana 1 do PDF não é necessária. Coleta já está no playbook (Caps 01-20 + site).</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>Semana 2</h3><span class="badge parcial">ADAPTADA</span></div>
+            <p>Sem Ads live. Diagnóstico de canais + ICP + site + criativos orgânicos. Ads após GMB.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>S3 + S4</h3><span class="badge ok">CONSTRUIR</span></div>
+            <p>Blocos preenchidos com Cap 22. Fundador ajusta hipóteses (fee, contas, horas).</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>Audiência</h3><span class="badge ok">TEM</span></div>
+            <p>Só interno (Marcelo). Não é deck de investidor nem parceiro.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>Concorrência</h3><span class="badge ok">TEM</span></div>
+            <p>Só indireta: alternativas do cliente (direto, informal, indicação…). Sem marcas inventadas.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>GMB + Ads</h3><span class="badge pendente">PENDENTE</span></div>
+            <p>GMB em aprovação. Primeiras Ads depois. Não é N-A.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s03 Cronograma adaptado -->
+    <section class="slide" id="s03">
+      <div class="slide-inner">
+        <p class="eyebrow">Cronograma adaptado</p>
+        <h2>4 semanas · versão Lastro</h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-num dim">1</div>
+            <h3>Kick Off</h3>
+            <p><span class="badge na">DISPENSADO</span><br>Playbook + site já cobrem coleta. Sem formulário KO formal.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">2</div>
+            <h3>Canais + ICP</h3>
+            <p>Mapa de canais · site · criativos orgânicos · trilho pós-GMB para Ads</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">3</div>
+            <h3>Construir EE</h3>
+            <p>TAM/SAM/SOM · personas · SWOT · 4Ps · concorrência indireta · EE por bloco</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">4</div>
+            <h3>Plano tático</h3>
+            <p>12 meses T1-T4 · checklist operacional · backlog · próximos 14 dias</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s04 S2 mapa canais -->
+    <section class="slide" id="s04">
+      <div class="slide-inner">
+        <p class="eyebrow">Semana 2 · Diagnóstico de canais <span class="badge ok">TEM</span></p>
+        <h2>Mapa de canais × ICP</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>Canal</th><th>Fit ICP</th><th>Papel agora</th><th>Depois do GMB</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>WhatsApp</strong></td><td class="muted">Alto</td><td class="muted">#1 conversa e qualificação</td><td class="muted">Continua #1</td></tr>
+              <tr><td><strong>Visita Limeira</strong></td><td class="muted">Alto</td><td class="muted">#1 confiança / galvânica-fundição</td><td class="muted">Rotina mensal</td></tr>
+              <tr><td><strong>LinkedIn</strong></td><td class="muted">Médio-alto</td><td class="muted">Autoridade + outreach Score A</td><td class="muted">Conteúdo semanal</td></tr>
+              <tr><td><strong>Site + form kg</strong></td><td class="muted">Médio</td><td class="muted">Inbound + prova de seriedade</td><td class="muted">SEO local + UTMs</td></tr>
+              <tr><td><strong>Instagram</strong></td><td class="muted">Médio</td><td class="muted">Prova social / educação</td><td class="muted">Criativos + tráfego</td></tr>
+              <tr><td><strong>GMB</strong></td><td class="muted">Médio (local)</td><td><span class="badge pendente">PENDENTE</span></td><td class="muted">Reviews + busca local</td></tr>
+              <tr><td><strong>Meta/Google Ads</strong></td><td class="muted">Médio (depois)</td><td><span class="badge pendente">AGUARDA GMB</span></td><td class="muted">Campanhas BOFU (form / WA)</td></tr>
+              <tr><td><strong>E-mail frio</strong></td><td class="muted">Baixo-médio</td><td class="muted">Apoio</td><td class="muted">Só lista quente</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Conclusão: não auditar campanhas inexistentes. Auditar ambientes + orgânico + mapa ICP.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s05 Site -->
+    <section class="slide" id="s05">
+      <div class="slide-inner">
+        <p class="eyebrow">Ambiente · site <span class="badge ok">TEM</span></p>
+        <h2>O que já está no ar</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>lastroouro.com.br</h3>
+            <ul>
+              <li>Narrativa B2B ouro com nota</li>
+              <li>Form com faixas em kg: 1-5 · 5-15 · 15-30 · +30</li>
+              <li>Mínimo público: 1 kg/mês</li>
+              <li>Fundador visível · Marcelo Figueiredo</li>
+              <li>ICP e FAQ (não compramos / não custodiamos)</li>
+              <li>CTA: reunião / WhatsApp</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Melhorias pós-GMB</h3>
+            <ul>
+              <li>UTMs nos CTAs (Ads → form / WA)</li>
+              <li>SEO local “ouro Limeira” com GMB</li>
+              <li>Confirmar GA4 / Search Console</li>
+              <li>Taxa form → lead Score A/B</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s06 Criativos -->
+    <section class="slide" id="s06">
+      <div class="slide-inner">
+        <p class="eyebrow">Criativos orgânicos <span class="badge parcial">PARCIAL</span></p>
+        <h2>O que existe · o que falta pré-Ads</h2>
+        <div class="grid-2">
+          <div class="card">
+            <div class="head"><h3>Já tem</h3><span class="badge ok">TEM</span></div>
+            <ul>
+              <li>Logo-kit oficial (Lastro-Ouro-Instagram)</li>
+              <li>Identidade Cap 07 + assets do site</li>
+              <li>Linha de posts educativos (compliance / processo)</li>
+              <li>Wordmark lastro + ouro laranja</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="head"><h3>Pré-requisito Ads</h3><span class="badge falta">FALTA</span></div>
+            <ul>
+              <li>Pack criativos Ads (confiança + form/WA)</li>
+              <li>Auditoria formal “o que funciona” no orgânico</li>
+              <li>Variantes BOFU (prova de processo, fundador, reunião a três)</li>
+              <li>Manual copy 1-pager unificado</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">Pack Ads só depois da aprovação do GMB. Até lá: LinkedIn + IG + WhatsApp status.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s07 GMB + Ads -->
+    <section class="slide" id="s07">
+      <div class="slide-inner">
+        <p class="eyebrow">GMB + Ads</p>
+        <h2>Status pendente · trilho pós-aprovação</h2>
+        <div class="grid-2">
+          <div class="card">
+            <div class="head"><h3>Google Meu Negócio</h3><span class="badge pendente">PENDENTE</span></div>
+            <ul>
+              <li>Em aprovação (não é N-A)</li>
+              <li>Papel: busca local + reviews + prova de existência</li>
+              <li>Fit: médio (local Limeira / região)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="head"><h3>Meta / Google Ads</h3><span class="badge pendente">AGUARDA GMB</span></div>
+            <ul>
+              <li>Sem campanhas live ainda</li>
+              <li>Primeiras Ads depois do GMB</li>
+              <li>Foco BOFU: formulário / WhatsApp</li>
+              <li>Criativos de confiança (não “preço do ouro”)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:0.2rem">
+          <h3>Trilho pós-aprovação (ordem)</h3>
+          <p>1) GMB ativo · 2) UTMs no site · 3) pack criativos Ads · 4) 1 campanha teste BOFU · 5) medir CPL → lead Score A/B</p>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s08 TAM SAM SOM -->
+    <section class="slide" id="s08">
+      <div class="slide-inner">
+        <p class="eyebrow">Mercado quantificado <span class="badge hip">HIPÓTESE / AJUSTAR</span></p>
+        <h2>TAM · SAM · SOM (ordem de grandeza)</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="head"><h3>TAM</h3><span class="badge hip">HIPÓTESE</span></div>
+            <p class="big-num">~R$ 7 bi/ano</p>
+            <p>Consumo industrial joalheria BR ~10 t Au/ano × ~R$ 700/g. Metal como insumo, não receita Lastro.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>SAM</h3><span class="badge hip">HIPÓTESE</span></div>
+            <p class="big-num">~R$ 1,4 bi/ano</p>
+            <p>~20% do TAM: Limeira + cadeia regional/endereçável (polo ~60% folheados; fatia conservadora 15-25%).</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>SOM (metal)</h3><span class="badge hip">HIPÓTESE</span></div>
+            <p class="big-num">~960 kg/ano</p>
+            <p>40 contas × 2 kg/mês × 12. Volume “tocável”, não faturamento da Lastro.</p>
+          </div>
+        </div>
+        <p class="note">Fontes a citar: Sebrae-SP / Prefeitura Limeira (polo ~2,7k-3,6k empresas, ~60% folheados); consumo ~10 t (IBGM/fórum, validar); cotação ~R$ 700/g (Ago/2026). Você ajusta.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s09 SOM receita -->
+    <section class="slide" id="s09">
+      <div class="slide-inner">
+        <p class="eyebrow">SOM em receita Lastro <span class="badge hip">HIPÓTESE · 3 cenários</span></p>
+        <h2>Fee 3k · 5k · 7k × volume de ops</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>Fee / op</th><th>12 ops/ano<br><span class="muted">(1/mês)</span></th><th>24 ops/ano<br><span class="muted">(2/mês)</span></th><th>36 ops/ano<br><span class="muted">(3/mês)</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>R$ 3.000</strong></td><td class="muted">R$ 36 mil</td><td class="muted">R$ 72 mil</td><td class="muted">R$ 108 mil</td></tr>
+              <tr><td><strong>R$ 5.000</strong></td><td class="muted">R$ 60 mil</td><td class="muted">R$ 120 mil</td><td class="muted">R$ 180 mil</td></tr>
+              <tr><td><strong>R$ 7.000</strong></td><td class="muted">R$ 84 mil</td><td class="muted">R$ 168 mil</td><td class="muted">R$ 252 mil</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-3" style="margin-top:0.35rem">
+          <div class="card"><h3>Contas (ano 1)</h3><p>~8 a 16 ativas se 1,5–2 ops/conta/ano. Hipótese aceita para planejar.</p></div>
+          <div class="card"><h3>Âncora comercial</h3><p>Negociar na faixa <strong>3–7k</strong>. 3k = entrada. 5k = base. 7k = op complexa / Hub.</p></div>
+          <div class="card"><h3>Tempo</h3><p>Capacidade real depende das <strong>horas/semana</strong> que você dedica (side hustle).</p></div>
+        </div>
+        <p class="note">Não é forecast garantido. É teto de matemática: ops × fee. Ajuste a coluna de ops à sua rotina.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s10 ICP -->
+    <section class="slide" id="s10">
+      <div class="slide-inner">
+        <p class="eyebrow">ICP Cap 20 <span class="badge ok">TEM</span></p>
+        <h2>Score A / B / C / D</h2>
+        <div class="score-grid">
+          <div class="score">
+            <div class="letter">A</div>
+            <p>≥ 15 kg/mês ouro + nota + decisor + Limeira/região ou remoto recorrente. Contatar primeiro.</p>
+          </div>
+          <div class="score">
+            <div class="letter">B</div>
+            <p>1-15 kg/mês + nota + decisor. Segunda prioridade.</p>
+          </div>
+          <div class="score">
+            <div class="letter">C</div>
+            <p>Borderline (&lt;1 kg) ou pontual. Nurture 90 dias. Só se sobrar hora.</p>
+          </div>
+          <div class="score">
+            <div class="letter">D</div>
+            <p>Fora do ICP. Arquivar (sem nota, PF, só prata, joia média fina).</p>
+          </div>
+        </div>
+        <p class="note">Filtro 30s: CNPJ · ouro · nota · ≥1 kg · decisor para reunião a três. Qualquer “não” → não agenda.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s11 Persona Carla -->
+    <section class="slide" id="s11">
+      <div class="slide-inner">
+        <p class="eyebrow">Persona comprador A <span class="badge parcial">PARCIAL</span></p>
+        <h2>Carla Galvânica</h2>
+        <div class="card">
+          <div class="persona">
+            <div class="avatar">CG</div>
+            <div>
+              <p class="lead" style="max-width:none;color:var(--white);margin-bottom:0.6rem">Sócia/produção em Limeira. Precisa de Au para banho com NF. Odeia surpresa fiscal. Decide rápido se confiar.</p>
+              <div class="grid-3">
+                <div>
+                  <h3>Dores</h3>
+                  <ul>
+                    <li>Origem e nota do metal</li>
+                    <li>Prazo e pureza previsíveis</li>
+                    <li>Não perder tempo com informal</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Canais</h3>
+                  <ul>
+                    <li>WhatsApp</li>
+                    <li>Presencial / visita</li>
+                    <li>Indicação do polo</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>SKU típico</h3>
+                  <ul>
+                    <li>Seguro (+ Hub na 1ª)</li>
+                    <li>Pro se recompra</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s12 Persona Roberto -->
+    <section class="slide" id="s12">
+      <div class="slide-inner">
+        <p class="eyebrow">Persona comprador A <span class="badge parcial">PARCIAL</span></p>
+        <h2>Roberto Fundição</h2>
+        <div class="card">
+          <div class="persona">
+            <div class="avatar">RF</div>
+            <div>
+              <p class="lead" style="max-width:none;color:var(--white);margin-bottom:0.6rem">Compra liga/metal recorrente. Compara preço + prazo + nota. Objeção clássica: “já tenho fornecedor”.</p>
+              <div class="grid-3">
+                <div>
+                  <h3>Dores</h3>
+                  <ul>
+                    <li>Alternativa confiável ao fornecedor atual</li>
+                    <li>Comparativo documentado</li>
+                    <li>Não travar produção</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Canais</h3>
+                  <ul>
+                    <li>LinkedIn</li>
+                    <li>WhatsApp</li>
+                    <li>Visita Limeira</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Argumento</h3>
+                  <ul>
+                    <li>Match: 2-3 opções filtradas</li>
+                    <li>Tempo + checklist, não “preço mágico”</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s13 Persona Marina -->
+    <section class="slide" id="s13">
+      <div class="slide-inner">
+        <p class="eyebrow">Persona fornecedor A <span class="badge parcial">PARCIAL</span></p>
+        <h2>Marina Distribuição</h2>
+        <div class="card">
+          <div class="persona">
+            <div class="avatar">MD</div>
+            <div>
+              <p class="lead" style="max-width:none;color:var(--white);margin-bottom:0.6rem">Comercial de refinaria/distribuidor. Quer demanda qualificada sem chase informal. Objeção: “não trabalhamos com intermediário”.</p>
+              <div class="grid-3">
+                <div>
+                  <h3>Dores</h3>
+                  <ul>
+                    <li>Leads sem volume / sem nota</li>
+                    <li>Tempo perdido com chase</li>
+                    <li>Risco reputacional</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Resposta Lastro</h3>
+                  <ul>
+                    <li>KYC dos dois lados</li>
+                    <li>Reunião a três</li>
+                    <li>SKU Rede</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Canais</h3>
+                  <ul>
+                    <li>LinkedIn / e-mail comercial</li>
+                    <li>Indicação B2B</li>
+                    <li>WhatsApp após 1º contato</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s14 Concorrência indireta -->
+    <section class="slide" id="s14">
+      <div class="slide-inner">
+        <p class="eyebrow">Concorrência indireta <span class="badge ok">TEM</span></p>
+        <h2>Alternativas do cliente (sem marcas)</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>Alternativa</th><th>O que oferece</th><th>Fraqueza · oportunidade Lastro</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Direto DTVM / refinaria / distribuidor</strong></td>
+                <td class="muted">Preço “de fábrica”, relação antiga</td>
+                <td class="muted">Tempo, volume mínimo, pouca curadoria, fricção PME</td>
+              </tr>
+              <tr>
+                <td><strong>Informal / sem nota</strong></td>
+                <td class="muted">Preço e velocidade</td>
+                <td class="muted">Risco fiscal, origem, PLD · fora do ICP Lastro</td>
+              </tr>
+              <tr>
+                <td><strong>Indicação de conhecido</strong></td>
+                <td class="muted">Confiança pessoal</td>
+                <td class="muted">Não escala · qualidade irregular · sem processo</td>
+              </tr>
+              <tr>
+                <td><strong>Corretor / “cara” avulso</strong></td>
+                <td class="muted">Conhece alguém</td>
+                <td class="muted">Sem marca, sem checklist, sem reunião a três</td>
+              </tr>
+              <tr>
+                <td><strong>Estoque próprio</strong></td>
+                <td class="muted">Segurança de ter metal</td>
+                <td class="muted">Capital parado · risco de preço</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Lastro não compete com quem vende ouro. Compete com a dor de achar ouro formal com processo.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s15 SWOT -->
+    <section class="slide" id="s15">
+      <div class="slide-inner">
+        <p class="eyebrow">SWOT <span class="badge parcial">PARCIAL</span></p>
+        <h2>Rascunho Cap 22</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Forças</h3>
+            <ul>
+              <li>Asset-light · compliance como produto</li>
+              <li>ICP claro (kg + nota)</li>
+              <li>Site + marca + fundador visível</li>
+              <li>Playbook escrito</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Fraquezas</h3>
+            <ul>
+              <li>Zero ops fechadas ainda</li>
+              <li>Side hustle (horas limitadas)</li>
+              <li>GMB/Ads ainda não no ar</li>
+              <li>Base Score A de fornecedores em abertura</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Oportunidades</h3>
+            <ul>
+              <li>Endurecimento regulatório favorece formal</li>
+              <li>Polo Limeira denso</li>
+              <li>Prata como fase 2</li>
+              <li>Fee recorrente / Rede</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Ameaças</h3>
+            <ul>
+              <li>Informal dominante</li>
+              <li>Desconfiança de intermediário</li>
+              <li>Ciclo longo de confiança</li>
+              <li>Risco reputacional se 1 op der errado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s16 4Ps -->
+    <section class="slide" id="s16">
+      <div class="slide-inner">
+        <p class="eyebrow">4Ps <span class="badge parcial">PARCIAL</span></p>
+        <h2>Produto · Preço · Praça · Promoção</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Produto</h3>
+            <p>Intermediação B2B de ouro com nota: Match → Seguro → Hub → Pro → Rede. Ativo = rede + processo + confiança.</p>
+          </div>
+          <div class="card">
+            <h3>Preço</h3>
+            <p>Fee só se fechar. Âncora R$ 2-4 mil/op ou % com piso. Hipótese default R$ 3k. A validar no mercado.</p>
+          </div>
+          <div class="card">
+            <h3>Praça</h3>
+            <p>Limeira/região + remoto (reunião online a três). Site nacional. Hub físico leve quando o gatilho exigir.</p>
+          </div>
+          <div class="card">
+            <h3>Promoção</h3>
+            <p>WhatsApp, LinkedIn, visita, site, IG. Ads após GMB. Tom discreto institucional.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s17 CVBA -->
+    <section class="slide" id="s17">
+      <div class="slide-inner">
+        <p class="eyebrow">Matriz CVBA · SKUs <span class="badge parcial">PARCIAL</span></p>
+        <h2>Match · Seguro · Hub · Pro · Rede</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>SKU</th><th>Característica</th><th>Vantagem</th><th>Benefício / argumento</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Match</strong></td><td class="muted">Pedido → 2-3 fornecedores</td><td class="muted">Comparativo simples</td><td class="muted">“Não sei de quem comprar”</td></tr>
+              <tr><td><strong>Seguro</strong></td><td class="muted">KYC + origem + NF-e</td><td class="muted">Acompanha até fechar</td><td class="muted">Core: medo de lote/contraparte</td></tr>
+              <tr><td><strong>Hub</strong></td><td class="muted">Kickoff presencial</td><td class="muted">Selo de confiança</td><td class="muted">1ª op, ticket alto, amostra</td></tr>
+              <tr><td><strong>Pro</strong></td><td class="muted">Retainer + fee menor</td><td class="muted">Procurement contínuo</td><td class="muted">Após ≥1 op e ritmo</td></tr>
+              <tr><td><strong>Rede</strong></td><td class="muted">Demanda qualificada</td><td class="muted">Giro sem chase</td><td class="muted">Lado oferta · Marina</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s18 TOFU MOFU BOFU -->
+    <section class="slide" id="s18">
+      <div class="slide-inner">
+        <p class="eyebrow">Matriz de ofertas <span class="badge parcial">PARCIAL</span></p>
+        <h2>TOFU · MOFU · BOFU</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="head"><h3>TOFU</h3></div>
+            <ul>
+              <li>Conteúdo IG / LinkedIn (3 eixos)</li>
+              <li>Site institucional + SEO</li>
+              <li>GMB (quando ativo)</li>
+              <li>Prova de marca / fundador</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="head"><h3>MOFU</h3></div>
+            <ul>
+              <li>Form kg no site</li>
+              <li>Filtro 30s WhatsApp</li>
+              <li>Outreach Score A (LI / visita)</li>
+              <li>Nurture Score C 90 dias</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="head"><h3>BOFU</h3></div>
+            <ul>
+              <li>Reunião a três</li>
+              <li>Proposta + SKU Seguro/Hub</li>
+              <li>Fee por escrito antes</li>
+              <li>Ads BOFU pós-GMB (form/WA)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s19 EE Oferta -->
+    <section class="slide" id="s19">
+      <div class="slide-inner">
+        <p class="eyebrow">EE · Oferta <span class="badge ok">TEM</span></p>
+        <h2>SKUs + volume + recusa</h2>
+        <div class="table-wrap">
+          <div class="sku-row"><span class="sku-name">Match</span><span>Entrada · shortlist</span><span class="muted">Fee R$ 800-1.500 ou crédito no Seguro</span></div>
+          <div class="sku-row"><span class="sku-name">Seguro</span><span>Core · KYC + docs</span><span class="muted">Fee R$ 2.000-4.000 / op (preferido)</span></div>
+          <div class="sku-row"><span class="sku-name">Hub</span><span>Kickoff presencial</span><span class="muted">+ R$ 1.500-3.000</span></div>
+          <div class="sku-row"><span class="sku-name">Pro</span><span>Retainer recorrente</span><span class="muted">R$ 2.500-6.000 / mês</span></div>
+          <div class="sku-row"><span class="sku-name">Rede</span><span>Lado oferta</span><span class="muted">R$ 2-3,5k / op ou assinatura</span></div>
+        </div>
+        <p class="note">Form público: 1-5 / 5-15 / 15-30 / +30 kg. Frase de recusa Cap 20 para quem não passa no filtro.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s20 EE Aquisição -->
+    <section class="slide" id="s20">
+      <div class="slide-inner">
+        <p class="eyebrow">EE · Aquisição <span class="badge parcial">PARCIAL</span></p>
+        <h2>Ordem de canais</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Agora (pré-Ads)</h3>
+            <ul>
+              <li>1. Visita Limeira + WhatsApp Score A</li>
+              <li>2. LinkedIn outreach</li>
+              <li>3. Form site (inbound)</li>
+              <li>4. Instagram (prova / educação)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Depois do GMB</h3>
+            <ul>
+              <li>5. GMB reviews + busca local</li>
+              <li>6. Ads Meta/Google BOFU</li>
+              <li>UTMs + medir CPL → Score A/B</li>
+              <li>E-mail só com lista quente</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s21 EE Engajamento -->
+    <section class="slide" id="s21">
+      <div class="slide-inner">
+        <p class="eyebrow">EE · Engajamento <span class="badge parcial">PARCIAL</span></p>
+        <h2>Como a conversa avança</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Filtro 30s</h3>
+            <p>CNPJ · ouro · nota · ≥1 kg · decisor. Qualquer não → recusa educada + registro no Sheets.</p>
+          </div>
+          <div class="card">
+            <h3>Reunião a três</h3>
+            <p>Comprador + fornecedor + Lastro. Preferência online gravada. Resumo escrito depois.</p>
+          </div>
+          <div class="card">
+            <h3>Nurture C</h3>
+            <p>Score C: nurture 90 dias. Contato leve. Não forçar reunião se volume não fecha.</p>
+          </div>
+        </div>
+        <p class="note">Réguas WhatsApp por estágio: PARCIAL → fechar copy unificada.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s22 EE Monetização -->
+    <section class="slide" id="s22">
+      <div class="slide-inner">
+        <p class="eyebrow">EE · Monetização <span class="badge parcial">PARCIAL</span></p>
+        <h2>Três âncoras de fee</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>R$ 3.000</h3>
+            <ul>
+              <li>Entrada / 1ª op / Match simples</li>
+              <li>Você acha baixo: ok como piso</li>
+              <li>Facilita dizer sim no começo</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>R$ 5.000</h3>
+            <ul>
+              <li>Base desejada (Seguro)</li>
+              <li>Op com KYC + reunião a três</li>
+              <li>Âncora padrão após 1ª op</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>R$ 7.000</h3>
+            <ul>
+              <li>Op complexa / Hub / volume alto</li>
+              <li>Mais de um match ou presencial</li>
+              <li>Justifica com escopo escrito</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:0.35rem">
+          <div class="card">
+            <h3>Quem paga</h3>
+            <p class="muted">Combinado por escrito antes. 1ª op: um lado só. Split só com maturidade.</p>
+          </div>
+          <div class="card">
+            <h3>Operação financeira</h3>
+            <p class="muted">NFS-e de serviço. Sem tocar no dinheiro do metal. PIX/TED + NF entre as partes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s23 EE Retenção -->
+    <section class="slide" id="s23">
+      <div class="slide-inner">
+        <p class="eyebrow">EE · Retenção <span class="badge parcial">PARCIAL</span></p>
+        <h2>Recompra · indicação · Pro</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Recompra</h3>
+            <p>Check-in pós-op. Contato antes do próximo ciclo (trimestral como âncora).</p>
+          </div>
+          <div class="card">
+            <h3>Indicação</h3>
+            <p>“Quem mais compra ouro com nota no polo?” · também via rede de prata (radar, não ICP).</p>
+          </div>
+          <div class="card">
+            <h3>Upsell</h3>
+            <p>Após ≥1 op e ritmo claro → Lastro Pro (retainer). Playbook pós-fechamento ainda FALTA unificar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s24 EE Conteúdo -->
+    <section class="slide" id="s24">
+      <div class="slide-inner">
+        <p class="eyebrow">EE · Conteúdo <span class="badge parcial">PARCIAL</span></p>
+        <h2>Três eixos</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="head"><h3>1 · Risco informal</h3></div>
+            <p>Ouro com nota vs informal. PLD, origem, surpresa fiscal. Educar o ICP sem moralismo.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>2 · Como funciona</h3></div>
+            <p>Match → Seguro → Hub. Sem estoque. Comissão só se fechar. Reunião a três.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>3 · Prova de processo</h3></div>
+            <p>Fundador visível. Checklist. KYC. Cases quando existirem (ainda FALTA ops fechadas públicas).</p>
+          </div>
+        </div>
+        <p class="note">Canais: LinkedIn + Instagram + WhatsApp status. Calendário editorial fechado ainda FALTA.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s25 Diagnóstico comercial -->
+    <section class="slide" id="s25">
+      <div class="slide-inner">
+        <p class="eyebrow">Diagnóstico comercial <span class="badge ok">TEM</span></p>
+        <h2>Funil · Cap 05 + CRM</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>O que está montado</h3>
+            <ul>
+              <li>Pipeline stages no Sheets</li>
+              <li>Scripts WhatsApp / e-mail</li>
+              <li>Filtro ICP + frase de recusa</li>
+              <li>Score A/B/C/D no CRM</li>
+              <li>Time: fundador solo (mediana 10h/sem)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Gaps comerciais</h3>
+            <ul>
+              <li>Cliente oculto não aplicado <span class="badge falta">FALTA</span></li>
+              <li>Réguas copy por estágio <span class="badge parcial">PARCIAL</span></li>
+              <li>Zero ops fechadas ainda</li>
+              <li>Metas de canal semanais a fechar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s26 Plano 12m -->
+    <section class="slide" id="s26">
+      <div class="slide-inner">
+        <p class="eyebrow">Plano 12 meses <span class="badge hip">HIPÓTESE / AJUSTAR</span></p>
+        <h2>T1 → T4</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>Trimestre</th><th>Foco</th><th>Meta de saída</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>T1</strong></td><td class="muted">Abrir Score A · 1ª op · GMB no ar · 1 campanha teste</td><td class="muted">1 op fechada · GMB ativo</td></tr>
+              <tr><td><strong>T2</strong></td><td class="muted">Recompra + 2º fornecedor · réguas CRM · criativos Ads</td><td class="muted">3-6 ops acumuladas</td></tr>
+              <tr><td><strong>T3</strong></td><td class="muted">Rotina Limeira · LinkedIn semanal · fee validado</td><td class="muted">~1 op/mês (teto ~1,5)</td></tr>
+              <tr><td><strong>T4</strong></td><td class="muted">Avaliar Seguro/Hub · prata fase 2 ou não</td><td class="muted">Pipeline previsível · go/no-go escala</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Com mediana 10h/sem, âncora = <strong>~12 ops/ano</strong> (~1/mês). Matriz 3k/5k/7k: 12 ops × 5k = R$ 60 mil. 24/36 ops = stretch se horas subirem.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s27 Checklist operacional -->
+    <section class="slide" id="s27">
+      <div class="slide-inner">
+        <p class="eyebrow">Checklist operacional</p>
+        <h2>Status das entregas</h2>
+        <div class="check-list">
+          <div class="check-item"><span class="mark"><span class="badge ok">TEM</span></span> Site / LP · lastroouro.com.br</div>
+          <div class="check-item"><span class="mark"><span class="badge ok">TEM</span></span> Playbook · ICP · SKUs · funil · scripts</div>
+          <div class="check-item"><span class="mark"><span class="badge pendente">PENDENTE</span></span> GMB · aguardando aprovação</div>
+          <div class="check-item"><span class="mark"><span class="badge falta">FALTA</span></span> Pack criativos Ads (pré-requisito pós-GMB)</div>
+          <div class="check-item"><span class="mark"><span class="badge parcial">PARCIAL</span></span> Réguas CRM WhatsApp · fechar copy por estágio</div>
+          <div class="check-item"><span class="mark"><span class="badge falta">FALTA</span></span> Manual copy 1-pager unificado</div>
+          <div class="check-item"><span class="mark"><span class="badge parcial">PARCIAL</span></span> MIV 1 arquivo (Cap 07 + assets)</div>
+          <div class="check-item"><span class="mark"><span class="badge ok">TEM</span></span> Plano 12m neste deck (hipótese)</div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s28 Backlog -->
+    <section class="slide" id="s28">
+      <div class="slide-inner">
+        <p class="eyebrow">Backlog</p>
+        <h2>O que construir (prioridade)</h2>
+        <ol class="prio">
+          <li><span>Aguardar GMB · preparar pack Ads em paralelo</span><span class="badge pendente">PENDENTE</span></li>
+          <li><span>10 contatos Score A (WhatsApp / LinkedIn / visita)</span><span class="badge parcial">PARCIAL</span></li>
+          <li><span>Fechar réguas WhatsApp por estágio do CRM</span><span class="badge parcial">PARCIAL</span></li>
+          <li><span>Unificar manual copy + MIV em 1 pack</span><span class="badge falta">FALTA</span></li>
+          <li><span>Calibrar TAM/SAM/SOM e fee com suas respostas</span><span class="badge hip">AJUSTAR</span></li>
+          <li><span>1ª campanha Ads BOFU após GMB</span><span class="badge falta">FALTA</span></li>
+          <li><span>Playbook pós-fechamento (retenção / indicação)</span><span class="badge falta">FALTA</span></li>
+        </ol>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s29 Capacidade de tempo -->
+    <section class="slide" id="s29">
+      <div class="slide-inner">
+        <p class="eyebrow">Capacidade <span class="badge ok">TRAVADO</span></p>
+        <h2>Mediana: 10h por semana</h2>
+        <p class="lead">Decisão do fundador. Side hustle além do emprego. Isso trava a âncora de capacidade do plano.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Tempo</h3>
+            <p class="muted"><strong>~10 h/sem</strong> (mediana). Ex.: ~1,5–2h em dias úteis ou bloco no fim de semana.</p>
+          </div>
+          <div class="card">
+            <h3>Ops âncora</h3>
+            <p class="muted"><strong>~1 op/mês</strong> → ~12 ops/ano. Teto com disciplina: ~1,5/mês (~18).</p>
+          </div>
+          <div class="card">
+            <h3>Foco</h3>
+            <p class="muted">Só Score A. Visita Limeira pontual. Conteúdo leve. Ads só pós-GMB.</p>
+          </div>
+        </div>
+        <p class="note">Receita âncora ano 1: 12 ops × R$ 3k/5k/7k = R$ 36 / 60 / 84 mil. Contas: ~8–16 no ano 1. Colunas 24/36 ops no deck = stretch se as horas subirem.</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s30 Próximos 14 dias -->
+    <section class="slide" id="s30">
+      <div class="slide-inner">
+        <p class="eyebrow">Execução</p>
+        <h2>Próximos 14 dias</h2>
+        <div class="day-grid">
+          <div class="day-item">
+            <strong>Dias 1-3</strong>
+            <p>Checar status GMB. Lista Score A no Sheets. Olhar matriz 3k/5k/7k no deck.</p>
+          </div>
+          <div class="day-item">
+            <strong>Dias 4-7</strong>
+            <p>5-10 contatos A (WA/LI). 1 visita ou roteiro Limeira. Rascunho 3 criativos orgânicos (eixos).</p>
+          </div>
+          <div class="day-item">
+            <strong>Dias 8-10</strong>
+            <p>Fechar copy de 2 estágios do CRM. UTMs no site prontos para Ads.</p>
+          </div>
+          <div class="day-item">
+            <strong>Dias 11-14</strong>
+            <p>Se GMB sair: brief pack Ads. Se não: dobrar orgânico + visitas. Atualizar PROGRESSO.md.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+    <!-- s31 Fechamento -->
+    <section class="slide" id="s31">
+      <div class="slide-inner">
+        <p class="eyebrow">Fechamento</p>
+        <h2>EE em construção · não travada</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="head"><h3>Sólido</h3><span class="badge ok">TEM</span></div>
+            <p>ICP, SKUs, funil, site, canais, concorrência indireta, personas mínimas, plano T1-T4.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>Hipótese</h3><span class="badge hip">AJUSTAR</span></div>
+            <p>TAM/SAM/SOM e receita fee. Você calibra com contas, fee e horas.</p>
+          </div>
+          <div class="card">
+            <div class="head"><h3>Bloqueio operacional</h3><span class="badge pendente">GMB</span></div>
+            <p>Ads e pack criativos pagos esperam aprovação. Até lá: WA, visita, LinkedIn, site.</p>
+          </div>
+        </div>
+        <p class="lead" style="margin-top:0.5rem">lastro <span style="color:var(--orange);font-weight:800">ouro</span> · EE interna · Cap 22 · Ago/2026</p>
+      </div>
+      <div class="footer-slide">Lastro Ouro · EE interna · rascunho vivo</div>
+    </section>
+
+  </div>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const progress = document.getElementById("progress");
+      const counter = document.getElementById("counter");
+      const dotsWrap = document.getElementById("dots");
+      let i = 0;
+
+      slides.forEach((_, idx) => {
+        const b = document.createElement("button");
+        b.className = "dot" + (idx === 0 ? " active" : "");
+        b.type = "button";
+        b.setAttribute("aria-label", "Slide " + (idx + 1));
+        b.addEventListener("click", () => go(idx));
+        dotsWrap.appendChild(b);
+      });
+
+      const dots = Array.from(dotsWrap.querySelectorAll(".dot"));
+
+      function go(n) {
+        if (n < 0 || n >= total) return;
+        slides[i].classList.remove("active");
+        dots[i].classList.remove("active");
+        i = n;
+        slides[i].classList.add("active");
+        dots[i].classList.add("active");
+        progress.style.width = ((i + 1) / total * 100) + "%";
+        counter.textContent = (i + 1) + " / " + total;
+        slides[i].scrollTop = 0;
+        history.replaceState(null, "", "#" + slides[i].id);
+      }
+
+      function next() { go(Math.min(total - 1, i + 1)); }
+      function prev() { go(Math.max(0, i - 1)); }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+          e.preventDefault(); next();
+        } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          e.preventDefault(); prev();
+        } else if (e.key === "Home") { e.preventDefault(); go(0); }
+        else if (e.key === "End") { e.preventDefault(); go(total - 1); }
+      });
+
+      let touchX = null;
+      document.addEventListener("touchstart", (e) => {
+        touchX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      document.addEventListener("touchend", (e) => {
+        if (touchX == null) return;
+        const dx = e.changedTouches[0].screenX - touchX;
+        if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
+        touchX = null;
+      }, { passive: true });
+
+      const hash = location.hash.replace("#", "");
+      const start = slides.findIndex((s) => s.id === hash);
+      go(start >= 0 ? start : 0);
+    })();
+  </script>
+</body>
+</html>
