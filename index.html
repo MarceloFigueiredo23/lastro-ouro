@@ -1760,7 +1760,7 @@
         <div class="contact-card reveal">
           <form class="form-grid" id="formCadastro">
             <p class="form-card-title">Fale com a Lastro</p>
-            <p class="form-card-sub">Um formulário. Escolha se você compra ou vende.</p>
+            <p class="form-card-sub">Só o essencial. O resto alinhamos no WhatsApp.</p>
 
             <label>Você quer
               <select name="perfil" id="perfilSelect" required>
@@ -1778,65 +1778,14 @@
                 <input name="empresa" required placeholder="Razão social ou marca" />
               </label>
             </div>
-            <div class="form-grid two">
-              <label>CNPJ
-                <input name="cnpj" placeholder="00.000.000/0000-00" />
-              </label>
-              <label>WhatsApp
-                <input name="whatsapp" required placeholder="(11) 90000-0000" autocomplete="tel" />
-              </label>
-            </div>
-            <div class="form-grid two">
-              <label>E-mail
-                <input type="email" name="email" placeholder="voce@empresa.com" autocomplete="email" />
-              </label>
-              <label>Região / cidade
-                <input name="regiao" placeholder="Ex.: Limeira / SP" />
-              </label>
-            </div>
 
-            <div class="form-extra" id="extraFornecedor" hidden>
-              <label>Tipo de quem vende
-                <select name="tipo_fornecedor" id="tipoFornecedor">
-                  <option value="">Selecione</option>
-                  <option>Refinaria</option>
-                  <option>Distribuidor / atacadista</option>
-                  <option>DTVM</option>
-                  <option>Fabricante de banho / química</option>
-                  <option>Outro (com nota e origem)</option>
-                </select>
-              </label>
-            </div>
-
-            <div class="form-grid two">
-              <label>Produto / formato
-                <input name="produto" required placeholder="Barra, liga, banho, sucata legal…" />
-              </label>
-              <label id="labelPureza">Pureza
-                <input name="pureza" id="inputPureza" placeholder="Ex.: 999,9 / 18k / banho" />
-              </label>
-            </div>
-            <div class="form-grid two">
-              <label id="labelQtd">Quantidade
-                <input name="quantidade" required placeholder="Ex.: 2 kg / 500 g" />
-              </label>
-              <label>Prazo
-                <input name="prazo" placeholder="Ex.: 15 dias / recorrente" />
-              </label>
-            </div>
-            <label>Frequência
-              <select name="frequencia" required>
-                <option value="">Selecione</option>
-                <option>Pontual (única)</option>
-                <option>Mensal</option>
-                <option>Quinzenal</option>
-                <option>Sob demanda / irregular</option>
-                <option>Contínua / estoque</option>
-              </select>
+            <label>WhatsApp
+              <input name="whatsapp" required placeholder="(11) 90000-0000" autocomplete="tel" />
             </label>
+
             <fieldset class="range-fieldset">
               <legend id="legendVolume">Volume médio (mensal, em kg)</legend>
-              <span class="range-hint" id="hintVolume">Mínimo 1 kg / mês. Para empresas que já operam (ou querem operar) com ouro nesse volume.</span>
+              <span class="range-hint" id="hintVolume">Mínimo 1 kg / mês.</span>
               <div class="range-options">
                 <label><input type="radio" name="media_volume" value="1 a 5 kg" required /> 1 a 5 kg</label>
                 <label><input type="radio" name="media_volume" value="5 a 15 kg" /> 5 a 15 kg</label>
@@ -1844,8 +1793,9 @@
                 <label><input type="radio" name="media_volume" value="+ de 30 kg" /> + de 30 kg</label>
               </div>
             </fieldset>
-            <label>Observações
-              <textarea name="mensagem" required placeholder="Condições, documentação, contexto da operação…"></textarea>
+
+            <label>Observação (opcional)
+              <textarea name="mensagem" placeholder="Se quiser, conte o essencial em uma linha…"></textarea>
             </label>
             <button class="btn btn-primary" type="submit" id="btnSubmit">Enviar no WhatsApp</button>
             <p class="form-note">Ao enviar, você autoriza a Lastro Ouro a entrar em contato. Quem vende passa por checagem de nota e origem.</p>
@@ -1919,24 +1869,17 @@
 
     const form = document.getElementById("formCadastro");
     const perfilSelect = document.getElementById("perfilSelect");
-    const extraFornecedor = document.getElementById("extraFornecedor");
-    const tipoFornecedor = document.getElementById("tipoFornecedor");
     const legendVolume = document.getElementById("legendVolume");
     const hintVolume = document.getElementById("hintVolume");
-    const labelQtd = document.getElementById("labelQtd");
     const btnSubmit = document.getElementById("btnSubmit");
     const SEU_NUMERO = "5516992197090";
 
     function applyPerfil(perfil) {
       const isFornecedor = perfil === "fornecedor";
-      extraFornecedor.hidden = !isFornecedor;
-      tipoFornecedor.required = isFornecedor;
-      if (!isFornecedor) tipoFornecedor.value = "";
       legendVolume.textContent = isFornecedor ? "Média de venda (mensal, em kg)" : "Média de compra (mensal, em kg)";
       hintVolume.textContent = isFornecedor
-        ? "Mínimo 1 kg / mês. Volume aproximado que sua empresa oferta"
-        : "Mínimo 1 kg / mês. Volume aproximado que sua empresa compra";
-      labelQtd.childNodes[0].textContent = isFornecedor ? "Capacidade / quantidade" : "Quantidade";
+        ? "Mínimo 1 kg / mês. Volume aproximado que sua empresa oferta."
+        : "Mínimo 1 kg / mês. Volume aproximado que sua empresa compra.";
       btnSubmit.textContent = isFornecedor ? "Quero vender (WhatsApp)" : "Quero comprar (WhatsApp)";
       btnSubmit.classList.toggle("btn-blue", isFornecedor);
       btnSubmit.classList.toggle("btn-primary", !isFornecedor);
@@ -1958,28 +1901,19 @@
       const data = new FormData(form);
       const perfil = data.get("perfil");
       const isFornecedor = perfil === "fornecedor";
+      const obs = (data.get("mensagem") || "").toString().trim();
       const lines = [
         isFornecedor ? "*Lastro Ouro · Quero vender*" : "*Lastro Ouro · Quero comprar*",
         "",
         `Perfil: ${isFornecedor ? "Vender" : "Comprar"}`,
         `Nome: ${data.get("nome")}`,
         `Empresa: ${data.get("empresa")}`,
-        `CNPJ: ${data.get("cnpj") || "-"}`,
         `WhatsApp: ${data.get("whatsapp")}`,
-        `E-mail: ${data.get("email") || "-"}`,
-        `Região: ${data.get("regiao") || "-"}`,
-      ];
-      if (isFornecedor) lines.push(`Tipo: ${data.get("tipo_fornecedor") || "-"}`);
-      lines.push(
-        `Produto: ${data.get("produto")}`,
-        `Pureza: ${data.get("pureza") || "-"}`,
-        `${isFornecedor ? "Capacidade" : "Quantidade"}: ${data.get("quantidade")}`,
-        `Prazo: ${data.get("prazo") || "-"}`,
-        `Frequência: ${data.get("frequencia")}`,
         `Volume médio: ${data.get("media_volume")}`,
-        "",
-        `Observações: ${data.get("mensagem")}`
-      );
+      ];
+      if (obs) {
+        lines.push("", `Observação: ${obs}`);
+      }
       const texto = encodeURIComponent(lines.join("\n"));
       window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
     });
