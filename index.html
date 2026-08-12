@@ -903,18 +903,21 @@
     }
     .founder-grid {
       display: grid;
-      grid-template-columns: minmax(240px, 0.92fr) minmax(0, 1.2fr);
-      gap: 2.75rem;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 2.25rem;
       align-items: center;
     }
     .founder-photo {
       margin: 0;
-      border-radius: 22px;
+      width: 200px;
+      max-width: 100%;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--line);
-      box-shadow: 0 18px 40px rgba(26, 20, 16, 0.08);
+      box-shadow: 0 8px 22px rgba(26, 20, 16, 0.06);
       aspect-ratio: 1;
       background: #ED4E00;
+      justify-self: start;
     }
     .founder-photo img {
       width: 100%;
@@ -1267,6 +1270,10 @@
       .faq-layout,
       .form-grid.two,
       .range-options { grid-template-columns: 1fr; }
+      .founder-photo {
+        width: 160px;
+        justify-self: start;
+      }
       .hero-visual { min-height: auto; }
       .hero-visual figure { max-height: none; aspect-ratio: 16 / 10; }
       .photo-row figure { aspect-ratio: 16 / 10; }
@@ -1643,7 +1650,7 @@
       <div class="wrap founder-grid">
         <figure class="founder-photo reveal">
           <img
-            src="assets/photo-fundador.png?v=1"
+            src="assets/photo-fundador.png?v=2"
             alt="Marcelo Figueiredo, fundador da Lastro Ouro"
             width="900"
             height="900"
