@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lastro Ouro · Intermediação de ouro com nota para empresas</title>
-  <meta name="description" content="Intermediação de ouro com nota para joalherias, fundições e indústrias. Volume a partir de 1 kg/mês. Comissão só se fechar. Limeira/SP." />
+  <title>Lastro Ouro · Compre ouro com nota para a sua empresa</title>
+  <meta name="description" content="Intermediação para joalherias, fundições, galvânicas e indústrias comprarem ouro com nota. Volume a partir de 1 kg/mês. Limeira/SP e região." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#FFF8F3" />
   <link rel="canonical" href="https://lastroouro.com.br/" />
-  <meta name="keywords" content="intermediação ouro, ouro com nota, comprar ouro empresa, fornecedor ouro joalheria, ouro Limeira, venda ouro B2B" />
+  <meta name="keywords" content="comprar ouro empresa, ouro com nota, intermediação ouro, joalheria Limeira, fundição ouro, galvânica ouro B2B" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:url" content="https://lastroouro.com.br/" />
   <meta property="og:site_name" content="Lastro Ouro" />
-  <meta property="og:title" content="Lastro Ouro · Intermediação de ouro com nota para empresas" />
-  <meta property="og:description" content="Juntamos quem precisa comprar ouro e quem tem oferta com nota. Reunião online gravada. Comissão só se fechar. Sem estoque próprio." />
+  <meta property="og:title" content="Lastro Ouro · Compre ouro com nota para a sua empresa" />
+  <meta property="og:description" content="Para quem precisa comprar ouro com nota: joalheria, fundição, galvânica e indústria. Processo claro, reunião a três, comissão só se fechar." />
   <meta property="og:image" content="https://lastroouro.com.br/assets/og-cover-square.png?v=3" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="1200" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Lastro Ouro · Intermediação de ouro com nota para empresas" />
-  <meta name="twitter:description" content="Comprar ou vender ouro entre empresas, com nota e processo claro. Comissão só se fechar." />
+  <meta name="twitter:title" content="Lastro Ouro · Compre ouro com nota para a sua empresa" />
+  <meta name="twitter:description" content="Intermediação B2B para comprar ouro com nota. Sem estoque próprio. Comissão só se fechar." />
   <meta name="twitter:image" content="https://lastroouro.com.br/assets/og-cover-square.png?v=3" />
 
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
@@ -45,7 +45,7 @@
           "https://www.instagram.com/lastro.ouro/",
           "https://www.linkedin.com/in/lastro-ouro-22563b427/"
         ],
-        "description": "Intermediação comercial de ouro entre empresas, com nota fiscal e origem documentada. Sem estoque próprio.",
+        "description": "Intermediação para empresas comprarem ouro com nota fiscal e origem documentada. Sem estoque próprio.",
         "founder": { "@id": "https://lastroouro.com.br/#fundador" }
       },
       {
@@ -56,7 +56,7 @@
         "worksFor": { "@id": "https://lastroouro.com.br/#organization" },
         "image": "https://lastroouro.com.br/assets/photo-fundador.png",
         "url": "https://lastroouro.com.br/#quem-conduz",
-        "description": "Fundador da Lastro Ouro. Conecta empresas que compram ou vendem ouro com nota: organiza a conversa, a documentação e o alinhamento entre as partes."
+        "description": "Fundador da Lastro Ouro. Ajuda empresas a comprar ouro com nota: organiza pedido, fornecedor, documentação e reunião a três."
       },
       {
         "@type": "WebSite",
@@ -412,8 +412,48 @@
     .hero-trust strong { color: var(--ink); }
     .path-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 1rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .partner-lite {
+      text-align: center;
+      margin-top: 0.85rem;
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      border: 1px dashed var(--line);
+      background: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .partner-lite a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .hero-actions .btn-partner {
+      background: transparent;
+      color: var(--muted);
+      border: 0;
+      box-shadow: none;
+      padding: 0.65rem 0.35rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .hero-actions .btn-partner:hover {
+      color: var(--ink);
+      transform: none;
+      background: transparent;
+    }
+    .services-grid.buyer-first {
+      grid-template-columns: 1fr;
+      max-width: 720px;
+      margin: 0 auto;
     }
     .hero-cards {
       display: grid;
@@ -1310,7 +1350,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#como-funciona">Como funciona</a></li>
         <li><a href="#ouro-com-nota">Ouro com nota</a></li>
-        <li><a href="#servicos">Comprar ou vender</a></li>
+        <li><a href="#servicos">Comprar ouro</a></li>
         <li><a href="#quem-conduz">Quem conduz</a></li>
         <li><a href="#faq">Dúvidas</a></li>
       </ul>
@@ -1322,15 +1362,16 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Joalheria · fundição · indústria</div>
-          <h1>Compre e venda ouro com <em>nota</em>: para empresas pequenas e médias</h1>
+          <div class="eyebrow">Joalheria · fundição · galvânica · indústria</div>
+          <h1>Compre ouro com <em>nota</em> para a sua empresa</h1>
           <p class="hero-lead">
-            Feito para quem já opera (ou quer operar) com volume a partir de 1 kg por mês: joalherias, fundições, galvânicas e fábricas.
-            A Lastro junta quem precisa comprar e quem tem oferta com nota. Organizamos a conversa e a papelada. A compra fica entre as duas empresas.
+            Feito para quem precisa comprar ouro com volume a partir de 1 kg por mês.
+            A Lastro organiza o pedido, encontra fornecedor formal e acompanha até o fechamento.
+            A compra e a entrega ficam entre as duas empresas. Sem estoque nosso.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contato" data-entry="comprar">Quero comprar</a>
-            <a class="btn btn-secondary" href="#contato" data-entry="ofertar">Quero vender</a>
+            <a class="btn btn-primary" href="#contato" data-entry="comprar">Quero comprar ouro</a>
+            <a class="btn-partner" href="#parceiro-fornecedor" data-entry="ofertar">Sou fornecedor: quero ser parceiro</a>
           </div>
           <div class="hero-trust">
             <span><strong>Sem estoque</strong> nosso</span>
@@ -1347,19 +1388,18 @@
     </section>
 
     <div class="strip">
-      <div class="wrap path-row">
-        <article class="path-card buy reveal">
-          <div class="tag">Preciso comprar</div>
+      <div class="wrap">
+        <article class="path-card buy reveal" style="max-width:720px;margin:0 auto;">
+          <div class="tag">Para quem compra</div>
           <h3>Ajudamos a achar quem vende com nota</h3>
-          <p>Volume a partir de 1 kg/mês. Você diz o que precisa; buscamos fornecedor com nota e acompanhamos até fechar.</p>
-          <a class="btn btn-primary" href="#contato" data-entry="comprar">Quero comprar</a>
+          <p>Você diz o que precisa (volume, formato, prazo). Buscamos fornecedor formal, organizamos a conversa e acompanhamos até fechar.</p>
+          <a class="btn btn-primary" href="#contato" data-entry="comprar">Quero comprar ouro</a>
         </article>
-        <article class="path-card sell reveal">
-          <div class="tag">Quero vender</div>
-          <h3>Colocamos sua oferta na frente de quem compra</h3>
-          <p>Cadastre oferta com nota. Conectamos com joalherias e indústrias médias que compram de verdade nesse volume.</p>
-          <a class="btn btn-blue" href="#contato" data-entry="ofertar">Quero vender</a>
-        </article>
+        <p class="partner-lite reveal" id="parceiro-fornecedor">
+          Tem oferta formal e quer ser fornecedor parceiro?
+          <a href="#contato" data-entry="ofertar">Fale conosco para intermediarmos sua venda</a>
+          (opção secundária: o site é focado em quem compra).
+        </p>
       </div>
     </div>
 
@@ -1383,8 +1423,8 @@
     <section class="steps-band" id="como-funciona">
       <div class="wrap">
         <div class="section-head reveal">
-          <h2>Compre ou venda em 4 passos simples</h2>
-          <p>Do cadastro ao fechamento, sem a gente carregar o ouro. Comissão só se a venda acontecer.</p>
+          <h2>Compre ouro em 4 passos simples</h2>
+          <p>Do pedido ao fechamento, sem a gente carregar o metal. Comissão só se a operação fechar.</p>
         </div>
         <div class="journey">
           <div class="journey-path" aria-hidden="true"></div>
@@ -1395,8 +1435,8 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 17V9M12 17V7M16 17v-5"/></svg>
               </div>
               <div>
-                <h3>1. Conte o que você precisa</h3>
-                <p>Escolha <strong>comprar</strong> ou <strong>vender</strong>. Digite quantidade, tipo de ouro, prazo e cidade.</p>
+                <h3>1. Conte o que você precisa comprar</h3>
+                <p>Volume, tipo de ouro, prazo e cidade. A partir de <strong>1 kg/mês</strong>.</p>
               </div>
             </article>
             <div class="journey-spacer" aria-hidden="true"></div>
@@ -1409,7 +1449,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               </div>
               <div>
-                <h3>2. Conferimos os dois lados</h3>
+                <h3>2. Conferimos pedido e fornecedor</h3>
                 <p>Checamos empresa, o que foi pedido e os documentos. <strong>Sem origem comprovada, não segue.</strong></p>
               </div>
             </article>
@@ -1422,7 +1462,7 @@
               </div>
               <div>
                 <h3>3. Reunião online a três, gravada</h3>
-                <p>Reunião por vídeo com as duas empresas. Gravamos e as partes confirmam o que ficou combinado. <strong>Vocês negociam o ouro; a gente registra o alinhamento.</strong></p>
+                <p>Você, o fornecedor e a Lastro. Gravamos e confirmamos o que ficou combinado. <strong>Vocês negociam o ouro; a gente registra o alinhamento.</strong></p>
               </div>
             </article>
             <div class="journey-spacer" aria-hidden="true"></div>
@@ -1442,7 +1482,7 @@
           </div>
         </div>
         <div class="journey-cta reveal">
-          <a class="btn btn-primary" href="#contato">Quero conversar</a>
+          <a class="btn btn-primary" href="#contato" data-entry="comprar">Quero comprar ouro</a>
         </div>
       </div>
     </section>
@@ -1455,7 +1495,7 @@
         <div class="safe-copy reveal">
           <div class="label">Como trabalhamos</div>
           <h2>Origem no papel. Estoque zero nosso.</h2>
-          <p>Você escolhe comprar ou vender. Nós organizamos o caminho. A compra e a entrega ficam entre quem vende com nota e quem compra.</p>
+          <p>Você precisa comprar ouro com nota. Nós organizamos o caminho até um fornecedor formal. A compra e a entrega ficam entre quem vende e quem compra.</p>
           <div class="safe-pills">
             <span>CNPJ e documentos</span>
             <span>Nota fiscal e origem</span>
@@ -1463,7 +1503,7 @@
             <span>Comissão só se fechar</span>
             <span>Não guardamos ouro</span>
           </div>
-          <a class="btn btn-primary" href="#contato">Quero operar com a Lastro</a>
+          <a class="btn btn-primary" href="#contato" data-entry="comprar">Quero comprar com a Lastro</a>
         </div>
       </div>
     </section>
@@ -1472,8 +1512,8 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div class="label">O que fazemos</div>
-          <h2>Jeitos de trabalhar com a gente</h2>
-          <p>Cobramos comissão pelo serviço, só se o negócio fechar. O valor é combinado por escrito antes. Não ganhamos em cima do preço do ouro.</p>
+          <h2>Jeitos de comprar com a gente</h2>
+          <p>Cobramos comissão pelo serviço de intermediação, só se o negócio fechar. O valor é combinado por escrito antes.</p>
         </div>
         <div class="products-grid">
           <article class="product-card reveal">
@@ -1491,7 +1531,7 @@
           <article class="product-card reveal">
             <div class="sku">03 · Online</div>
             <h3>Reunião online gravada</h3>
-            <p>Alinhamento por vídeo com as duas pontas. Gravação e confirmação do que foi acordado, sem precisar de encontro físico.</p>
+            <p>Alinhamento por vídeo com você e o fornecedor. Gravação e confirmação do que foi acordado.</p>
             <div class="for">Padrão de toda operação</div>
           </article>
           <article class="product-card reveal">
@@ -1500,16 +1540,14 @@
             <p>Ajudamos a manter o fornecimento mês a mês, sem você caçar fornecedor toda hora.</p>
             <div class="for">Quem compra com frequência</div>
           </article>
-          <article class="product-card reveal">
-            <div class="sku">05 · Quem vende</div>
-            <h3>Rede de compradores</h3>
-            <p>Colocamos sua oferta na frente de empresas pequenas e médias que compram de verdade nesse volume.</p>
-            <div class="for">Quem tem ouro para vender</div>
-          </article>
         </div>
         <p class="fee-note reveal">
           <strong>Como cobramos:</strong> comissão só se a operação fechar,
           combinada por escrito antes. Não ganhamos em cima do preço do ouro.
+        </p>
+        <p class="partner-lite reveal" style="max-width:720px;margin:1rem auto 0;">
+          Fornecedor com nota e quer entrar na rede?
+          <a href="#contato" data-entry="ofertar">Seja parceiro e intermediamos sua venda</a>.
         </p>
         <div class="distro-row">
           <div class="distro-card reveal">
@@ -1531,11 +1569,11 @@
     <section id="servicos">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="label">Dois caminhos</div>
-          <h2>Você compra ou você vende. A gente organiza.</h2>
-          <p>Mesmo cuidado dos dois lados. Processo simples e com documento.</p>
+          <div class="label">Foco do site</div>
+          <h2>Você precisa comprar ouro. A gente organiza.</h2>
+          <p>Joalheria, fundição, galvânica e indústria: processo simples, com nota e documentação.</p>
         </div>
-        <div class="services-grid">
+        <div class="services-grid buyer-first">
           <a class="service buy reveal" href="#contato" data-entry="comprar">
             <span class="service-pill">Clique e conte o que precisa comprar</span>
             <div class="service-row">
@@ -1544,23 +1582,16 @@
               </figure>
               <div class="service-copy">
                 <h3>Precisa comprar ouro?</h3>
-                <p>Para joalherias e indústrias pequenas e médias (a partir de 1 kg/mês): achamos quem vende com nota, com conversa e documentação em ordem.</p>
-              </div>
-            </div>
-          </a>
-          <a class="service sell reveal" href="#contato" data-entry="ofertar">
-            <span class="service-pill">Clique e cadastre sua oferta</span>
-            <div class="service-row">
-              <figure class="service-illust">
-                <img src="assets/illus-ouro-nota.png?v=2" alt="" width="210" height="210" />
-              </figure>
-              <div class="service-copy">
-                <h3>Tem ouro para vender com nota?</h3>
-                <p>Colocamos sua oferta na frente de empresas pequenas e médias que compram nesse volume, com origem e papéis certos.</p>
+                <p>A partir de 1 kg/mês: achamos quem vende com nota, com conversa e documentação em ordem.</p>
               </div>
             </div>
           </a>
         </div>
+        <p class="partner-lite reveal" style="max-width:720px;margin:1.25rem auto 0;">
+          É fornecedor e quer que intermediemos sua venda?
+          <a href="#contato" data-entry="ofertar">Cadastre-se como parceiro</a>
+          (checagem de nota e origem).
+        </p>
       </div>
     </section>
 
@@ -1580,10 +1611,10 @@
               e aí faltam processo, comparação de opções e registro do que ficou combinado.
             </p>
             <p>
-              A <strong>Lastro Ouro</strong> faz a <strong>intermediação de ouro entre empresas</strong>:
-              junta quem precisa comprar e quem tem oferta com nota. Nós não compramos, não estocamos e
-              não guardamos o metal. Organizamos o pedido, conferimos documentos mínimos e marcamos uma
-              <strong>reunião online a três, gravada</strong>, para as duas partes confirmarem produto, prazo e papéis.
+              A <strong>Lastro Ouro</strong> faz a <strong>intermediação para quem precisa comprar ouro</strong>:
+              organiza o pedido, encontra oferta com nota e acompanha até o fechamento. Nós não compramos, não estocamos e
+              não guardamos o metal. Marcamos uma
+              <strong>reunião online a três, gravada</strong>, para você e o fornecedor confirmarem produto, prazo e papéis.
             </p>
             <h3>O que uma boa compra de ouro entre empresas precisa ter</h3>
             <ul>
@@ -1599,12 +1630,12 @@
               Não ganhamos em cima do preço do ouro. O valor fica na conversa, não no site.
             </p>
             <p>
-              Se a sua joalheria, fundição ou fábrica precisa de <strong>ouro com nota</strong> em volume de
-              <strong>1 kg ou mais por mês</strong>, ou se você tem oferta formal para vender, fale conosco.
-              Atendemos <strong>Limeira/SP e região</strong>, com processo pensado para empresas pequenas e médias no formal.
+              Se a sua joalheria, fundição, galvânica ou fábrica precisa de <strong>ouro com nota</strong> em volume de
+              <strong>1 kg ou mais por mês</strong>, fale conosco.
+              Atendemos <strong>Limeira/SP e região</strong>, com processo pensado para empresas no formal.
             </p>
             <div class="seo-cta">
-              <a class="btn btn-primary" href="#contato">Quero comprar ou vender com nota</a>
+              <a class="btn btn-primary" href="#contato" data-entry="comprar">Quero comprar ouro com nota</a>
             </div>
           </div>
           <figure class="seo-visual reveal">
@@ -1675,10 +1706,9 @@
           <h2 id="founder-title">Marcelo Figueiredo</h2>
           <p class="founder-role">Fundador da Lastro Ouro</p>
           <p>
-            Conecto empresas que precisam comprar ou vender ouro com nota.
-            Organizo a conversa entre as partes, a checagem de documentos
-            e o alinhamento do que foi combinado, com reunião a três
-            e registro claro de cada etapa.
+            Ajudo empresas a comprar ouro com nota: organizo o pedido,
+            a conversa com o fornecedor, a checagem de documentos e o
+            alinhamento do que foi combinado, com reunião a três.
           </p>
           <ul class="founder-points">
             <li>Mais de 6 anos em marketing, vendas e processos gerenciais</li>
@@ -1697,8 +1727,8 @@
       <div class="wrap contact-grid">
         <div class="contact-aside reveal">
           <div class="label">Fale conosco</div>
-          <h2>Diga se você compra ou vende.</h2>
-          <p>Para empresas pequenas e médias com volume a partir de 1 kg/mês. Um formulário só.</p>
+          <h2>Conte o que sua empresa precisa comprar.</h2>
+          <p>Joalheria, fundição, galvânica e indústria a partir de 1 kg/mês. Formulário curto.</p>
           <a class="channel wa" href="https://wa.me/5516992197090" target="_blank" rel="noopener">
             <div class="brand-icon wa" aria-hidden="true">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1759,14 +1789,13 @@
         </div>
         <div class="contact-card reveal">
           <form class="form-grid" id="formCadastro">
-            <p class="form-card-title">Fale com a Lastro</p>
+            <p class="form-card-title">Quero comprar ouro</p>
             <p class="form-card-sub">Só o essencial. O resto alinhamos no WhatsApp.</p>
 
-            <label>Você quer
+            <label>Perfil
               <select name="perfil" id="perfilSelect" required>
-                <option value="">Selecione</option>
-                <option value="comprador">Comprar ouro</option>
-                <option value="fornecedor">Vender ouro</option>
+                <option value="comprador" selected>Comprar ouro</option>
+                <option value="fornecedor">Sou fornecedor (parceiro)</option>
               </select>
             </label>
 
@@ -1798,7 +1827,7 @@
               <textarea name="mensagem" placeholder="Se quiser, conte o essencial em uma linha…"></textarea>
             </label>
             <button class="btn btn-primary" type="submit" id="btnSubmit">Enviar no WhatsApp</button>
-            <p class="form-note">Ao enviar, você autoriza a Lastro Ouro a entrar em contato. Quem vende passa por checagem de nota e origem.</p>
+            <p class="form-note">Ao enviar, você autoriza a Lastro Ouro a entrar em contato. Fornecedor parceiro passa por checagem de nota e origem.</p>
           </form>
         </div>
       </div>
@@ -1815,7 +1844,7 @@
         <div class="footer-links">
           <a href="#como-funciona">Como funciona</a>
           <a href="#produtos">O que fazemos</a>
-          <a href="#servicos">Comprar ou vender</a>
+          <a href="#servicos">Comprar ouro</a>
           <a href="#faq">Dúvidas</a>
           <a href="#contato">Fale conosco</a>
           <a href="https://www.instagram.com/lastro.ouro/" target="_blank" rel="noopener">Instagram</a>
@@ -1876,14 +1905,24 @@
 
     function applyPerfil(perfil) {
       const isFornecedor = perfil === "fornecedor";
+      const title = document.querySelector(".form-card-title");
+      const sub = document.querySelector(".form-card-sub");
+      if (title) title.textContent = isFornecedor ? "Quero ser fornecedor parceiro" : "Quero comprar ouro";
+      if (sub) {
+        sub.textContent = isFornecedor
+          ? "Oferta formal com nota. Intermediamos sua venda para quem compra."
+          : "Só o essencial. O resto alinhamos no WhatsApp.";
+      }
       legendVolume.textContent = isFornecedor ? "Média de venda (mensal, em kg)" : "Média de compra (mensal, em kg)";
       hintVolume.textContent = isFornecedor
         ? "Mínimo 1 kg / mês. Volume aproximado que sua empresa oferta."
         : "Mínimo 1 kg / mês. Volume aproximado que sua empresa compra.";
-      btnSubmit.textContent = isFornecedor ? "Quero vender (WhatsApp)" : "Quero comprar (WhatsApp)";
+      btnSubmit.textContent = isFornecedor ? "Quero ser parceiro (WhatsApp)" : "Quero comprar (WhatsApp)";
       btnSubmit.classList.toggle("btn-blue", isFornecedor);
       btnSubmit.classList.toggle("btn-primary", !isFornecedor);
     }
+
+    applyPerfil(perfilSelect.value || "comprador");
 
     perfilSelect.addEventListener("change", () => applyPerfil(perfilSelect.value));
 
@@ -1903,9 +1942,9 @@
       const isFornecedor = perfil === "fornecedor";
       const obs = (data.get("mensagem") || "").toString().trim();
       const lines = [
-        isFornecedor ? "*Lastro Ouro · Quero vender*" : "*Lastro Ouro · Quero comprar*",
+        isFornecedor ? "*Lastro Ouro · Quero ser fornecedor parceiro*" : "*Lastro Ouro · Quero comprar*",
         "",
-        `Perfil: ${isFornecedor ? "Vender" : "Comprar"}`,
+        `Perfil: ${isFornecedor ? "Fornecedor parceiro" : "Comprar"}`,
         `Nome: ${data.get("nome")}`,
         `Empresa: ${data.get("empresa")}`,
         `WhatsApp: ${data.get("whatsapp")}`,
