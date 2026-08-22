@@ -3,6 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '4377557792497566');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=4377557792497566&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <title>Lastro Ouro · Compre ouro com nota para a sua empresa</title>
   <meta name="description" content="Ouro com nota para joalherias, fundições, galvânicas e indústrias. Intermediação B2B: conexão, validação e recompra. Todo o Brasil." />
   <meta name="robots" content="index, follow" />
@@ -1967,6 +1984,16 @@
     const btnSubmit = document.getElementById("btnSubmit");
     const SEU_NUMERO = "5516992197090";
 
+    function trackMetaLead(contentName) {
+      if (typeof fbq === "function") {
+        fbq("track", "Lead", { content_name: contentName });
+      }
+    }
+
+    document.querySelectorAll('a[href*="wa.me"]').forEach((el) => {
+      el.addEventListener("click", () => trackMetaLead("whatsapp_direto"));
+    });
+
     function applyPerfil(perfil) {
       const isFornecedor = perfil === "fornecedor";
       const title = document.querySelector(".form-card-title");
@@ -2018,6 +2045,7 @@
         lines.push("", `Observação: ${obs}`);
       }
       const texto = encodeURIComponent(lines.join("\n"));
+      trackMetaLead(isFornecedor ? "formulario_fornecedor" : "formulario_comprador");
       window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
     });
   </script>
