@@ -1379,6 +1379,37 @@
     }
     .footer-copy { font-size: 0.82rem; color: var(--muted); }
 
+    .wa-float {
+      position: fixed;
+      right: 1.15rem;
+      bottom: 1.35rem;
+      z-index: 45;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(28, 36, 52, 0.1);
+      color: #25D366;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(28, 36, 52, 0.14);
+      background: #fff;
+    }
+    .wa-float svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+    .wa-float:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(14px);
@@ -1456,6 +1487,16 @@
       .founder-photo {
         width: 160px;
         justify-self: center;
+      }
+      .wa-float {
+        right: 0.85rem;
+        bottom: 1rem;
+        width: 42px;
+        height: 42px;
+      }
+      .wa-float svg {
+        width: 22px;
+        height: 22px;
       }
       .founder-grid {
         justify-items: center;
@@ -1965,6 +2006,20 @@
       <p class="footer-copy">© <span id="year"></span> Lastro Ouro · Compra e venda de ouro entre empresas · lastroouro.com.br</p>
     </div>
   </footer>
+
+  <a
+    class="wa-float"
+    href="https://wa.me/5516992197090"
+    target="_blank"
+    rel="noopener"
+    aria-label="Falar no WhatsApp"
+    title="Falar no WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill="currentColor" d="M17.47 14.38c-.28-.14-1.64-.81-1.9-.9-.25-.1-.44-.14-.62.14-.18.27-.71.9-.87 1.08-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.2-1.35-.81-.72-1.36-1.62-1.52-1.9-.16-.27-.02-.42.12-.55.13-.13.28-.32.42-.49.14-.16.18-.27.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.65 1.12 2.83c.14.18 1.93 2.95 4.67 4.13.65.28 1.16.45 1.56.57.65.2 1.25.18 1.72.11.52-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.11-.25-.18-.53-.32z"/>
+      <path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.54 14.9L2 22l5.24-1.37A9.94 9.94 0 0 0 12.04 22c5.48 0 9.93-4.45 9.93-9.93S17.52 2 12.04 2zm0 18.13c-1.66 0-3.28-.44-4.7-1.28l-.34-.2-3.12 1 .99-3.04-.22-.35a8.15 8.15 0 1 1 7.39 3.87z"/>
+    </svg>
+  </a>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
