@@ -1291,6 +1291,25 @@
     }
     .range-options input { width: auto; }
     .form-note { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+    #btnSubmit { width: 100%; }
+    #btnSubmit.btn-submit-success {
+      background: rgba(34, 139, 34, 0.08);
+      border: 1.5px solid rgba(34, 139, 34, 0.25);
+      color: #1f5f1f;
+      box-shadow: none;
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      white-space: normal;
+      line-height: 1.45;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: default;
+      transform: none;
+    }
+    #btnSubmit.btn-submit-success:hover {
+      transform: none;
+      background: rgba(34, 139, 34, 0.08);
+    }
     .form-feedback {
       display: none;
       border-radius: 14px;
@@ -1879,7 +1898,6 @@
           <form class="form-grid" id="formCadastro">
             <p class="form-card-title">Quero comprar ouro</p>
             <p class="form-card-sub">Envie seus dados. Entramos em contato em breve.</p>
-            <div class="form-feedback success" id="formSuccess" role="status" aria-live="polite"></div>
             <div class="form-feedback error" id="formError" role="alert"></div>
 
             <label class="form-honey" aria-hidden="true">Não preencha
@@ -2009,9 +2027,9 @@
     const legendVolume = document.getElementById("legendVolume");
     const hintVolume = document.getElementById("hintVolume");
     const btnSubmit = document.getElementById("btnSubmit");
-    const formSuccess = document.getElementById("formSuccess");
     const formError = document.getElementById("formError");
     const FORM_ENDPOINT = "https://formsubmit.co/ajax/lastroouro@gmail.com";
+    const SUBMIT_SUCCESS_MSG = "Recebemos seu cadastro. Em até 5 minutos entraremos em contato.";
 
     function trackMetaLead(contentName) {
       if (typeof fbq === "function") {
@@ -2023,14 +2041,32 @@
       el.addEventListener("click", () => trackMetaLead("whatsapp_direto"));
     });
 
-    function hideFormFeedback() {
-      formSuccess.classList.remove("show");
+    function hideFormError() {
       formError.classList.remove("show");
-      formSuccess.textContent = "";
       formError.textContent = "";
     }
 
+    function showSubmitSuccess() {
+      btnSubmit.disabled = true;
+      btnSubmit.type = "button";
+      btnSubmit.classList.remove("btn-primary", "btn-blue");
+      btnSubmit.classList.add("btn-submit-success");
+      btnSubmit.textContent = SUBMIT_SUCCESS_MSG;
+      btnSubmit.setAttribute("aria-live", "polite");
+    }
+
+    function resetSubmitButton(defaultLabel, isFornecedor) {
+      btnSubmit.disabled = false;
+      btnSubmit.type = "submit";
+      btnSubmit.classList.remove("btn-submit-success");
+      btnSubmit.removeAttribute("aria-live");
+      btnSubmit.textContent = defaultLabel;
+      btnSubmit.classList.toggle("btn-blue", isFornecedor);
+      btnSubmit.classList.toggle("btn-primary", !isFornecedor);
+    }
+
     function applyPerfil(perfil) {
+      if (btnSubmit.classList.contains("btn-submit-success")) return;
       const isFornecedor = perfil === "fornecedor";
       const title = document.querySelector(".form-card-title");
       const sub = document.querySelector(".form-card-sub");
@@ -2064,7 +2100,7 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      hideFormFeedback();
+      hideFormError();
 
       const data = new FormData(form);
       if (data.get("_honey")) return;
@@ -2087,8 +2123,9 @@
       };
 
       const defaultLabel = isFornecedor ? "Enviar cadastro de fornecedor" : "Enviar cadastro";
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = "Enviando…";
+
+      showSubmitSuccess();
+      trackMetaLead(isFornecedor ? "formulario_fornecedor" : "formulario_comprador");
 
       try {
         const res = await fetch(FORM_ENDPOINT, {
@@ -2101,18 +2138,11 @@
         });
 
         if (!res.ok) throw new Error("submit_failed");
-
-        trackMetaLead(isFornecedor ? "formulario_fornecedor" : "formulario_comprador");
         form.reset();
-        applyPerfil(perfilSelect.value || "comprador");
-        formSuccess.textContent = "Recebemos seu cadastro. Entramos em contato em breve pelo WhatsApp ou e-mail informado.";
-        formSuccess.classList.add("show");
       } catch (err) {
+        resetSubmitButton(defaultLabel, isFornecedor);
         formError.textContent = "Não conseguimos enviar agora. Tente de novo ou fale direto no WhatsApp ao lado.";
         formError.classList.add("show");
-      } finally {
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = defaultLabel;
       }
     });
   </script>
