@@ -1328,6 +1328,25 @@
     }
     .range-options input { width: auto; }
     .form-note { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+    .form-feedback {
+      display: none;
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    .form-feedback.show { display: block; }
+    .form-feedback.success {
+      background: rgba(34, 139, 34, 0.08);
+      border: 1.5px solid rgba(34, 139, 34, 0.25);
+      color: #1f5f1f;
+    }
+    .form-feedback.error {
+      background: rgba(220, 53, 69, 0.08);
+      border: 1.5px solid rgba(220, 53, 69, 0.25);
+      color: #8b1e28;
+    }
+    .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
     footer {
       padding: 2.5rem 0 2rem;
@@ -1809,7 +1828,7 @@
         <div class="contact-aside reveal">
           <div class="label">Fale conosco</div>
           <h2>Conte o que sua empresa precisa comprar.</h2>
-          <p>Joalheria, fundição, galvânica e indústria (P/M/G) a partir de 1 kg/mês. Formulário curto.</p>
+          <p>Preencha o formulário. Retornamos por e-mail ou telefone. Prefere falar agora? Use o WhatsApp ao lado.</p>
           <a class="channel wa" href="https://wa.me/5516992197090" target="_blank" rel="noopener">
             <div class="brand-icon wa" aria-hidden="true">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1871,7 +1890,13 @@
         <div class="contact-card reveal">
           <form class="form-grid" id="formCadastro">
             <p class="form-card-title">Quero comprar ouro</p>
-            <p class="form-card-sub">Só o essencial. O resto alinhamos no WhatsApp.</p>
+            <p class="form-card-sub">Envie seus dados. Entramos em contato em breve.</p>
+            <div class="form-feedback success" id="formSuccess" role="status" aria-live="polite"></div>
+            <div class="form-feedback error" id="formError" role="alert"></div>
+
+            <label class="form-honey" aria-hidden="true">Não preencha
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+            </label>
 
             <label>Perfil
               <select name="perfil" id="perfilSelect" required>
@@ -1907,8 +1932,8 @@
             <label>Observação (opcional)
               <textarea name="mensagem" placeholder="Se quiser, conte o essencial em uma linha…"></textarea>
             </label>
-            <button class="btn btn-primary" type="submit" id="btnSubmit">Enviar no WhatsApp</button>
-            <p class="form-note">Ao enviar, você autoriza a Lastro Ouro a entrar em contato. Fornecedor parceiro passa por checagem de nota e origem.</p>
+            <button class="btn btn-primary" type="submit" id="btnSubmit">Enviar cadastro</button>
+            <p class="form-note">Ao enviar, você autoriza a Lastro Ouro a entrar em contato. Fornecedor parceiro passa por checagem de nota e origem. WhatsApp disponível nos canais ao lado.</p>
           </form>
         </div>
       </div>
@@ -1982,7 +2007,9 @@
     const legendVolume = document.getElementById("legendVolume");
     const hintVolume = document.getElementById("hintVolume");
     const btnSubmit = document.getElementById("btnSubmit");
-    const SEU_NUMERO = "5516992197090";
+    const formSuccess = document.getElementById("formSuccess");
+    const formError = document.getElementById("formError");
+    const FORM_ENDPOINT = "https://formsubmit.co/ajax/lastroouro@gmail.com";
 
     function trackMetaLead(contentName) {
       if (typeof fbq === "function") {
@@ -1994,6 +2021,13 @@
       el.addEventListener("click", () => trackMetaLead("whatsapp_direto"));
     });
 
+    function hideFormFeedback() {
+      formSuccess.classList.remove("show");
+      formError.classList.remove("show");
+      formSuccess.textContent = "";
+      formError.textContent = "";
+    }
+
     function applyPerfil(perfil) {
       const isFornecedor = perfil === "fornecedor";
       const title = document.querySelector(".form-card-title");
@@ -2001,14 +2035,14 @@
       if (title) title.textContent = isFornecedor ? "Quero ser fornecedor parceiro" : "Quero comprar ouro";
       if (sub) {
         sub.textContent = isFornecedor
-          ? "Oferta formal com nota. Intermediamos sua venda para quem compra."
-          : "Só o essencial. O resto alinhamos no WhatsApp.";
+          ? "Envie sua oferta formal. Analisamos e retornamos em breve."
+          : "Envie seus dados. Entramos em contato em breve.";
       }
       legendVolume.textContent = isFornecedor ? "Média de venda (mensal, em kg)" : "Média de compra (mensal, em kg)";
       hintVolume.textContent = isFornecedor
         ? "Mínimo 1 kg / mês. Volume aproximado que sua empresa oferta."
         : "Mínimo 1 kg / mês. Volume aproximado que sua empresa compra.";
-      btnSubmit.textContent = isFornecedor ? "Quero ser parceiro (WhatsApp)" : "Quero comprar (WhatsApp)";
+      btnSubmit.textContent = isFornecedor ? "Enviar cadastro de fornecedor" : "Enviar cadastro";
       btnSubmit.classList.toggle("btn-blue", isFornecedor);
       btnSubmit.classList.toggle("btn-primary", !isFornecedor);
     }
@@ -2026,27 +2060,58 @@
       });
     });
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      hideFormFeedback();
+
       const data = new FormData(form);
+      if (data.get("_honey")) return;
+
       const perfil = data.get("perfil");
       const isFornecedor = perfil === "fornecedor";
-      const obs = (data.get("mensagem") || "").toString().trim();
-      const lines = [
-        isFornecedor ? "*Lastro Ouro · Quero ser fornecedor parceiro*" : "*Lastro Ouro · Quero comprar*",
-        "",
-        `Perfil: ${isFornecedor ? "Fornecedor parceiro" : "Comprar"}`,
-        `Nome: ${data.get("nome")}`,
-        `Empresa: ${data.get("empresa")}`,
-        `WhatsApp: ${data.get("whatsapp")}`,
-        `Volume médio: ${data.get("media_volume")}`,
-      ];
-      if (obs) {
-        lines.push("", `Observação: ${obs}`);
+      const payload = {
+        _subject: isFornecedor
+          ? "Lastro Ouro · Novo fornecedor parceiro"
+          : "Lastro Ouro · Novo lead comprador",
+        _template: "table",
+        _captcha: "false",
+        origem: "lastroouro.com.br",
+        perfil: isFornecedor ? "Fornecedor parceiro" : "Comprar ouro",
+        nome: data.get("nome"),
+        empresa: data.get("empresa"),
+        whatsapp: data.get("whatsapp"),
+        media_volume: data.get("media_volume"),
+        mensagem: (data.get("mensagem") || "").toString().trim() || "(sem observação)",
+      };
+
+      const defaultLabel = isFornecedor ? "Enviar cadastro de fornecedor" : "Enviar cadastro";
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = "Enviando…";
+
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error("submit_failed");
+
+        trackMetaLead(isFornecedor ? "formulario_fornecedor" : "formulario_comprador");
+        form.reset();
+        applyPerfil(perfilSelect.value || "comprador");
+        formSuccess.textContent = "Recebemos seu cadastro. Entramos em contato em breve pelo WhatsApp ou e-mail informado.";
+        formSuccess.classList.add("show");
+      } catch (err) {
+        formError.textContent = "Não conseguimos enviar agora. Tente de novo ou fale direto no WhatsApp ao lado.";
+        formError.classList.add("show");
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = defaultLabel;
       }
-      const texto = encodeURIComponent(lines.join("\n"));
-      trackMetaLead(isFornecedor ? "formulario_fornecedor" : "formulario_comprador");
-      window.open(`https://wa.me/${SEU_NUMERO}?text=${texto}`, "_blank");
     });
   </script>
 </body>
