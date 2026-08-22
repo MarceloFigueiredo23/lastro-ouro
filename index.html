@@ -125,7 +125,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #FFF8F3;
@@ -143,6 +143,10 @@
       --ok: #1F9D6C;
       --shadow: 0 16px 40px rgba(28, 36, 52, 0.08);
       --radius: 20px;
+      --card-orange: linear-gradient(148deg, #FF733F 0%, #ED4E00 50%, #C93D00 100%);
+      --card-orange-shadow: 0 14px 36px rgba(237, 78, 0, 0.22);
+      --on-orange: #FFFFFF;
+      --on-orange-soft: rgba(255, 255, 255, 0.88);
       --display: "Fraunces", Georgia, serif;
       --body: "Plus Jakarta Sans", system-ui, sans-serif;
       --max: 1120px;
@@ -460,42 +464,60 @@
       gap: 1rem;
     }
     .path-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
+      background: var(--card-orange);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 24px;
-      padding: 1.4rem 1.35rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, border-color 0.2s;
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--card-orange-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: var(--on-orange);
     }
     .path-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 107, 53, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 44px rgba(237, 78, 0, 0.28);
     }
     .path-card.sell:hover { border-color: rgba(47, 111, 237, 0.35); }
     .path-card .tag {
       display: inline-block;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.28rem 0.55rem;
+      padding: 0.32rem 0.65rem;
       border-radius: 999px;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.75rem;
     }
-    .path-card.buy .tag { background: var(--orange-soft); color: var(--orange-deep); }
+    .path-card.buy .tag {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--on-orange);
+    }
     .path-card.sell .tag { background: var(--blue-soft); color: var(--blue); }
     .path-card h3 {
       font-family: var(--display);
-      font-size: 1.35rem;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
+      font-size: 1.45rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: var(--on-orange);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
     .path-card p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--on-orange-soft);
+      margin-bottom: 1.15rem;
+      line-height: 1.55;
     }
     .path-card .btn { width: 100%; }
+    .path-card.buy .btn-primary {
+      background: #fff;
+      color: var(--orange-deep);
+      box-shadow: 0 8px 20px rgba(28, 36, 52, 0.12);
+    }
+    .path-card.buy .btn-primary:hover {
+      background: #fff;
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
 
     .strip {
       padding: 0.5rem 0 2.5rem;
@@ -506,19 +528,31 @@
       gap: 1rem;
     }
     .strip-item {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.15rem 1.2rem;
+      background: var(--card-orange);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 1.25rem 1.3rem;
+      box-shadow: var(--card-orange-shadow);
+      color: var(--on-orange);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .strip-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(237, 78, 0, 0.26);
     }
     .strip-item strong {
       display: block;
-      font-size: 0.98rem;
-      margin-bottom: 0.25rem;
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.02em;
+      color: var(--on-orange);
     }
     .strip-item span {
-      font-size: 0.88rem;
-      color: var(--muted);
+      font-size: 0.9rem;
+      color: var(--on-orange-soft);
+      line-height: 1.5;
     }
 
     section { padding: 4.2rem 0; }
@@ -599,40 +633,48 @@
     .journey-step:nth-child(even) .journey-spacer { grid-column: 1; grid-row: 1; }
     .journey-step:nth-child(odd) .journey-spacer { grid-column: 2; grid-row: 1; }
     .journey-card {
-      background: #F3F1EF;
-      border-radius: 18px;
-      padding: 1.25rem 1.3rem 1.25rem 1.15rem;
+      background: var(--card-orange);
+      border-radius: 20px;
+      padding: 1.35rem 1.4rem 1.35rem 1.25rem;
       display: flex;
       gap: 1rem;
       align-items: flex-start;
-      box-shadow: 0 10px 28px rgba(28, 36, 52, 0.06);
-      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: var(--card-orange-shadow);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--on-orange);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .journey-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(237, 78, 0, 0.28);
     }
     .journey-icon {
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: #fff;
-      border: 2px solid var(--orange-soft);
+      background: rgba(255, 255, 255, 0.18);
+      border: 2px solid rgba(255, 255, 255, 0.35);
       display: grid;
       place-items: center;
       flex-shrink: 0;
-      color: var(--orange);
+      color: var(--on-orange);
     }
     .journey-icon svg { width: 26px; height: 26px; }
     .journey-card h3 {
-      font-family: var(--body);
-      font-size: 1.05rem;
-      font-weight: 800;
-      margin-bottom: 0.35rem;
-      color: var(--ink);
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--on-orange);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
     }
     .journey-card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.45;
+      font-size: 0.92rem;
+      color: var(--on-orange-soft);
+      line-height: 1.55;
     }
-    .journey-card strong { color: var(--orange-deep); font-weight: 700; }
+    .journey-card strong { color: #fff; font-weight: 700; }
     .journey-cta {
       text-align: center;
       margin-top: 2rem;
@@ -716,12 +758,14 @@
       margin-bottom: 1.25rem;
     }
     .safe-pills span {
-      background: #fff;
-      border: 1px solid var(--line);
+      background: var(--card-orange);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 999px;
-      padding: 0.45rem 0.85rem;
+      padding: 0.5rem 0.9rem;
       font-size: 0.82rem;
       font-weight: 600;
+      color: var(--on-orange);
+      box-shadow: 0 6px 16px rgba(237, 78, 0, 0.15);
     }
 
     .products-grid {
@@ -733,74 +777,111 @@
       margin-right: auto;
     }
     .product-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 1.2rem 1.1rem;
-      min-height: 200px;
+      background: var(--card-orange);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 1.35rem 1.2rem;
+      min-height: 210px;
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
+      gap: 0.5rem;
+      box-shadow: var(--card-orange-shadow);
+      color: var(--on-orange);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 42px rgba(237, 78, 0, 0.28);
     }
     .product-card.core {
-      border-color: rgba(255, 107, 53, 0.45);
-      background: linear-gradient(165deg, #FFF5F0, #fff);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35), var(--card-orange-shadow);
     }
     .product-card .sku {
       font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--on-orange);
       font-weight: 700;
+      background: rgba(255, 255, 255, 0.18);
+      display: inline-block;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      width: fit-content;
     }
     .product-card h3 {
       font-family: var(--display);
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: var(--on-orange);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
     .product-card p {
-      font-size: 0.86rem;
-      color: var(--muted);
+      font-size: 0.9rem;
+      color: var(--on-orange-soft);
       flex: 1;
+      line-height: 1.55;
     }
     .product-card .for {
-      font-size: 0.72rem;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      padding-top: 0.55rem;
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.75);
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+      padding-top: 0.6rem;
       margin-top: auto;
+      font-weight: 600;
     }
     .fee-note {
       margin-top: 1.35rem;
-      padding: 1rem 1.2rem;
-      background: var(--blue-soft);
-      border-radius: 14px;
-      font-size: 0.92rem;
-      color: var(--ink);
+      padding: 1.1rem 1.25rem;
+      background: var(--card-orange);
+      border-radius: 16px;
+      font-size: 0.94rem;
+      color: var(--on-orange-soft);
       max-width: 46rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.55;
+      box-shadow: var(--card-orange-shadow);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
-    .fee-note strong { color: var(--blue); }
+    .fee-note strong { color: #fff; font-weight: 700; }
 
     .distro-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0.85rem;
       margin-top: 1.5rem;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .distro-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.15rem 1.2rem;
+      background: var(--card-orange);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 1.25rem 1.3rem;
+      box-shadow: var(--card-orange-shadow);
+      color: var(--on-orange);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .distro-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(237, 78, 0, 0.26);
     }
     .distro-card strong {
       display: block;
       font-family: var(--display);
-      font-size: 1.1rem;
-      margin-bottom: 0.35rem;
-      color: var(--ink);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--on-orange);
+      letter-spacing: -0.02em;
     }
-    .distro-card span { font-size: 0.88rem; color: var(--muted); }
+    .distro-card span {
+      font-size: 0.9rem;
+      color: var(--on-orange-soft);
+      line-height: 1.5;
+    }
 
     .services-grid {
       display: grid;
