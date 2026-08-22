@@ -20,6 +20,14 @@
   src="https://www.facebook.com/tr?id=4377557792497566&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-74PPFPQ6P8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-74PPFPQ6P8");
+  </script>
   <title>Lastro Ouro · Compre ouro com nota para a sua empresa</title>
   <meta name="description" content="Ouro com nota para joalherias, fundições, galvânicas e indústrias. Intermediação B2B: conexão, validação e recompra. Todo o Brasil." />
   <meta name="robots" content="index, follow" />
@@ -2037,8 +2045,19 @@
       }
     }
 
+    function trackGaLead(source) {
+      if (typeof gtag === "function") {
+        gtag("event", "generate_lead", { lead_source: source });
+      }
+    }
+
+    function trackLead(source) {
+      trackMetaLead(source);
+      trackGaLead(source);
+    }
+
     document.querySelectorAll('a[href*="wa.me"]').forEach((el) => {
-      el.addEventListener("click", () => trackMetaLead("whatsapp_direto"));
+      el.addEventListener("click", () => trackLead("whatsapp_direto"));
     });
 
     function hideFormError() {
@@ -2125,7 +2144,7 @@
       const defaultLabel = isFornecedor ? "Enviar cadastro de fornecedor" : "Enviar cadastro";
 
       showSubmitSuccess();
-      trackMetaLead(isFornecedor ? "formulario_fornecedor" : "formulario_comprador");
+      trackLead(isFornecedor ? "formulario_fornecedor" : "formulario_comprador");
 
       try {
         const res = await fetch(FORM_ENDPOINT, {
